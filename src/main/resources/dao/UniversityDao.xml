@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.imut.ncee.dao.UniversityDao">
+
+    <!-- 添加高校信息-->
+    <insert id="insertUniversity" parameterType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        <!-- UUID-->
+        <selectKey keyProperty="universityId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '') as university_id
+        </selectKey>
+
+        insert into university_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                university_id,
+            </if>
+            <if test="universityName != null">
+                university_name,
+            </if>
+            <if test="universityCode != null">
+                university_code
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                #{universityId,jdbcType=VARCHAR},
+            </if>
+            <if test="universityName != null">
+                #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityCode != null">
+                #{universityCode,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据Id修改高校编号-->
+    <update id="updateUniversity">
+        update `university_info` set `university_code` = #{universityCode} where university_id = #{universitId};
+    </update>
+
+    <!-- 根据Id删除高校-->
+    <delete id="deleteUniversityById">
+        delete from `university_info` where `universityId` = #{universityId}
+    </delete>
+
+    <!-- 查询所有高校信息-->
+    <select id="selectAllUniversity" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        select `university_id`,`university_name`,`university_code` from university_info
+    </select>
+
+    <!-- 根据高校Id查询高校信息-->
+    <select id="selectUniversityById" parameterType="string" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        select `university_name`,`university_code` from university_info where `university_id` = #{universityId}
+    </select>
+</mapper>
