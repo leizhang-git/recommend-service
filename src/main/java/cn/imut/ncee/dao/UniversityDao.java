@@ -57,4 +57,9 @@ public interface UniversityDao {
     List<UniversityInfo> selectUniversityByAddress(String universityAddress);
 
 
+    /**
+     * 查询所有高校Id
+     * @return 高校Id
+     */
+    List<String> selectAllId();
 }

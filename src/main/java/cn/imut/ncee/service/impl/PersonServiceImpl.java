@@ -19,7 +19,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public boolean register(Person person) {
-        return false;
+        String s = personDao.selectId(person.getId());
+        if(s == null) {
+            return personDao.register(person);
+        }else {
+            return false;
+        }
     }
 
     @Override

@@ -60,4 +60,9 @@
     <select id="selectUniversityByAddress" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
         select * from `university_info` where `university_address` = #{universityAddress}
     </select>
+
+    <!-- 查询所有高校Id-->
+    <select id="selectAllId" resultType="java.lang.String">
+        select `university_id` from `university_info`;
+    </select>
 </mapper>

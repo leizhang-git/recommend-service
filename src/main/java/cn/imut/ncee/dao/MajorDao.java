@@ -50,4 +50,10 @@ public interface MajorDao {
      * @return 0理科/1文科/-1文/理
      */
     Integer selectSubject(String majorId);
+
+    /**
+     * 查询所有专业Id号
+     * @return 专业Id
+     */
+    List<String> selectAllId();
 }

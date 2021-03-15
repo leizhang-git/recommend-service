@@ -83,4 +83,9 @@
         select `subject` from major_info where major_id;
     </select>
 
+    <!-- 查询所有专业Id-->
+    <select id="selectAllId" resultType="java.lang.String">
+        select `major_id` from major_info;
+    </select>
+
 </mapper>

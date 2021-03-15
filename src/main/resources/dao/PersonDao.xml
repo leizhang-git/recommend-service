@@ -35,6 +35,10 @@
         update person set `name` = #{name}, `score` = #{score}, `password` = #{password} where id = #{id}
     </update>
 
+    <delete id="deletePerson">
+        delete from `person` where id = #{id};
+    </delete>
+
 
     <select id="selectByIdPerson" resultType="cn.imut.ncee.entity.pojo.Person">
         select * from person where id = #{id};
@@ -46,5 +50,10 @@
 
     <select id="login" resultType="String" parameterType="String">
         select `password` from person where id = #{personId}
+    </select>
+
+    <!-- 查询注册账号是否存在-->
+    <select id="selectId" resultType="String">
+        select `id` from person where id = #{id};
     </select>
 </mapper>

@@ -37,7 +37,13 @@ public class PersonDaoTest {
 
     @Test
     public void updatePerson() {
+        
+    }
 
+    @Test
+    public void deletePerson() {
+        boolean isSuccess = personDao.deletePerson("vip.p@live.com");
+        System.out.println(isSuccess);
     }
 
     @Test

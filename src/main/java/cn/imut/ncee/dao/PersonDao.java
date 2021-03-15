@@ -52,4 +52,18 @@ public interface PersonDao {
      * @return 用户信息
      */
     Person selectByIdPerson(String personId);
+
+    /**
+     * 根据Id删除用户
+     * @param id 用户Id
+     * @return 是否删除成功
+     */
+    boolean deletePerson(@Param("id") String id);
+
+    /**
+     * 查询Id是否存在
+     * @param id 用户账号
+     * @return 该账号是否存在
+     */
+    String selectId(@Param("id") String id);
 }

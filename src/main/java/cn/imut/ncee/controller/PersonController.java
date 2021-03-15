@@ -1,11 +1,10 @@
 package cn.imut.ncee.controller;
 
+import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户(管理员与普通用户)
@@ -19,9 +18,28 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    /**
+     * 登陆
+     * @param id 账号（邮箱）
+     * @param password 密码
+     * @return 是否登陆成功
+     */
     @GetMapping("/login")
     public Results<Boolean> login(String id, String password) {
         boolean isSuccess = personService.login(id, password);
         return Results.dataOf(isSuccess);
     }
+
+    /**
+     * 注册
+     * @param person id、姓名、密码
+     * @return 是否成功注册
+     */
+    @PostMapping("/register")
+    public Results<Boolean> register(@RequestBody Person person) {
+        boolean isSuccess = personService.register(person);
+        return Results.dataOf(isSuccess);
+    }
+
+
 }

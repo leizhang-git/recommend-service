@@ -41,4 +41,25 @@ public class StatisticsScoreInfo {
      * 最高分
      */
     private double maxScore;
+
+    public StatisticsScoreInfo(String universityId, String majorId, Integer years, double avgScore, double minScore, double maxScore) {
+        this.universityId = universityId;
+        this.majorId = majorId;
+        this.years = years;
+        this.avgScore = avgScore;
+        this.minScore = minScore;
+        this.maxScore = maxScore;
+    }
+
+    @Override
+    public String toString() {
+        return "StatisticsScoreInfo{" +
+                "universityId='" + universityId + '\'' +
+                ", majorId='" + majorId + '\'' +
+                ", years=" + years +
+                ", avgScore=" + avgScore +
+                ", minScore=" + minScore +
+                ", maxScore=" + maxScore +
+                '}';
+    }
 }
