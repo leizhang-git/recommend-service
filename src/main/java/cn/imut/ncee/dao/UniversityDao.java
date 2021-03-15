@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * 高校
- *
  * @Author zhanglei
  * @Date 2021/1/27 17:44
  */
@@ -49,5 +48,13 @@ public interface UniversityDao {
      * @return 是否成功删除高校
      */
     boolean deleteUniversityById(String universityId);
+
+    /**
+     * 查询该省份所有的高校,分页展示
+     * @param universityAddress 高校所在省份
+     * @return 所有高校信息
+     */
+    List<UniversityInfo> selectUniversityByAddress(String universityAddress);
+
 
 }

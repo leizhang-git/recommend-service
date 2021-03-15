@@ -55,4 +55,9 @@
     <select id="selectUniversityById" parameterType="string" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
         select `university_name`,`university_code` from university_info where `university_id` = #{universityId}
     </select>
+
+    <!-- 根据省份查询高校信息-->
+    <select id="selectUniversityByAddress" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        select * from `university_info` where `university_address` = #{universityAddress}
+    </select>
 </mapper>

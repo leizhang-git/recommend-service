@@ -44,6 +44,12 @@ public class MajorInfo {
      */
     private String universityId;
 
+    /**
+     * 科目：理科0，文科1，文科/理科-1
+     */
+    private Integer subject;
+
+
     public MajorInfo(String majorName, String majorCode, String majorCategory, String enrollPerson) {
         this.majorName = majorName;
         this.majorCode = majorCode;

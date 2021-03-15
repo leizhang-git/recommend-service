@@ -44,4 +44,10 @@ public interface MajorDao {
      */
     MajorInfo selectByIdMajorInfo(String universityId, String majorId);
 
+    /**
+     * 根据专业Id，查询该专业属于文科还是理科
+     * @param majorId 专业Id
+     * @return 0理科/1文科/-1文/理
+     */
+    Integer selectSubject(String majorId);
 }

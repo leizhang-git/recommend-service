@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * 高校信息
- *
  * @Author zhanglei
  * @Date 2021/1/15 19:30
  */
@@ -27,6 +26,16 @@ public class UniversityInfo {
      * 高校编码
      */
     private String universityCode;
+
+    /**
+     * 高校简介
+     */
+    private String universityDesc;
+
+    /**
+     * 高校所在地
+     */
+    private String universityAddress;
 
     /**
      * 高校在招的所有专业

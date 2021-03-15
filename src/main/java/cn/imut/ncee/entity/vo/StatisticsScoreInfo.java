@@ -1,4 +1,4 @@
-package cn.imut.ncee.entity.pojo;
+package cn.imut.ncee.entity.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,20 +25,20 @@ public class StatisticsScoreInfo {
     /**
      * 年份
      */
-    private String years;
+    private Integer years;
 
     /**
      * 平均分
      */
-    private String avgScore;
+    private double avgScore;
 
     /**
      * 最低分
      */
-    private String minScore;
+    private double minScore;
 
     /**
      * 最高分
      */
-    private String maxScore;
+    private double maxScore;
 }

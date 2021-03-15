@@ -68,12 +68,19 @@
             `major_id` = #{majorId}
     </update>
 
+    <!-- 查询所有专业信息-->
     <select id="selectAllMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo" resultMap="majorMap">
         select * from major_info
     </select>
 
+    <!-- 根据Id查询专业信息-->
     <select id="selectByIdMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo">
         select * from  major_info where major_id
+    </select>
+
+    <!-- 根据Id查询文科还是理科-->
+    <select id="selectSubject" resultType="java.lang.Integer">
+        select `subject` from major_info where major_id;
     </select>
 
 </mapper>
