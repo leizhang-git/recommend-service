@@ -35,8 +35,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public boolean updatePerson(Person person) {
-        return false;
+    public boolean updatePerson(Person person, String id) {
+        return personDao.updatePerson(id, person);
     }
 
     @Override
@@ -47,6 +47,6 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person selectByIdPerson(String personId) {
-        return null;
+        return personDao.selectByIdPerson(personId);
     }
 }

@@ -32,7 +32,7 @@ public interface PersonService {
      * @param person 用户信息
      * @return 是否成功修改
      */
-    boolean updatePerson(Person person);
+    boolean updatePerson(Person person, String id);
 
     /**
      * 查询所有用户信息

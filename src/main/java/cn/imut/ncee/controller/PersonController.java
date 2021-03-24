@@ -1,11 +1,9 @@
 package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.pojo.Person;
-import cn.imut.ncee.entity.pojo.UniversityInfo;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,10 +49,33 @@ public class PersonController {
      * @param pageSize 每页显示数量
      * @return 用户信息
      */
-    @GetMapping("/queryPerson")
-    public ResponseEntity<?> queryAll(@RequestParam(defaultValue = "1",required = false) int pageNum,
+    @GetMapping("/queryAllPerson")
+    public Results<?> queryAll(@RequestParam(defaultValue = "1",required = false) int pageNum,
                                       @RequestParam(defaultValue = "3",required = false) int pageSize) {
         List<Person> person = personService.selectAllPerson(pageNum, pageSize);
-        return ResponseEntity.ok(person);
+        return Results.dataOf(person);
+    }
+
+    /**
+     * 根据用户Id修改用户信息
+     * @param person 新的用户信息
+     * @param id 用户Id
+     * @return 是否修改成功
+     */
+    @PostMapping("/updatePerson")
+    public Results<?> queryAll(@RequestBody Person person, String id) {
+        boolean isSuccess = personService.updatePerson(person, id);
+        return Results.dataOf(isSuccess);
+    }
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id 用户Id
+     * @return 用户信息
+     */
+    @GetMapping("/queryPerson")
+    public Results<?> queryById(String id) {
+        Person person = personService.selectByIdPerson(id);
+        return Results.dataOf(person);
     }
 }

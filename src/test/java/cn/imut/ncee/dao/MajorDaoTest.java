@@ -23,14 +23,14 @@ public class MajorDaoTest {
 
     @Test
     public void insertMajorInfo() {
-        MajorInfo major = new MajorInfo("播音与主持艺术", "62", "戏剧与影视学类", "35");
+        MajorInfo major = new MajorInfo("播音与主持艺术", "62", "戏剧与影视学类", 35);
         boolean isSuccess = majorDao.insertMajorInfo(major);
         System.out.println(isSuccess);
     }
 
     @Test
     public void updateMajorInfo() {
-        MajorInfo major = new MajorInfo("播音与主持艺术", "62", "戏剧与影视学类", "35");
+        MajorInfo major = new MajorInfo("播音与主持艺术", "62", "戏剧与影视学类", 35);
         boolean isSuccess = majorDao.updateMajorInfo(major, "740ab8db7e4611eb873252540099a41f");
         System.out.println(isSuccess);
     }

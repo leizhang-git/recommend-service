@@ -37,7 +37,7 @@ public class MajorInfo {
     /**
      * 招生人数
      */
-    private String enrollPerson;
+    private Integer enrollPerson;
 
     /**
      * 高校Id
@@ -53,14 +53,14 @@ public class MajorInfo {
 
     }
 
-    public MajorInfo(String majorName, String majorCode, String majorCategory, String enrollPerson) {
+    public MajorInfo(String majorName, String majorCode, String majorCategory, Integer enrollPerson) {
         this.majorName = majorName;
         this.majorCode = majorCode;
         this.majorCategory = majorCategory;
         this.enrollPerson = enrollPerson;
     }
 
-    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, String enrollPerson, String universityId) {
+    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, Integer enrollPerson, String universityId) {
         this.majorId = majorId;
         this.majorName = majorName;
         this.majorCode = majorCode;
@@ -69,7 +69,7 @@ public class MajorInfo {
         this.universityId = universityId;
     }
 
-    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, String enrollPerson) {
+    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, Integer enrollPerson) {
         this.majorId = majorId;
         this.majorName = majorName;
         this.majorCode = majorCode;
@@ -77,7 +77,7 @@ public class MajorInfo {
         this.enrollPerson = enrollPerson;
     }
 
-    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, String enrollPerson, String universityId, Integer subject) {
+    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, Integer enrollPerson, String universityId, Integer subject) {
         this.majorId = majorId;
         this.majorName = majorName;
         this.majorCode = majorCode;
