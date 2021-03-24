@@ -38,7 +38,7 @@ public interface PersonService {
      * 查询所有用户信息
      * @return 所有用户信息
      */
-    List<Person> selectAllPerson();
+    List<Person> selectAllPerson(Integer pageNum, Integer pageSize);
 
     /**
      * 根据用户Id查询用户信息

@@ -32,7 +32,12 @@
     </insert>
 
     <update id="updatePerson" parameterType="cn.imut.ncee.entity.pojo.Person">
-        update person set `name` = #{name}, `score` = #{score}, `password` = #{password} where id = #{id}
+        update person set `name` = #{person.name}, `password` = #{person.password} where id = #{id}
+    </update>
+
+    <!-- 用户修改分数-->
+    <update id="updateScore">
+        update person set `score` = #{score} where id = #{id}
     </update>
 
     <delete id="deletePerson">
@@ -45,7 +50,7 @@
     </select>
 
     <select id="selectAllPerson" resultType="cn.imut.ncee.entity.pojo.Person">
-        select * from person where id != 'admin';
+        select * from person where id != 'admin'
     </select>
 
     <select id="login" resultType="String" parameterType="String">

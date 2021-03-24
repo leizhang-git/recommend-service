@@ -1,6 +1,7 @@
 package cn.imut.ncee.dao;
 
 import cn.imut.ncee.entity.pojo.UniversityInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,14 +41,14 @@ public interface UniversityDao {
      * @param universityCode 高校编号
      * @return 是否修改成功
      */
-    boolean updateUniversity(String universityId, String universityCode);
+    boolean updateUniversity(@Param("universityId") String universityId, @Param("universityCode") String universityCode);
 
     /**
      * 根据高校Id删除高校
      * @param universityId 高校Id
      * @return 是否成功删除高校
      */
-    boolean deleteUniversityById(String universityId);
+    boolean deleteUniversityById(@Param("universityId") String universityId);
 
     /**
      * 查询该省份所有的高校,分页展示
@@ -62,4 +63,11 @@ public interface UniversityDao {
      * @return 高校Id
      */
     List<String> selectAllId();
+
+    /**
+     * 根据高校名称查询其Id
+     * @param name 高校名称
+     * @return 高校Id
+     */
+    String selectIdForName(String name);
 }

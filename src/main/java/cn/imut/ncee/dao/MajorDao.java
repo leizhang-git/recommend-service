@@ -28,7 +28,14 @@ public interface MajorDao {
      * @param majorId 专业Id
      * @return 是否修改成功
      */
-    boolean updateMajorInfo(MajorInfo majorInfo, String majorId);
+    boolean updateMajorInfo(@Param("majorInfo") MajorInfo majorInfo, @Param("majorId") String majorId);
+
+    /**
+     * 根据majorCode获取Id
+     * @param majorCode 专业编码
+     * @return 专业Id
+     */
+    String selectIdByCode(String majorCode);
 
     /**
      * 查询所有专业
@@ -37,12 +44,11 @@ public interface MajorDao {
     List<MajorInfo> selectAllMajorInfo();
 
     /**
-     * 根据高校Id、专业Id查询该专业信息
-     * @param universityId 高校Id
+     * 根据专业Id查询该专业信息
      * @param majorId      专业Id
      * @return 返回专业信息
      */
-    MajorInfo selectByIdMajorInfo(String universityId, String majorId);
+    MajorInfo selectByIdMajorInfo(String majorId);
 
     /**
      * 根据专业Id，查询该专业属于文科还是理科

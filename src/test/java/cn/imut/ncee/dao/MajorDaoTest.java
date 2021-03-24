@@ -30,6 +30,9 @@ public class MajorDaoTest {
 
     @Test
     public void updateMajorInfo() {
+        MajorInfo major = new MajorInfo("播音与主持艺术", "62", "戏剧与影视学类", "35");
+        boolean isSuccess = majorDao.updateMajorInfo(major, "740ab8db7e4611eb873252540099a41f");
+        System.out.println(isSuccess);
     }
 
     @Test
@@ -38,8 +41,17 @@ public class MajorDaoTest {
         majorInfos.forEach(System.out::println);
     }
 
+
     @Test
     public void selectByIdMajorInfo() {
+        MajorInfo majorInfo = majorDao.selectByIdMajorInfo("740ab8db7e4611eb873252540099a41f");
+        System.out.println(majorInfo.toString());
+    }
 
+
+    @Test
+    public void selectIdByCode() {
+        String id = majorDao.selectIdByCode("62");
+        System.out.println(id);
     }
 }

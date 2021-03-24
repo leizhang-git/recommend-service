@@ -2,7 +2,6 @@ package cn.imut.ncee.dao;
 
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -39,6 +39,14 @@ public interface PersonDao {
     boolean updatePerson(@Param("id") String id, @Param("person") Person person);
 
     /**
+     * 用户修改分数
+     * @param score 新的分数
+     * @return 是否修改成功
+     */
+    boolean updateScore(@Param("score") double score, @Param("id") String id);
+
+
+    /**
      * 查询所有用户信息
      *
      * @return 所有用户信息

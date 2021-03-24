@@ -38,12 +38,12 @@
 
     <!-- 根据Id修改高校编号-->
     <update id="updateUniversity">
-        update `university_info` set `university_code` = #{universityCode} where university_id = #{universitId};
+        update `university_info` set `university_code` = #{universityCode} where university_id = #{universityId};
     </update>
 
     <!-- 根据Id删除高校-->
     <delete id="deleteUniversityById">
-        delete from `university_info` where `universityId` = #{universityId}
+        delete from `university_info` where `university_id` = #{universityId}
     </delete>
 
     <!-- 查询所有高校信息-->
@@ -64,5 +64,10 @@
     <!-- 查询所有高校Id-->
     <select id="selectAllId" resultType="java.lang.String">
         select `university_id` from `university_info`;
+    </select>
+
+    <!-- 根据高校名称获取高校Id-->
+    <select id="selectIdForName" resultType="java.lang.String">
+        select `university_id` from `university_info` where `university_name` = #{name};
     </select>
 </mapper>

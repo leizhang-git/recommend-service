@@ -43,9 +43,19 @@ public class UniversityDaoTest {
 
     @Test
     public void updateUniversity() {
+        boolean isSuccess = universityDao.updateUniversity("e5512d1f7e4611eb873252540099a41f", "3A");
+        System.out.println(isSuccess);
+    }
+
+    @Test
+    public void selectUniversityIdForName() {
+        String id = universityDao.selectIdForName("南京大学");
+        System.out.println(id);
     }
 
     @Test
     public void deleteUniversityById() {
+        boolean isSuccess = universityDao.deleteUniversityById("e5512d1f7e4611eb873252540099a41f");
+        System.out.println(isSuccess);
     }
 }

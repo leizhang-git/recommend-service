@@ -3,6 +3,7 @@ package cn.imut.ncee.service.impl;
 import cn.imut.ncee.dao.PersonDao;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.service.PersonService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -39,8 +40,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> selectAllPerson() {
-        return null;
+    public List<Person> selectAllPerson(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return personDao.selectAllPerson();
     }
 
     @Override

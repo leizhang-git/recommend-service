@@ -37,7 +37,15 @@ public class PersonDaoTest {
 
     @Test
     public void updatePerson() {
-        
+        Person person = new Person("vip.p@live.com","张磊", "zhanglei123");
+        boolean isSuccess = personDao.updatePerson(person.getId(), person);
+        System.out.println(isSuccess);
+    }
+
+    @Test
+    public void updatePersonScore() {
+        boolean isSuccess = personDao.updateScore(555, "vip.p@live.com");
+        System.out.println(isSuccess);
     }
 
     @Test

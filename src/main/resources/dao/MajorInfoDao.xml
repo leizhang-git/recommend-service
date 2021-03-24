@@ -57,15 +57,16 @@
     </insert>
 
     <!-- 修改专业信息，根据Id-->
-    <update id="updateMajorInfo">
+    <update id="updateMajorInfo" parameterType="cn.imut.ncee.entity.pojo.MajorInfo">
         update
             `major_info`
         set
-            `major_name` = #{majorName},
-            `major_code` = #{majorCode},
-            `major_category` = #{majorCategory}
+            `major_name` = #{majorInfo.majorName},
+            `major_code` = #{majorInfo.majorCode},
+            `major_category` = #{majorInfo.majorCategory},
+            `enroll_person` = #{majorInfo.enrollPerson}
         where
-            `major_id` = #{majorId}
+            `major_id` = #{majorId};
     </update>
 
     <!-- 查询所有专业信息-->
@@ -75,17 +76,22 @@
 
     <!-- 根据Id查询专业信息-->
     <select id="selectByIdMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo">
-        select * from  major_info where major_id
+        select * from  major_info where major_id = #{majorId}
     </select>
 
     <!-- 根据Id查询文科还是理科-->
     <select id="selectSubject" resultType="java.lang.Integer">
-        select `subject` from major_info where major_id;
+        select `subject` from major_info where major_id = #{majorId};
     </select>
 
     <!-- 查询所有专业Id-->
     <select id="selectAllId" resultType="java.lang.String">
         select `major_id` from major_info;
+    </select>
+
+    <!-- 根据MajorCode获取Id-->
+    <select id="selectIdByCode" resultType="java.lang.String">
+        select `major_id` from major_info where `major_code` = #{majorCode};
     </select>
 
 </mapper>

@@ -49,6 +49,9 @@ public class MajorInfo {
      */
     private Integer subject;
 
+    public MajorInfo() {
+
+    }
 
     public MajorInfo(String majorName, String majorCode, String majorCategory, String enrollPerson) {
         this.majorName = majorName;
@@ -74,6 +77,16 @@ public class MajorInfo {
         this.enrollPerson = enrollPerson;
     }
 
+    public MajorInfo(String majorId, String majorName, String majorCode, String majorCategory, String enrollPerson, String universityId, Integer subject) {
+        this.majorId = majorId;
+        this.majorName = majorName;
+        this.majorCode = majorCode;
+        this.majorCategory = majorCategory;
+        this.enrollPerson = enrollPerson;
+        this.universityId = universityId;
+        this.subject = subject;
+    }
+
     @Override
     public String toString() {
         return "MajorInfo{" +
@@ -83,6 +96,7 @@ public class MajorInfo {
                 ", majorCategory='" + majorCategory + '\'' +
                 ", enrollPerson='" + enrollPerson + '\'' +
                 ", universityId='" + universityId + '\'' +
+                ", subject=" + subject +
                 '}';
     }
 }

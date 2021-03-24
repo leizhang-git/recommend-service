@@ -36,7 +36,7 @@ public class MajorController {
      */
     @GetMapping("/queryAll")
     public Results<Map<String,Object>> queryAllMajorInfo(@RequestParam(defaultValue = "1",required = false) int pageNum,
-                                          @RequestParam(defaultValue = "2",required = false) int pageSize,
+                                          @RequestParam(defaultValue = "5",required = false) int pageSize,
                                           @RequestParam(defaultValue = "universityId", required = false) String universityId) {
         return Results.dataOf(majorService.selectAllMajorInfo(universityId, pageNum, pageSize));
     }
