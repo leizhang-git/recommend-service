@@ -5,6 +5,7 @@ import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.service.MajorService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -23,16 +24,21 @@ public class MajorServiceImpl implements MajorService {
 
     @Override
     public boolean insertMajorInfo(MajorInfo majorInfo) {
-        return false;
+        return majorDao.insertMajorInfo(majorInfo);
     }
 
     @Override
-    public boolean updateMajorInfo(MajorInfo majorInfo) {
-        return false;
+    public boolean updateMajorInfo(MajorInfo majorInfo, String majorId) {
+        return majorDao.updateMajorInfo(majorInfo, majorId);
     }
 
     @Override
-    public Map<String,Object> selectAllMajorInfo(String universityId, Integer pageNum, Integer pageSize) {
+    public String selectIdByCode(String majorCode) {
+        return majorDao.selectIdByCode(majorCode);
+    }
+
+    @Override
+    public Map<String,Object> selectAllMajorInfo(Integer pageNum, Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         //分页
         PageHelper.startPage(pageNum,pageSize);
@@ -44,7 +50,21 @@ public class MajorServiceImpl implements MajorService {
     }
 
     @Override
-    public MajorInfo selectByIdMajorInfo(String universityId, String majorId) {
-        return null;
+    public MajorInfo selectByIdMajorInfo(String majorId) {
+        return majorDao.selectByIdMajorInfo(majorId);
     }
+
+    @Override
+    public Integer selectSubject(String majorId) {
+        return majorDao.selectSubject(majorId);
+    }
+
+    @Override
+    public List<String> selectAllId(Integer pageNum, Integer pageSize) {
+        //分页
+        PageHelper.startPage(pageNum,pageSize);
+        List<String> ids = majorDao.selectAllId();
+        return ids;
+    }
+
 }
