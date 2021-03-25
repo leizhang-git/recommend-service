@@ -4,7 +4,6 @@ import lombok.*;
 
 /**
  * 用户信息
- *
  * @Author zhanglei
  * @Date 2021/1/27 17:11
  */

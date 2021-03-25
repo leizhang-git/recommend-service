@@ -5,7 +5,6 @@ import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.service.MajorService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
