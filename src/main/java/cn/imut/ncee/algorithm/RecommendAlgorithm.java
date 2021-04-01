@@ -36,7 +36,7 @@ public class RecommendAlgorithm {
         String majorCategory = information.get("majorCategory");
 
         //根据科目获取所有专业id
-        String subjectSql = "select `major_id` from major_info where subject = "+subject+";";
+        String subjectSql = "select `major_id` from major_info where subject = "+subject+" and major_category = "+majorCategory+";";
 
         //根据科目查询出的所有专业信息
         List<Map<String, Object>> idList = jdbcTemplate.queryForList(subjectSql);
@@ -50,7 +50,9 @@ public class RecommendAlgorithm {
             List<Map<String, Object>> universityId = jdbcTemplate.queryForList(universitySql);
             for (int j = 0; j < universityId.size(); j++) {
                 String uId = (String) universityId.get(j).get("university_id");
-
+                String addressSql = "select `university_id` from university_info where university_addreee = "+address+" and university_id = "+uId+";";
+                List<Map<String, Object>> finalResult = jdbcTemplate.queryForList(addressSql);
+                
             }
             System.out.println(universityId);
         }
