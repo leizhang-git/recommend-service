@@ -32,7 +32,8 @@ public class UniversityServiceImpl implements UniversityService {
 
     @Override
     public UniversityInfo selectUniversityById(String universityId) {
-        return null;
+        UniversityInfo universityInfo = universityDao.selectUniversityById(universityId);
+        return universityInfo;
     }
 
     @Override
