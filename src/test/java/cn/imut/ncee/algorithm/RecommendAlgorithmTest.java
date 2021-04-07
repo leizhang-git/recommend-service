@@ -26,7 +26,7 @@ public class RecommendAlgorithmTest {
     public void testAlgorithm() {
         Map<String, String> userIndex = new TreeMap<>();
         userIndex.put("subject","0");
-        userIndex.put("address", "北京");
+        userIndex.put("address", "北京市");
         userIndex.put("score", "450");
         userIndex.put("majorCategory", "计算机类");
         recommendAlgorithm.majorRecommend(userIndex);
