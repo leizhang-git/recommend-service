@@ -62,7 +62,7 @@ public class RecommendAlgorithm {
                     //此高校满足用户输入地区指标
                     String uName = (String) finalResult.get(0).get("university_name");
                     //获取该高校的所有专业（以便和上述专业进行对比）
-                    String majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `major_category` =  '" + majorCategory + "' and  `university_info`.`university_name` = '" + uName + "' and (min_score < " + score + " or avg_score - 10 < " + score + " or max_score - 20 < " + score + ") and major_info.major_id = statistics_score.major_id;";
+                    String majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `major_category` =  '" + majorCategory + "' and  `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ");";
                     List<Map<String, Object>> majorLists = jdbcTemplate.queryForList(majorsSql);
                     if (majorLists.size() == 0) {
                         continue;
