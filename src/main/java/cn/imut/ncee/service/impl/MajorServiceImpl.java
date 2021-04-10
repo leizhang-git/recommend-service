@@ -66,4 +66,9 @@ public class MajorServiceImpl implements MajorService {
         return ids;
     }
 
+    @Override
+    public boolean deleteById(String majorId) {
+        return majorDao.deleteById(majorId);
+    }
+
 }

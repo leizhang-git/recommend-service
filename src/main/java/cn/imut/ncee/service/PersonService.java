@@ -1,6 +1,7 @@
 package cn.imut.ncee.service;
 
 import cn.imut.ncee.entity.pojo.Person;
+import cn.imut.ncee.entity.vo.MessageBoard;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -62,4 +63,10 @@ public interface PersonService {
      * @return 推荐的结果
      */
     Object voluntary(Map<String,Object> index);
+
+    /**
+     * 用户留言
+     * @param messageBoard 留言板
+     */
+    boolean addMessage(MessageBoard messageBoard);
 }

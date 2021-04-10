@@ -29,8 +29,8 @@ public class UniversityController {
      * @return 成功
      */
     @GetMapping("/queryUniversity")
-    public ResponseEntity<?> queryAll(@RequestParam(defaultValue = "1",required = false) int pageNum,
-                                      @RequestParam(defaultValue = "1",required = false) int pageSize) {
+    public ResponseEntity<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
+                                      @RequestParam(defaultValue = "6",required = false) int pageSize) {
         List<UniversityInfo> universityInfos = universityService.selectAllUniversity(pageNum, pageSize);
         return ResponseEntity.ok(universityInfos);
     }

@@ -59,4 +59,10 @@ public interface MajorService {
      * @return 专业Id
      */
     List<String> selectAllId(Integer pageNum, Integer pageSize);
+
+    /**
+     * 根据Id删除该专业
+     * @param majorId 专业Id
+     */
+    boolean deleteById(String majorId);
 }

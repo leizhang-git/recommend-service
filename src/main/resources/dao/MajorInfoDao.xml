@@ -69,6 +69,11 @@
             `major_id` = #{majorId};
     </update>
 
+    <!-- 根据该专业Id删除该专业-->
+    <delete id="deleteById">
+        delete from major_info where major_id = #{majorId};
+    </delete>
+
     <!-- 查询所有专业信息-->
     <select id="selectAllMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo" resultMap="majorMap">
         select * from major_info
@@ -86,7 +91,7 @@
 
     <!-- 查询所有专业Id-->
     <select id="selectAllId" resultType="java.lang.String">
-        select `major_id` from major_info;
+        select `major_id` from major_info
     </select>
 
     <!-- 根据MajorCode获取Id-->

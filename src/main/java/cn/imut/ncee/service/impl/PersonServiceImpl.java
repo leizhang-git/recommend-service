@@ -1,8 +1,10 @@
 package cn.imut.ncee.service.impl;
 
 import cn.imut.ncee.algorithm.RecommendAlgorithm;
+import cn.imut.ncee.dao.MessageBoardDao;
 import cn.imut.ncee.dao.PersonDao;
 import cn.imut.ncee.entity.pojo.Person;
+import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonDao personDao;
+
+    @Autowired
+    private MessageBoardDao messageBoardDao;
 
     @Autowired
     private RecommendAlgorithm recommendAlgorithm;
@@ -63,5 +68,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Object voluntary(Map<String, Object> index) {
         return recommendAlgorithm.majorRecommend(index);
+    }
+
+    @Override
+    public boolean addMessage(MessageBoard messageBoard) {
+        return messageBoardDao.addMessage(messageBoard);
     }
 }

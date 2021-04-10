@@ -40,7 +40,7 @@ public class MajorController {
      * @param majorId 专业Id
      * @return 是否更新成功
      */
-    @PostMapping("/updateMajor")
+    @PatchMapping("/updateMajor")
     public Results<?> updateMajorInfo(@RequestBody MajorInfo majorInfo, String majorId) {
         boolean isSuccess = majorService.updateMajorInfo(majorInfo, majorId);
         return Results.dataOf(isSuccess);
@@ -99,9 +99,22 @@ public class MajorController {
      * @return 专业全部Id
      */
     @GetMapping("/selectAllId")
-    public Results<?> selectAllId(@RequestParam(defaultValue = "1",required = false) int pageNum,
+    public Results<?> selectAllId(@RequestParam(defaultValue = "0",required = false) int pageNum,
                                   @RequestParam(defaultValue = "5",required = false) int pageSize) {
         List<String> ids = majorService.selectAllId(pageNum, pageSize);
         return Results.dataOf(ids);
     }
+
+    /**
+     * 根据专业Id删除该专业
+     * @param majorId 专业Id
+     * @return 是否成功删除
+     */
+    @GetMapping("/deleteById")
+    public Results<?> deleteById(String majorId) {
+        boolean isSuccess = majorService.deleteById(majorId);
+        return Results.dataOf(isSuccess);
+    }
+
+
 }

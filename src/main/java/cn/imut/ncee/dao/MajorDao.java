@@ -62,4 +62,11 @@ public interface MajorDao {
      * @return 专业Id
      */
     List<String> selectAllId();
+
+    /**
+     * 根据Id删除专业
+     * @param majorId 专业Id
+     * @return 是否成功删除
+     */
+    boolean deleteById(String majorId);
 }

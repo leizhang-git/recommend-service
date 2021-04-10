@@ -1,6 +1,7 @@
 package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.pojo.Person;
+import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,9 +92,25 @@ public class PersonController {
         return Results.dataOf(isSuccess);
     }
 
+    /**
+     * 用户志愿填报推荐
+     * @param index 用户输入指标（文理（0理，1文）、地区、分数、具体专业、专业类别(若输入专业，则默认忽略此指标)）
+     * @return 返回推荐的列表
+     */
     @PostMapping("/voluntaryService")
     public Results<?> voluntaryService(@RequestBody Map<String,Object> index) {
         Object voluntary = personService.voluntary(index);
         return Results.dataOf(voluntary);
+    }
+
+    /**
+     * 用户输入留言内容
+     * @param messageBoard 留言板
+     * @return 是否留言成功
+     */
+    @PostMapping("/message")
+    public Results<?> messageBoard(@RequestBody MessageBoard messageBoard) {
+        boolean isSuccess = personService.addMessage(messageBoard);
+        return Results.dataOf(isSuccess);
     }
 }
