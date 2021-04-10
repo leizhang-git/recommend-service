@@ -46,7 +46,7 @@ public class StatisticsScoreTest {
                 double v = Double.parseDouble(st1);
                 double v1 = Double.parseDouble(st2);
                 StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo(universityId, majorId, 2020, score, score - v, score + v1);
-                statisticsScoreDao.insertMajorInfo(statisticsScoreInfo);
+                statisticsScoreDao.insertStatisticsScore(statisticsScoreInfo);
             }
         }
     }

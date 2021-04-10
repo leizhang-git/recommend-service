@@ -1,4 +1,4 @@
-package cn.imut.ncee.dao;
+package cn.imut.ncee.service;
 
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.apache.ibatis.annotations.Insert;
@@ -9,26 +9,23 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * 高校-专业-分数线
  * @Author zhanglei
- * @Date 2021/3/15 15:42
+ * @Date 2021/4/10 20:26
  */
 @Repository
-public interface StatisticsScoreDao {
+public interface StatisticsScoreService {
 
     /**
      * 增加高校-专业信息
      * @param statisticsScoreInfo 高校、专业、年份、分数线
      * @return 是否添加成功
      */
-    @Insert("insert into `statistics_score` values (#{universityId}, #{majorId}, #{years}, #{avgScore}, #{minScore}, #{maxScore})")
     boolean insertStatisticsScore(StatisticsScoreInfo statisticsScoreInfo);
 
     /**
      * 查询所有信息
      * @return 高校-专业
      */
-    @Select("select * from `statistics_score`")
     List<StatisticsScoreInfo> selectStatisticsScore();
 
     /**
@@ -36,7 +33,6 @@ public interface StatisticsScoreDao {
      * @param uId 高校Id
      * @return 所有专业信息
      */
-    @Select("select distinct `major_id` from `statistics_score` where `university_id` = #{uId}")
     List<String> selectById(@Param("uId") String uId);
 
     /**
@@ -45,6 +41,5 @@ public interface StatisticsScoreDao {
      * @param mId 专业Id
      * @return 近五年分数线
      */
-    @Select("select `years`,`avg_score`,`min_score`,`max_score` from statistics_score where university_id = #{uId} and major_id = #{mId};")
     List<String> selectScore(@Param("uId") String uId, @Param("mId") String mId);
 }
