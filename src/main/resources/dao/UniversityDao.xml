@@ -20,7 +20,13 @@
                 university_name,
             </if>
             <if test="universityCode != null">
-                university_code
+                university_code,
+            </if>
+            <if test="universityDesc != null">
+                university_desc,
+            </if>
+            <if test="universityAddress != null">
+                university_address
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -31,7 +37,13 @@
                 #{universityName,jdbcType=VARCHAR},
             </if>
             <if test="universityCode != null">
-                #{universityCode,jdbcType=VARCHAR}
+                #{universityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="universityDesc != null">
+                #{universityDesc,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="universityAddress != null">
+                #{universityAddress,jdbcType=VARCHAR}
             </if>
         </trim>
     </insert>

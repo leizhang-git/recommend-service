@@ -36,16 +36,15 @@ public interface UniversityService {
     UniversityInfo selectUniversityById(@Param("universityId") String universityId);
 
     /**
-     * 修改高校信息
-     *
-     * @param universityInfo 高校信息
+     * 根据高校Id修改高校Code
+     * @param uId 高校Id
+     * @param uCode 高校Code
      * @return 是否成功修改
      */
-    boolean updateUniversity(UniversityInfo universityInfo);
+    boolean updateUniversity(String uId, String uCode);
 
     /**
      * 根据高校Id删除高校
-     *
      * @param universityId 高校Id
      * @return 是否成功删除高校
      */

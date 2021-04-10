@@ -25,7 +25,7 @@ public class UniversityDaoTest {
     @Test
     public void insertUniversity() {
 
-        UniversityInfo universityInfo = new UniversityInfo("内蒙古师范大学", "QB");
+        UniversityInfo universityInfo = new UniversityInfo("内蒙古师范大学", "QB","内蒙古师范大学如何如何...", "内蒙古自治区");
         boolean isSuccess = universityDao.insertUniversity(universityInfo);
         System.out.println(isSuccess);
     }

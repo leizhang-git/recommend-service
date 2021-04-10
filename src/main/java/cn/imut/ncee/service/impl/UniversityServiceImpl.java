@@ -20,7 +20,7 @@ public class UniversityServiceImpl implements UniversityService {
 
     @Override
     public boolean insertUniversity(UniversityInfo universityInfo) {
-        return false;
+        return universityDao.insertUniversity(universityInfo);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class UniversityServiceImpl implements UniversityService {
     }
 
     @Override
-    public boolean updateUniversity(UniversityInfo universityInfo) {
-        return false;
+    public boolean updateUniversity(String uId, String uCode) {
+        return universityDao.updateUniversity(uId, uCode);
     }
 
     @Override
     public boolean deleteUniversityById(String universityId) {
-        return false;
+        return universityDao.deleteUniversityById(universityId);
     }
 }

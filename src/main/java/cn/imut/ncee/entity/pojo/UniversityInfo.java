@@ -46,9 +46,11 @@ public class UniversityInfo {
 
     }
 
-    public UniversityInfo(String universityName, String universityCode) {
+    public UniversityInfo(String universityName, String universityCode, String universityDesc, String universityAddress) {
         this.universityName = universityName;
         this.universityCode = universityCode;
+        this.universityDesc = universityDesc;
+        this.universityAddress = universityAddress;
     }
 
     public UniversityInfo(String universityId, String universityName, String universityCode) {
