@@ -49,4 +49,9 @@ public class PersonServiceImpl implements PersonService {
     public Person selectByIdPerson(String personId) {
         return personDao.selectByIdPerson(personId);
     }
+
+    @Override
+    public boolean deletePerson(String id) {
+        return personDao.deletePerson(id);
+    }
 }

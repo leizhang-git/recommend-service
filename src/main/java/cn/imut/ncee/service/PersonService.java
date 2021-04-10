@@ -1,6 +1,7 @@
 package cn.imut.ncee.service;
 
 import cn.imut.ncee.entity.pojo.Person;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,4 +47,11 @@ public interface PersonService {
      * @return 用户信息
      */
     Person selectByIdPerson(String personId);
+
+    /**
+     * 根据Id删除用户
+     * @param id 用户Id
+     * @return 是否删除成功
+     */
+    boolean deletePerson(@Param("id") String id);
 }

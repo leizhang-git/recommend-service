@@ -64,7 +64,7 @@ public class MajorController {
      * @return 智能辅助系统中全部专业信息
      */
     @GetMapping("/selectAll")
-    public Results<?> selectAllMajorInfo(@RequestParam(defaultValue = "1",required = false) int pageNum,
+    public Results<?> selectAllMajorInfo(@RequestParam(defaultValue = "0",required = false) int pageNum,
                                          @RequestParam(defaultValue = "5",required = false) int pageSize) {
         Map<String,Object> majorInfos = majorService.selectAllMajorInfo(pageNum, pageSize);
         return Results.dataOf(majorInfos);
