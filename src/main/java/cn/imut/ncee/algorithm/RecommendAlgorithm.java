@@ -26,15 +26,15 @@ public class RecommendAlgorithm {
      * @param information 意向表 顺序为：subject、address、scoreInterval、majorName、majorCategory
      * @return 高校-专业
      */
-    public Map<String,List<String>> majorRecommend(Map<String,String> information) {
+    public Map<String,List<String>> majorRecommend(Map<String,Object> information) {
         //高校：专业1，专业2，专业3...
         Map<String, List<String>> recommendList = new HashMap<>();
-        String subject = information.get("subject");
+        String subject = (String) information.get("subject");
         //用户输入指标
         int subjectInt = Integer.parseInt(subject);
-        String address = information.get("address");
-        String score = information.get("score");
-        String majorCategory = information.get("majorCategory");
+        String address = (String) information.get("address");
+        String score = (String) information.get("score");
+        String majorCategory = (String) information.get("majorCategory");
 
         //根据科目获取所有专业id
         String subjectSql = "select `major_id` from major_info where subject = "+subjectInt+" and major_category = '"+majorCategory+"';";

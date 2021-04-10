@@ -1,5 +1,6 @@
 package cn.imut.ncee.service.impl;
 
+import cn.imut.ncee.algorithm.RecommendAlgorithm;
 import cn.imut.ncee.dao.PersonDao;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.service.PersonService;
@@ -7,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author zhanglei
@@ -17,6 +19,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonDao personDao;
+
+    @Autowired
+    private RecommendAlgorithm recommendAlgorithm;
 
     @Override
     public boolean register(Person person) {
@@ -53,5 +58,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public boolean deletePerson(String id) {
         return personDao.deletePerson(id);
+    }
+
+    @Override
+    public Object voluntary(Map<String, Object> index) {
+        return recommendAlgorithm.majorRecommend(index);
     }
 }

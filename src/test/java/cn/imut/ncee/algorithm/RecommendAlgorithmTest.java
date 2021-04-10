@@ -24,7 +24,7 @@ public class RecommendAlgorithmTest {
 
     @Test
     public void testAlgorithm() {
-        Map<String, String> userIndex = new TreeMap<>();
+        Map<String, Object> userIndex = new TreeMap<>();
         userIndex.put("subject","0");
         userIndex.put("address", "北京市");
         userIndex.put("score", "333");

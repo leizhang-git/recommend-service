@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户(管理员与普通用户)
@@ -88,5 +89,11 @@ public class PersonController {
     public Results<?> deleteById(String id) {
         boolean isSuccess = personService.deletePerson(id);
         return Results.dataOf(isSuccess);
+    }
+
+    @PostMapping("/voluntaryService")
+    public Results<?> voluntaryService(@RequestBody Map<String,Object> index) {
+        Object voluntary = personService.voluntary(index);
+        return Results.dataOf(voluntary);
     }
 }

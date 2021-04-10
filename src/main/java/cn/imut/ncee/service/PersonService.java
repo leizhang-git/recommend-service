@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author zhanglei
@@ -54,4 +55,11 @@ public interface PersonService {
      * @return 是否删除成功
      */
     boolean deletePerson(@Param("id") String id);
+
+    /**
+     * 用户填报志愿
+     * @param index 用户输入指标
+     * @return 推荐的结果
+     */
+    Object voluntary(Map<String,Object> index);
 }
