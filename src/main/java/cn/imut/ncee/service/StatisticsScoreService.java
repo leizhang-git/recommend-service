@@ -41,5 +41,14 @@ public interface StatisticsScoreService {
      * @param mId 专业Id
      * @return 近五年分数线
      */
-    List<String> selectScore(@Param("uId") String uId, @Param("mId") String mId);
+    List<StatisticsScoreInfo> selectScore(@Param("uId") String uId, @Param("mId") String mId);
+
+    /**
+     * 查询指定某一年的分数
+     * @param uId 高校Id
+     * @param mId 专业Id
+     * @param years 年份
+     * @return 分数线
+     */
+    StatisticsScoreInfo selectOneScore(@Param("uId") String uId, @Param("mId") String mId, @Param("years") String years);
 }

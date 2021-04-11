@@ -45,6 +45,16 @@ public interface StatisticsScoreDao {
      * @param mId 专业Id
      * @return 近五年分数线
      */
-    @Select("select `years`,`avg_score`,`min_score`,`max_score` from statistics_score where university_id = #{uId} and major_id = #{mId};")
-    List<String> selectScore(@Param("uId") String uId, @Param("mId") String mId);
+    @Select("select * from statistics_score where university_id = #{uId} and major_id = #{mId};")
+    List<StatisticsScoreInfo> selectScore(@Param("uId") String uId, @Param("mId") String mId);
+
+    /**
+     * 查询指定某一年的分数
+     * @param uId 高校Id
+     * @param mId 专业Id
+     * @param years 年份
+     * @return 分数线
+     */
+    @Select("select * from statistics_score where university_id = #{uId} and major_id = #{mId} and years = #{years};")
+    StatisticsScoreInfo selectOneScore(@Param("uId") String uId, @Param("mId") String mId, @Param("years") String years);
 }

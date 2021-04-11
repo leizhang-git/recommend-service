@@ -34,7 +34,12 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
     }
 
     @Override
-    public List<String> selectScore(String uId, String mId) {
+    public List<StatisticsScoreInfo> selectScore(String uId, String mId) {
         return statisticsScoreDao.selectScore(uId, mId);
+    }
+
+    @Override
+    public StatisticsScoreInfo selectOneScore(String uId, String mId, String years) {
+        return statisticsScoreDao.selectOneScore(uId, mId, years);
     }
 }

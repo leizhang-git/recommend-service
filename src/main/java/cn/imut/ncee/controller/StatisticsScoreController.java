@@ -63,7 +63,20 @@ public class StatisticsScoreController {
      */
     @GetMapping("/queryScore")
     public Results<?> queryAll(String uId, String mId) {
-        List<String> scores = statisticsScoreService.selectScore(uId, mId);
+        List<StatisticsScoreInfo> scores = statisticsScoreService.selectScore(uId, mId);
         return Results.dataOf(scores);
+    }
+
+    /**
+     * 只查询某一年的分数线
+     * @param uId 高校Id
+     * @param mId 专业Id
+     * @param years 年份
+     * @return 分数线
+     */
+    @GetMapping("/queryOne")
+    public Results<?> queryOne(String uId, String mId, String years) {
+        StatisticsScoreInfo statisticsScoreInfo = statisticsScoreService.selectOneScore(uId, mId, years);
+        return Results.dataOf(statisticsScoreInfo);
     }
 }
