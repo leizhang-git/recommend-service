@@ -21,7 +21,7 @@ public interface StatisticsScoreDao {
      * @param statisticsScoreInfo 高校、专业、年份、分数线
      * @return 是否添加成功
      */
-    @Insert("insert into `statistics_score` values (#{universityId}, #{majorId}, #{years}, #{avgScore}, #{minScore}, #{maxScore})")
+    @Insert("insert into `statistics_score` values (#{universityId}, #{majorId}, #{years}, #{avgScore}, #{minScore}, #{maxScore}, #{ranking})")
     boolean insertStatisticsScore(StatisticsScoreInfo statisticsScoreInfo);
 
     /**

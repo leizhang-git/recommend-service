@@ -38,6 +38,11 @@ public class StatisticsScoreInfo {
     private double minScore;
 
     /**
+     * 排名
+     */
+    private Integer ranking;
+
+    /**
      * 最高分
      */
     private double maxScore;
