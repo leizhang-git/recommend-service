@@ -1,5 +1,6 @@
 package cn.imut.ncee.controller;
 
+import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
@@ -94,12 +95,12 @@ public class PersonController {
 
     /**
      * 用户志愿填报推荐
-     * @param index 用户输入指标（文理（0理，1文）、地区、分数、具体专业、专业类别(若输入专业，则默认忽略此指标)）
+     * @param algorithmIndex 用户输入指标（文理（0理，1文）、地区、分数、具体专业、专业类别(若输入专业，则默认忽略此指标)）
      * @return 返回推荐的列表
      */
     @PostMapping("/voluntaryService")
-    public Results<?> voluntaryService(@RequestBody Map<String,Object> index) {
-        Object voluntary = personService.voluntary(index);
+    public Results<?> voluntaryService(@RequestBody AlgorithmIndex algorithmIndex) {
+        Object voluntary = personService.voluntary(algorithmIndex);
         return Results.dataOf(voluntary);
     }
 

@@ -1,5 +1,6 @@
 package cn.imut.ncee.service;
 
+import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import org.apache.ibatis.annotations.Param;
@@ -62,7 +63,7 @@ public interface PersonService {
      * @param index 用户输入指标
      * @return 推荐的结果
      */
-    Object voluntary(Map<String,Object> index);
+    Object voluntary(AlgorithmIndex index);
 
     /**
      * 用户留言

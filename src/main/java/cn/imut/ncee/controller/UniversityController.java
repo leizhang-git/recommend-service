@@ -30,7 +30,7 @@ public class UniversityController {
      */
     @GetMapping("/queryUniversity")
     public Results<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                                      @RequestParam(defaultValue = "6",required = false) int pageSize) {
+                                      @RequestParam(defaultValue = "60",required = false) int pageSize) {
         List<UniversityInfo> universityInfos = universityService.selectAllUniversity(pageNum, pageSize);
         return Results.dataOf(universityInfos);
     }
