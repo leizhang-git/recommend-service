@@ -24,11 +24,11 @@ public class RecommendAlgorithmTest {
 
     @Test
     public void testAlgorithm() {
-        Map<String, Object> userIndex = new TreeMap<>();
-        userIndex.put("subject","0");
-        userIndex.put("address", "北京市");
-        userIndex.put("score", "333");
-        userIndex.put("majorCategory", "计算机类");
-        System.out.println(recommendAlgorithm.majorRecommend(userIndex));
+//        Map<String, Object> userIndex = new TreeMap<>();
+//        userIndex.put("subject","0");
+//        userIndex.put("address", "北京市");
+//        userIndex.put("score", "333");
+//        userIndex.put("majorCategory", "计算机类");
+//        System.out.println(recommendAlgorithm.majorRecommend(userIndex));
     }
 }

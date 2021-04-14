@@ -1,5 +1,6 @@
 package cn.imut.ncee.algorithm;
 
+import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -26,18 +27,31 @@ public class RecommendAlgorithm {
      * @param information 意向表 顺序为：subject、address、scoreInterval、majorName、majorCategory
      * @return 高校-专业
      */
-    public Map<String,List<String>> majorRecommend(Map<String,Object> information) {
+    public Object majorRecommend(AlgorithmIndex information) {
         //高校：专业1，专业2，专业3...
         Map<String, List<String>> recommendList = new HashMap<>();
-        String subject = (String) information.get("subject");
+        String subject = information.getSubject();
         //用户输入指标
-        int subjectInt = Integer.parseInt(subject);
-        String address = (String) information.get("address");
-        String score = (String) information.get("score");
-        String majorCategory = (String) information.get("majorCategory");
+        int subjectInt = -1;
+        if(subject.length() != 0) {
+            subjectInt = Integer.parseInt(subject);
+        }
+        String address = information.getAddress();
+        String score = information.getScore();
+        String majorCategory = information.getMajorCategory();
+
 
         //根据科目获取所有专业id
-        String subjectSql = "select `major_id` from major_info where subject = "+subjectInt+" and major_category = '"+majorCategory+"';";
+        String subjectSql;
+        if(subjectInt == -1 && majorCategory.length() == 0) {
+            subjectSql = "select `major_id` from major_info;";
+        }else if(subjectInt == -1) {
+            subjectSql = "select `major_id` from major_info where major_category = '"+majorCategory+"';";
+        }else if(majorCategory.length() == 0 && (subjectInt == 0 || subjectInt == 1)){
+            subjectSql = "select `major_id` from major_info where subject = "+subjectInt+";";
+        }else {
+            subjectSql = "select `major_id` from major_info where subject = "+subjectInt+" and major_category = '"+majorCategory+"';";
+        }
 
         //根据科目查询出的所有专业信息
         List<Map<String, Object>> idList = jdbcTemplate.queryForList(subjectSql);
@@ -45,7 +59,12 @@ public class RecommendAlgorithm {
             for (Map<String, Object> stringObjectMap : idList) {
                 String majorId = (String) stringObjectMap.get("major_id");
                 //查询出开设此专业的所有高校Id,同时排除分数不符合的高校
-                String universitySql = "select distinct `university_id` from statistics_score where major_id = '" + majorId + "' and (min_score < " + score + " or avg_score - 10 < " + score + " or max_score - 20 < " + score + ");";
+                String universitySql;
+                if(score.length() != 0) {
+                    universitySql = "select distinct `university_id` from statistics_score where major_id = '" + majorId + "' and (min_score < " + score + " or avg_score - 10 < " + score + " or max_score - 20 < " + score + ");";
+                }else {
+                    universitySql = "select distinct `university_id` from statistics_score where major_id = '" + majorId + "'";
+                }
                 List<Map<String, Object>> universityId = jdbcTemplate.queryForList(universitySql);
                 if (universityId.size() == 0) {
                     continue;
@@ -54,7 +73,12 @@ public class RecommendAlgorithm {
                     List<String> majors = new ArrayList<>();
                     String uId = (String) objectMap.get("university_id");
                     //与用户输入的高校地址进行对比，不符合则进行下一个
-                    String addressSql = "select `university_name` from `university_info` where `university_address` = '" + address + "' and `university_id` = '" + uId + "';";
+                    String addressSql;
+                    if(address.length() != 0) {
+                        addressSql = "select `university_name` from `university_info` where `university_address` = '" + address + "' and `university_id` = '" + uId + "';";
+                    }else {
+                        addressSql = "select `university_name` from `university_info` where `university_id` = '" + uId + "';";
+                    }
                     List<Map<String, Object>> finalResult = jdbcTemplate.queryForList(addressSql);
                     if (finalResult.size() == 0) {
                         continue;
@@ -62,7 +86,16 @@ public class RecommendAlgorithm {
                     //此高校满足用户输入地区指标
                     String uName = (String) finalResult.get(0).get("university_name");
                     //获取该高校的所有专业（以便和上述专业进行对比）
-                    String majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `major_category` =  '" + majorCategory + "' and  `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ");";
+                    String majorsSql;
+                    if(majorCategory.length() != 0 && score.length() != 0) {
+                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `major_category` =  '" + majorCategory + "' and  `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ");";
+                    }else if(majorCategory.length() != 0) {
+                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `major_category` =  '" + majorCategory + "' and  `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id);";
+                    }else if(score.length() != 0) {
+                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ");";
+                    }else {
+                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info`,`university_info` where `university_info`.`university_name` = '" + uName + "' and  (major_info.major_id = statistics_score.major_id);";
+                    }
                     List<Map<String, Object>> majorLists = jdbcTemplate.queryForList(majorsSql);
                     if (majorLists.size() == 0) {
                         continue;

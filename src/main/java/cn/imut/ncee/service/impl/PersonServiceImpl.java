@@ -3,6 +3,7 @@ package cn.imut.ncee.service.impl;
 import cn.imut.ncee.algorithm.RecommendAlgorithm;
 import cn.imut.ncee.dao.MessageBoardDao;
 import cn.imut.ncee.dao.PersonDao;
+import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
@@ -41,7 +42,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public boolean login(String personId, String personPassword) {
         String password = personDao.login(personId);
-        return password.equals(personPassword);
+        if(password != null) {
+            return password.equals(personPassword);
+        }
+        return false;
     }
 
     @Override
@@ -66,7 +70,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Object voluntary(Map<String, Object> index) {
+    public Object voluntary(AlgorithmIndex index) {
         return recommendAlgorithm.majorRecommend(index);
     }
 
