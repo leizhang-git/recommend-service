@@ -6,6 +6,7 @@ import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,14 +26,13 @@ public class PersonController {
 
     /**
      * 登陆
-     * @param id 账号（邮箱）
-     * @param password 密码
+     * @param loginInfo 账号（邮箱）,密码
      * @return 是否登陆成功
      */
-    @GetMapping("/login")
-    public Results<Boolean> login(String id, String password) {
-        boolean isSuccess = personService.login(id, password);
-        return Results.dataOf(isSuccess);
+    @PostMapping("/login")
+    public Results<Boolean> login(@RequestBody Map<String,String> loginInfo) {
+        Person person = personService.login(loginInfo.get("id"), loginInfo.get("password"));
+        return Results.dataOf(person);
     }
 
     /**
@@ -66,7 +66,7 @@ public class PersonController {
      * @return 是否修改成功
      */
     @PatchMapping("/updatePerson")
-    public Results<?> queryAll(@RequestBody Person person, @RequestParam String id) {
+    public Results<?> queryAll(@RequestBody Person person, @RequestParam("id") String id) {
         boolean isSuccess = personService.updatePerson(person, id);
         return Results.dataOf(isSuccess);
     }

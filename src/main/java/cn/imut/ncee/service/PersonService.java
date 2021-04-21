@@ -29,7 +29,7 @@ public interface PersonService {
      * @param personPassword 用户密码
      * @return 是否成功登陆
      */
-    boolean login(String personId, String personPassword);
+    Person login(String personId, String personPassword);
 
     /**
      * 修改用户信息

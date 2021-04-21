@@ -24,8 +24,7 @@ public class UniversityDaoTest {
 
     @Test
     public void insertUniversity() {
-
-        UniversityInfo universityInfo = new UniversityInfo("内蒙古师范大学", "QB","内蒙古师范大学如何如何...", "内蒙古自治区");
+        UniversityInfo universityInfo = new UniversityInfo("内蒙古化工职业学院", "AW","内蒙古化工职业学院是内蒙古自治区教育厅直属的一所化工和建材行业国办全日制高等职业院校，入选了国家骨干高等职业院校，自治区优质校。2003年5月，经内蒙古自治区人民政府批准、教育部备案，在原内蒙古石油化工学校和内蒙古建材工业学校的基础上组建。", "内蒙古自治区");
         boolean isSuccess = universityDao.insertUniversity(universityInfo);
         System.out.println(isSuccess);
     }

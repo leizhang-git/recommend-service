@@ -7,6 +7,7 @@ import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
+import cn.imut.ncee.utils.MD5Utils;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,9 @@ public class PersonServiceImpl implements PersonService {
     public boolean register(Person person) {
         String s = personDao.selectId(person.getId());
         if(s == null) {
+            String md5Password = MD5Utils.stringMD5(person.getPassword());
+            String password = MD5Utils.convertMD5(md5Password);
+            person.setPassword(password);
             return personDao.register(person);
         }else {
             return false;
@@ -40,12 +44,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public boolean login(String personId, String personPassword) {
+    public Person login(String personId, String personPassword) {
         String password = personDao.login(personId);
         if(password != null) {
-            return password.equals(personPassword);
+            String md5 = MD5Utils.convertMD5(password);
+            if(md5.equals(MD5Utils.stringMD5(personPassword))) {
+                return personDao.selectByIdPerson(personId);
+            }
+            return null;
         }
-        return false;
+        return null;
     }
 
     @Override

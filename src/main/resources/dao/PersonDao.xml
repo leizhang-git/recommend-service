@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.imut.ncee.dao.PersonDao">
 
+
     <insert id="register" parameterType="cn.imut.ncee.entity.pojo.Person">
 
         insert into person
@@ -15,7 +16,7 @@
                 name,
             </if>
             <if test="password != null">
-                password,
+                password
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -26,7 +27,7 @@
                 #{name,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
-                #{password,jdbcType=VARCHAR},
+                #{password,jdbcType=VARCHAR}
             </if>
         </trim>
     </insert>
@@ -46,7 +47,7 @@
 
 
     <select id="selectByIdPerson" resultType="cn.imut.ncee.entity.pojo.Person">
-        select * from person where id = #{id};
+        select `id`,`name`,`role` from person where id = #{id};
     </select>
 
     <select id="selectAllPerson" resultType="cn.imut.ncee.entity.pojo.Person">

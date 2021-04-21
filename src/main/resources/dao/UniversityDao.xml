@@ -60,7 +60,7 @@
 
     <!-- 查询所有高校信息-->
     <select id="selectAllUniversity" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
-        select `university_id`,`university_name`,`university_code` from university_info
+        select `university_id`,`university_name`,`university_code`,`university_desc`,`university_address` from university_info
     </select>
 
     <!-- 根据高校Id查询高校信息-->
