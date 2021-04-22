@@ -24,7 +24,7 @@ public class PersonDaoTest {
 
     @Test
     public void register() {
-        Person person = new Person("vip.p@live.com","张磊", "zhanglei123");
+        Person person = new Person("admin","管理员", "admin");
         boolean isSuccess = personDao.register(person);
         System.out.println(isSuccess);
     }

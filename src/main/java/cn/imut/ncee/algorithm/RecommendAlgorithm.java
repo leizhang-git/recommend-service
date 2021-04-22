@@ -90,14 +90,26 @@ public class RecommendAlgorithm {
                     String unId = (String) resuId.get(0).get("university_id");
                     //获取该高校的所有专业（以便和上述专业进行对比）
                     String majorsSql;
-                    if(majorCategory.length() != 0 && score.length() != 0) {
-                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`);";
-                    }else if(majorCategory.length() != 0) {
-                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id);";
-                    }else if(score.length() != 0) {
-                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId   + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`);";
+                    if(subjectInt == -1) {
+                        if(majorCategory.length() != 0 && score.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`);";
+                        }else if(majorCategory.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id);";
+                        }else if(score.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId   + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`);";
+                        }else {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id);";
+                        }
                     }else {
-                        majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id);";
+                        if(majorCategory.length() != 0 && score.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`) and `subject` = "+subjectInt+";";
+                        }else if(majorCategory.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `major_category` =  '" + majorCategory + "' and  `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id) and `subject` = "+subjectInt+";";
+                        }else if(score.length() != 0) {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId   + "' and  (major_info.major_id = statistics_score.major_id) and (`statistics_score`.`min_score` < " + score + " or `statistics_score`.`avg_score` - 10 < " + score + " or `statistics_score`.`max_score` - 20 < " + score + ") and ("+score+" < `statistics_score`.`max_score`) and `subject` = "+subjectInt+";";
+                        }else {
+                            majorsSql = "select distinct `major_info`.`major_name` from `statistics_score`,`major_info` where `statistics_score`.`university_id` = '" + unId + "' and  (major_info.major_id = statistics_score.major_id) and `subject` = "+subjectInt+";";
+                        }
                     }
                     List<Map<String, Object>> majorLists = jdbcTemplate.queryForList(majorsSql);
                     if (majorLists.size() == 0) {
