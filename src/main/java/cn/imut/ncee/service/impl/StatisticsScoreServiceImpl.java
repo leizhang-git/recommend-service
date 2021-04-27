@@ -1,6 +1,7 @@
 package cn.imut.ncee.service.impl;
 
 import cn.imut.ncee.dao.StatisticsScoreDao;
+import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
     @Override
     public StatisticsScoreInfo selectOneScore(String uId, String mId, String years) {
         return statisticsScoreDao.selectOneScore(uId, mId, years);
+    }
+
+    @Override
+    public List<EntryScore> selectAllScore(String uid) {
+        return statisticsScoreDao.selectAllScore(uid);
     }
 }

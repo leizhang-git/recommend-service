@@ -1,13 +1,11 @@
 package cn.imut.ncee.controller;
 
+import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -65,6 +63,17 @@ public class StatisticsScoreController {
     public Results<?> queryAll(String uId, String mId) {
         List<StatisticsScoreInfo> scores = statisticsScoreService.selectScore(uId, mId);
         return Results.dataOf(scores);
+    }
+
+    /**
+     * 根据高校Id查询其专业以及其分数线（近五年）
+     * @param uId 高校Id
+     * @return 高校-专业-分数
+     */
+    @GetMapping("/score")
+    public Results<?> queryAllScore(@RequestParam("uId") String uId) {
+        List<EntryScore> entryScores = statisticsScoreService.selectAllScore(uId);
+        return Results.dataOf(entryScores);
     }
 
     /**

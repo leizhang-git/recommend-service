@@ -1,9 +1,8 @@
 package cn.imut.ncee.service;
 
+import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -51,4 +50,11 @@ public interface StatisticsScoreService {
      * @return 分数线
      */
     StatisticsScoreInfo selectOneScore(@Param("uId") String uId, @Param("mId") String mId, @Param("years") String years);
+
+    /**
+     * 查询指定高校的录取分数线
+     * @param uid 高校Id
+     * @return 分数线
+     */
+    List<EntryScore> selectAllScore(@Param("uid") String uid);
 }

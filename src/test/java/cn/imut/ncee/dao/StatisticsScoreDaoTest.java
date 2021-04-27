@@ -1,5 +1,6 @@
 package cn.imut.ncee.dao;
 
+import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author zhanglei
@@ -26,5 +25,11 @@ public class StatisticsScoreDaoTest {
     public void selectScore() {
         StatisticsScoreInfo statisticsScoreInfo = statisticsScoreDao.selectOneScore("98ada0447e4611eb873252540099a41f", "029392657e4511eb873252540099a41f", "2020");
         System.out.println(statisticsScoreInfo.toString());
+    }
+
+    @Test
+    public void selectAllScore() {
+        List<EntryScore> infos = statisticsScoreDao.selectAllScore("fe74bec3a28b11eb814d00e04c7c8cb3");
+        System.out.println(infos.toString());
     }
 }
