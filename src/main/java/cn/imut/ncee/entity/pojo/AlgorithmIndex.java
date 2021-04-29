@@ -13,18 +13,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AlgorithmIndex {
 
-    /*
-            userIndex.put("subject","0");
-        userIndex.put("address", "北京市");
-        userIndex.put("score", "333");
-        userIndex.put("majorCategory", "计算机类");
+    /**
+     * 科目（0：理科，1：文科）
      */
-
     private String subject;
 
+    /**
+     * 高校地址
+     */
     private String address;
 
+    /**
+     * 分数
+     */
     private String score;
 
+    /**
+     * 专业类别（交通运输类、力学类、化学类、哲学类....）
+     */
     private String majorCategory;
 }

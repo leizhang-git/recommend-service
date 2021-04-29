@@ -25,6 +25,11 @@ public class EntryScore {
     private String majorName;
 
     /**
+     * 专业类别
+     */
+    private String majorCategory;
+
+    /**
      * 年份
      */
     private String years;

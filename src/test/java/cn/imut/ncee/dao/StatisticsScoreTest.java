@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.text.DecimalFormat;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author zhanglei
  * @Date 2021/3/15 15:46
@@ -34,8 +32,9 @@ public class StatisticsScoreTest {
         List<String> allUniversityId = universityDao.selectAllId();
         List<String> allMajorId = majorDao.selectAllId();
 //        for (String universityId : allUniversityId) {
+        for (int i = 2016; i <= 2019; i++) {
             for (String majorId : allMajorId) {
-                double avgScore = Math.random() * (66) + 470;       //（max - min） + min  范围 min ~ max
+                double avgScore = Math.random() * (50) + 670;       //（max - min） + min  范围 min ~ max
                 double diffValue = Math.random() * (10) + 4;
                 double diffValue1 = Math.random() * (10) + 3;
                 DecimalFormat decimalFormat = new DecimalFormat(".#");
@@ -45,9 +44,10 @@ public class StatisticsScoreTest {
                 double score = Double.parseDouble(st);
                 double v = Double.parseDouble(st1);
                 double v1 = Double.parseDouble(st2);
-                StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo("fe74bec3a28b11eb814d00e04c7c8cb3", majorId, 2020, score, score - v, score + v1);
+                StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo("1ac93019a28d11eb814d00e04c7c8cb3", majorId, i, score, score - v, score + v1);
                 statisticsScoreDao.insertStatisticsScore(statisticsScoreInfo);
             }
+        }
 //        }
     }
 }
