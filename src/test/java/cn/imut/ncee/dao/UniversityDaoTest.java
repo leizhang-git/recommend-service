@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author zhanglei
  * @Date 2021/2/23 9:43
@@ -24,7 +22,7 @@ public class UniversityDaoTest {
 
     @Test
     public void insertUniversity() {
-        UniversityInfo universityInfo = new UniversityInfo("北京航空航天大学", "BC","北京航空航天大学（Beihang University）简称”北航“，是中华人民共和国工业和信息化部直属的全国重点大学，位列世界一流大学建设高校、211工程和985工程重点建设高校，入选珠峰计划、2011计划、111计划、卓越工程师教育培养计划、国家建设高水平大学公派研究生项目、中国政府奖学金来华留学生接收院校、国家级新工科研究与实践项目、国家级大学生创新创业训练计划、国家大学生创新性实验计划、全国深化创新创业教育改革示范高校、强基计划试点高校。", "北京市");
+        UniversityInfo universityInfo = new UniversityInfo("清华大学", "test","test", "北京市");
         boolean isSuccess = universityDao.insertUniversity(universityInfo);
         System.out.println(isSuccess);
     }

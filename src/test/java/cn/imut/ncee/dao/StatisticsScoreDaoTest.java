@@ -32,4 +32,12 @@ public class StatisticsScoreDaoTest {
         List<EntryScore> infos = statisticsScoreDao.selectAllScore("fe74bec3a28b11eb814d00e04c7c8cb3");
         System.out.println(infos.toString());
     }
+
+    @Test
+    public void selectAllScoreByMajor() {
+        List<EntryScore> infos = statisticsScoreDao.selectAllScoreByMajor("1ac93019a28d11eb814d00e04c7c8cb3", "工程");
+        for (EntryScore info : infos) {
+            System.out.println(info.toString());
+        }
+    }
 }

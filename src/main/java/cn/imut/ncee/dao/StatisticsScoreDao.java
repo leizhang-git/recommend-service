@@ -59,6 +59,20 @@ public interface StatisticsScoreDao {
     @Select("select * from statistics_score where university_id = #{uId} and major_id = #{mId} and years = #{years};")
     StatisticsScoreInfo selectOneScore(@Param("uId") String uId, @Param("mId") String mId, @Param("years") String years);
 
+    /**
+     * 根据高校Id查询详细信息（vo展示专用）
+     * @param uid 高校Id
+     * @return 详细信息
+     */
     @Select("select distinct `university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
     List<EntryScore> selectAllScore(@Param("uid") String uid);
+
+    /**
+     * 根据高校Id以及具体专业查询详细信息（vo展示专用）
+     * @param uid 高校Id
+     * @param majorName 专业名称
+     * @return 详细信息
+     */
+    @Select("select distinct `university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_name` like concat('%',#{majorName},'%') and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
+    List<EntryScore> selectAllScoreByMajor(@Param("uid") String uid, @Param("majorName") String majorName);
 }

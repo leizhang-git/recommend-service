@@ -37,6 +37,24 @@ public class UniversityServiceImpl implements UniversityService {
     }
 
     @Override
+    public List<UniversityInfo> selectByAddress(String universityAddress, String universityName) {
+        if(universityAddress == null && universityName != null) {
+            return universityDao.selectUniversityByName(universityName);
+        } else if(universityAddress != null && universityName == null) {
+            return universityDao.selectByAddress(universityAddress);
+        } else {
+            assert universityAddress != null;
+            if(universityAddress.length() != 0 && universityName.length() != 0) {
+                return universityDao.selectUniversityByName(universityName);
+            }else if(universityAddress.length() == 0) {     //同时为0已被前端筛选
+                return universityDao.selectUniversityByName(universityName);
+            }else {
+                return universityDao.selectByAddress(universityAddress);
+            }
+        }
+    }
+
+    @Override
     public boolean updateUniversity(String uId, String uCode) {
         return universityDao.updateUniversity(uId, uCode);
     }

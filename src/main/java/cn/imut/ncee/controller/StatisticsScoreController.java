@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 高校-专业
@@ -53,6 +54,7 @@ public class StatisticsScoreController {
         return Results.dataOf(statisticsScoreInfos);
     }
 
+
     /**
      * 根据高校Id，专业Id查询出近五年分数线
      * @param uId 高校Id
@@ -70,9 +72,20 @@ public class StatisticsScoreController {
      * @param uId 高校Id
      * @return 高校-专业-分数
      */
-    @GetMapping("/score")
+    @GetMapping("/score1")
     public Results<?> queryAllScore(@RequestParam("uId") String uId) {
         List<EntryScore> entryScores = statisticsScoreService.selectAllScore(uId);
+        return Results.dataOf(entryScores);
+    }
+
+    /**
+     * 根据高校Id以及专业信息查询其专业以及其分数线（近五年）
+     * @param infos id and majorName
+     * @return 高校-专业-分数
+     */
+    @PostMapping("/score")
+    public Results<?> queryAllScore(@RequestBody Map<String,String> infos) {
+        List<EntryScore> entryScores = statisticsScoreService.selectAllScore(infos.get("uId"), infos.get("majorName"));
         return Results.dataOf(entryScores);
     }
 

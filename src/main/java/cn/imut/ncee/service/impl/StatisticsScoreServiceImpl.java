@@ -48,4 +48,12 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
     public List<EntryScore> selectAllScore(String uid) {
         return statisticsScoreDao.selectAllScore(uid);
     }
+
+    @Override
+    public List<EntryScore> selectAllScore(String uid, String majorName) {
+        if(majorName == null) {
+            return statisticsScoreDao.selectAllScore(uid);
+        }
+        return statisticsScoreDao.selectAllScoreByMajor(uid, majorName);
+    }
 }

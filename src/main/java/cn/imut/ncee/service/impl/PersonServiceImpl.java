@@ -11,8 +11,8 @@ import cn.imut.ncee.utils.MD5Utils;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author zhanglei
@@ -32,15 +32,18 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public boolean register(Person person) {
-        String s = personDao.selectId(person.getId());
-        if(s == null) {
-            String md5Password = MD5Utils.stringMD5(person.getPassword());
-            String password = MD5Utils.convertMD5(md5Password);
-            person.setPassword(password);
-            return personDao.register(person);
-        }else {
-            return false;
+        if(person.getId().length() != 0 && person.getName().length() != 0 && person.getPassword().length() != 0) {
+            String s = personDao.selectId(person.getId());
+            if(s == null) {
+                String md5Password = MD5Utils.stringMD5(person.getPassword());
+                String password = MD5Utils.convertMD5(md5Password);
+                person.setPassword(password);
+                return personDao.register(person);
+            }else {
+                return false;
+            }
         }
+        return false;
     }
 
     @Override

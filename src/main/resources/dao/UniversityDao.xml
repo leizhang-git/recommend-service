@@ -69,8 +69,8 @@
     </select>
 
     <!-- 根据省份查询高校信息-->
-    <select id="selectUniversityByAddress" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
-        select * from `university_info` where `university_address` = #{universityAddress}
+    <select id="selectByAddress" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        select * from `university_info` where `university_address` like concat('%',#{universityAddress},'%')
     </select>
 
     <!-- 查询所有高校Id-->
@@ -81,5 +81,10 @@
     <!-- 根据高校名称获取高校Id-->
     <select id="selectIdForName" resultType="java.lang.String">
         select `university_id` from `university_info` where `university_name` = #{name};
+    </select>
+
+    <!-- 根据高校名称获取高校信息-->
+    <select id="selectUniversityByName" resultType="cn.imut.ncee.entity.pojo.UniversityInfo">
+        select * from university_info where `university_name` = #{universityName};
     </select>
 </mapper>

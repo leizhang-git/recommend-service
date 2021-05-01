@@ -36,6 +36,12 @@ public interface UniversityService {
     UniversityInfo selectUniversityById(@Param("universityId") String universityId);
 
     /**
+     * 通过高校地址查询所有高校的信息
+     *
+     * @return 高校列表
+     */
+    List<UniversityInfo> selectByAddress(String universityAddress, String universityName);
+    /**
      * 根据高校Id修改高校Code
      * @param uId 高校Id
      * @param uCode 高校Code

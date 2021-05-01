@@ -34,6 +34,12 @@ public interface UniversityDao {
      */
     UniversityInfo selectUniversityById(String universityId);
 
+    /**
+     * 根据名称查询高校信息
+     * @param universityName 高校名称
+     * @return 高校信息
+     */
+    List<UniversityInfo> selectUniversityByName(String universityName);
 
     /**
      * 根据高校Id修改高校编号
@@ -55,7 +61,7 @@ public interface UniversityDao {
      * @param universityAddress 高校所在省份
      * @return 所有高校信息
      */
-    List<UniversityInfo> selectUniversityByAddress(String universityAddress);
+    List<UniversityInfo> selectByAddress(String universityAddress);
 
 
     /**

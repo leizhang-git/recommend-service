@@ -1,14 +1,13 @@
 package cn.imut.ncee.controller;
 
-import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.entity.pojo.UniversityInfo;
 import cn.imut.ncee.service.UniversityService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 高校
@@ -70,13 +69,24 @@ public class UniversityController {
     }
 
     /**
+     * 根据高校地址查询高校信息
+     * @param infos 高校名称/高校地址
+     * @return 高校信息
+     */
+    @PostMapping("/selectByAddress")
+    public Results<?> selectById(@RequestBody Map<String,String> infos) {
+        List<UniversityInfo> universityInfos = universityService.selectByAddress(infos.get("universityAddress"), infos.get("universityName"));
+        return Results.dataOf(universityInfos);
+    }
+
+    /**
      * 根据高校Id删除高校
-     * @param uId 高校Id
+     * @param infos 高校Id
      * @return 是否成功删除
      */
     @DeleteMapping("/deleteById")
-    public Results<?> deleteById(@RequestParam String uId) {
-        boolean isSuccess = universityService.deleteUniversityById(uId);
+    public Results<?> deleteById(@RequestBody Map<String,String> infos) {
+        boolean isSuccess = universityService.deleteUniversityById(infos.get("uId"));
         return Results.dataOf(isSuccess);
     }
 }

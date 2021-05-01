@@ -57,4 +57,12 @@ public interface StatisticsScoreService {
      * @return 分数线
      */
     List<EntryScore> selectAllScore(@Param("uid") String uid);
+
+    /**
+     * 查询指定高校及其专业的录取分数线
+     * @param uid 高校Id
+     * @param majorName 专业名称
+     * @return 分数线
+     */
+    List<EntryScore> selectAllScore(String uid, String majorName);
 }

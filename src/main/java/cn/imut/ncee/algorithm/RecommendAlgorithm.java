@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * 高考志愿推荐算法
@@ -39,8 +40,14 @@ public class RecommendAlgorithm {
         String address = information.getAddress();
         String score = information.getScore();
         String majorCategory = information.getMajorCategory();
-
-
+        String numberJudge = "/\\d+/g";
+        System.out.println(numberJudge);
+        System.out.println(score);
+        boolean isSuccess = Pattern.matches(numberJudge, score);
+        System.out.println(isSuccess);
+        String scoreJudge = "^(750(\\.[0]+)?|7[0-4][0-9](\\.\\d+)?|[1-6][0-9][0-9](\\.\\d+)?|[1-9][0-9](\\.\\d+)?|[0-9](\\.\\d+)?)$";
+        boolean isScope = Pattern.matches(scoreJudge, score);
+        System.out.println(isScope);
         //根据科目获取所有专业id
         String subjectSql;
         if(subjectInt == -1 && majorCategory.length() == 0) {
