@@ -50,6 +50,13 @@ public interface UniversityDao {
     boolean updateUniversity(@Param("universityId") String universityId, @Param("universityCode") String universityCode);
 
     /**
+     * 根据高校Id修改高校编号
+     * @param universityInfo 高校信息
+     * @return 是否修改成功
+     */
+    boolean updateById(@Param("universityInfo") UniversityInfo universityInfo);
+
+    /**
      * 根据高校Id删除高校
      * @param universityId 高校Id
      * @return 是否成功删除高校

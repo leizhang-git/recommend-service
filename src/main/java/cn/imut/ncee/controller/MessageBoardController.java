@@ -44,4 +44,15 @@ public class MessageBoardController {
         boolean isSuccess = messageBoardService.deleteById(infos.get("uId"));
         return Results.dataOf(isSuccess);
     }
+
+    /**
+     * 增加留言
+     * @param messageBoard 留言板
+     * @return 是否成功添加留言
+     */
+    @PostMapping("/addMessage")
+    public Results<?> addMessage(@RequestBody MessageBoard messageBoard) {
+        boolean isSuccess = messageBoardService.addMessage(messageBoard);
+        return Results.dataOf(isSuccess);
+    }
 }

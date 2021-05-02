@@ -19,9 +19,6 @@
             <if test="universityName != null">
                 university_name,
             </if>
-            <if test="universityCode != null">
-                university_code,
-            </if>
             <if test="universityDesc != null">
                 university_desc,
             </if>
@@ -36,9 +33,6 @@
             <if test="universityName != null">
                 #{universityName,jdbcType=VARCHAR},
             </if>
-            <if test="universityCode != null">
-                #{universityCode,jdbcType=VARCHAR},
-            </if>
             <if test="universityDesc != null">
                 #{universityDesc,jdbcType=LONGVARCHAR},
             </if>
@@ -51,6 +45,11 @@
     <!-- 根据Id修改高校编号-->
     <update id="updateUniversity">
         update `university_info` set `university_code` = #{universityCode} where university_id = #{universityId};
+    </update>
+
+    <!-- -->
+    <update id="updateById">
+        update `university_info` set `university_name` = #{universityInfo.universityName}, `university_desc` = #{universityInfo.universityDesc}, `university_address` = #{universityInfo.universityAddress} where university_id = #{universityInfo.universityId};
     </update>
 
     <!-- 根据Id删除高校-->

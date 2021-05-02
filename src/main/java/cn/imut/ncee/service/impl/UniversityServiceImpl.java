@@ -63,4 +63,13 @@ public class UniversityServiceImpl implements UniversityService {
     public boolean deleteUniversityById(String universityId) {
         return universityDao.deleteUniversityById(universityId);
     }
+
+    @Override
+    public boolean operationUniversity(UniversityInfo universityInfo) {
+        if(universityInfo.getUniversityId() == null || universityInfo.getUniversityId().length() == 0) {
+            return universityDao.insertUniversity(universityInfo);
+        }else {
+            return universityDao.updateById(universityInfo);
+        }
+    }
 }

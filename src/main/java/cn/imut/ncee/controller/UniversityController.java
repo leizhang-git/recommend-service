@@ -35,13 +35,13 @@ public class UniversityController {
     }
 
     /**
-     * 添加高校
+     * 添加/修改高校
      * @param universityInfo 高校信息
      * @return 是否添加成功
      */
-    @PostMapping("/addUniversity")
+    @PostMapping("/operationUniversity")
     public Results<?> insertUniversity(@RequestBody UniversityInfo universityInfo) {
-        boolean isSuccess = universityService.insertUniversity(universityInfo);
+        boolean isSuccess = universityService.operationUniversity(universityInfo);
         return Results.dataOf(isSuccess);
     }
 

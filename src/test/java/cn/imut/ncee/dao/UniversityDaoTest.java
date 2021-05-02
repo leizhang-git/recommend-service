@@ -22,7 +22,7 @@ public class UniversityDaoTest {
 
     @Test
     public void insertUniversity() {
-        UniversityInfo universityInfo = new UniversityInfo("清华大学", "test","test", "北京市");
+        UniversityInfo universityInfo = new UniversityInfo("野鸡大学", "test","test", "北京市");
         boolean isSuccess = universityDao.insertUniversity(universityInfo);
         System.out.println(isSuccess);
     }

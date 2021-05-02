@@ -55,4 +55,11 @@ public interface UniversityService {
      * @return 是否成功删除高校
      */
     boolean deleteUniversityById(String universityId);
+
+    /**
+     * 修改/添加高校
+     * @param universityInfo 高校信息
+     * @return 是否成功操作
+     */
+    boolean operationUniversity(UniversityInfo universityInfo);
 }

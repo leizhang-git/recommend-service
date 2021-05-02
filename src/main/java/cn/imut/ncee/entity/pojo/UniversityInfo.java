@@ -59,6 +59,15 @@ public class UniversityInfo {
         this.universityCode = universityCode;
     }
 
+    public UniversityInfo(String universityId, String universityName, String universityCode, String universityDesc, String universityAddress) {
+        this.universityId = universityId;
+        this.universityName = universityName;
+        this.universityCode = universityCode;
+        this.universityDesc = universityDesc;
+        this.universityAddress = universityAddress;
+    }
+
+
     @Override
     public String toString() {
         return "UniversityInfo{" +
