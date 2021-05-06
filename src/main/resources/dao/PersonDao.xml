@@ -47,11 +47,11 @@
 
 
     <select id="selectByIdPerson" resultType="cn.imut.ncee.entity.pojo.Person">
-        select `id`,`name`,`role` from person where id = #{id};
+        select `id`,`name` from person where id = #{id};
     </select>
 
     <select id="selectAllPerson" resultType="cn.imut.ncee.entity.pojo.Person">
-        select * from person where id != 'admin'
+        select `id`,`name` from `person` where id != 'admin'
     </select>
 
     <select id="login" resultType="String" parameterType="String">

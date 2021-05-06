@@ -2,9 +2,7 @@ package cn.imut.ncee.dao;
 
 import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -64,7 +62,7 @@ public interface StatisticsScoreDao {
      * @param uid 高校Id
      * @return 详细信息
      */
-    @Select("select distinct `university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
+    @Select("select distinct `statistics_score`.`university_id`,`statistics_score`.`major_id`,`university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
     List<EntryScore> selectAllScore(@Param("uid") String uid);
 
     /**
@@ -73,6 +71,31 @@ public interface StatisticsScoreDao {
      * @param majorName 专业名称
      * @return 详细信息
      */
-    @Select("select distinct `university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_name` like concat('%',#{majorName},'%') and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
+    @Select("select distinct `statistics_score`.`university_id`,`statistics_score`.`major_id`,`university_info`.`university_name`,`major_info`.`major_name`,`major_info`.`major_category`,`statistics_score`.`years`,`statistics_score`.`min_score`,`statistics_score`.`avg_score`,`statistics_score`.`max_score` from `university_info`,`major_info`,`statistics_score` where `university_info`.`university_id` = #{uid} and `major_info`.`major_name` like concat('%',#{majorName},'%') and `major_info`.`major_id` = `statistics_score`.`major_id` and `university_info`.`university_id` = `statistics_score`.`university_id`;")
     List<EntryScore> selectAllScoreByMajor(@Param("uid") String uid, @Param("majorName") String majorName);
+
+    /**
+     * 根据高校Id，专业Id删除高校-专业
+     * @param uid 高校Id
+     * @param mId 专业Id
+     * @return 是否成功删除
+     */
+    @Delete("delete from `statistics_score` where `university_id` = #{uid} and `major_id` = #{mId}")
+    boolean deleteByUidAndMid(@Param("uid") String uid, @Param("mId") String mId);
+
+    /**
+     * 根据高校Id，专业Id修改分数线
+     * @param entryScore vo展示分数线
+     * @return 是否修改成功
+     */
+    @Update("update `statistics_score` set `years` = #{entryScore.years}, `avg_score` = #{entryScore.avgScore}, `min_score` = #{entryScore.minScore}, `max_score` = #{entryScore.maxScore} where `university_id` = #{entryScore.universityId} and `major_id` = #{entryScore.majorId}")
+    boolean updateByUMId(@Param("entryScore") EntryScore entryScore);
+
+    /**
+     * 添加专业信息（高校Id传入）
+     * @param entryScore vo展示分数线
+     * @return 是否成功添加
+     */
+    @Insert("insert into `statistics_score` values (#{entryScore.universityId}, #{entryScore.majorId}, #{entryScore.years}, #{entryScore.avgScore}, #{entryScore.minScore}, #{entryScore.maxScore}")
+    boolean addByUMId(@Param("entryScore") EntryScore entryScore);
 }

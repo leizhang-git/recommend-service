@@ -65,4 +65,19 @@ public interface StatisticsScoreService {
      * @return 分数线
      */
     List<EntryScore> selectAllScore(String uid, String majorName);
+
+    /**
+     * 根据高校Id，专业Id删除高校-专业
+     * @param uId 高校Id
+     * @param mId 专业Id
+     * @return 是否成功删除
+     */
+    boolean deleteByUidAndMid(String uId, String mId);
+
+    /**
+     * 修改/增加 vo展示
+     * @param entryScore vo展示内容
+     * @return 是否成功添加/修改
+     */
+    boolean insertAndUpdate(EntryScore entryScore);
 }

@@ -6,7 +6,6 @@ import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +30,8 @@ public class PersonController {
      */
     @PostMapping("/login")
     public Results<Boolean> login(@RequestBody Map<String,String> loginInfo) {
-        Person person = personService.login(loginInfo.get("id"), loginInfo.get("password"));
-        return Results.dataOf(person);
+        List<Person> person = personService.login(loginInfo.get("id"), loginInfo.get("password"));
+        return Results.dataOf(person.get(0));
     }
 
     /**
@@ -48,14 +47,12 @@ public class PersonController {
 
     /**
      * 查询所有用户信息（管理员除外）
-     * @param pageNum 页码
-     * @param pageSize 每页显示数量
+     * @param infos 信息
      * @return 用户信息
      */
-    @GetMapping("/queryAllPerson")
-    public Results<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                                      @RequestParam(defaultValue = "5",required = false) int pageSize) {
-        List<Person> person = personService.selectAllPerson(pageNum, pageSize);
+    @PostMapping("/queryAllPerson")
+    public Results<?> queryAll(@RequestBody Map<String,String> infos) {
+        List<Person> person = personService.selectAllPerson(infos.get("id"));
         return Results.dataOf(person);
     }
 
@@ -78,7 +75,7 @@ public class PersonController {
      */
     @GetMapping("/queryPerson")
     public Results<?> queryById(String id) {
-        Person person = personService.selectByIdPerson(id);
+        List<Person> person = personService.selectByIdPerson(id);
         return Results.dataOf(person);
     }
 

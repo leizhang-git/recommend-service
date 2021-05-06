@@ -59,7 +59,7 @@ public interface PersonDao {
      * @param personId 用户Id
      * @return 用户信息
      */
-    Person selectByIdPerson(String personId);
+    List<Person> selectByIdPerson(String personId);
 
     /**
      * 根据Id删除用户

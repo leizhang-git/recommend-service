@@ -51,6 +51,13 @@ public interface MajorDao {
     MajorInfo selectByIdMajorInfo(String majorId);
 
     /**
+     * 根据专业名称查询其专业Id
+     * @param majorName 专业名称
+     * @return 返回专业Id
+     */
+    String selectByName(String majorName);
+
+    /**
      * 根据专业Id，查询该专业属于文科还是理科
      * @param majorId 专业Id
      * @return 0理科/1文科/-1文/理

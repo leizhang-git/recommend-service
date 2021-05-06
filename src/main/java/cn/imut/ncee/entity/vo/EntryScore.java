@@ -15,6 +15,16 @@ import lombok.NoArgsConstructor;
 public class EntryScore {
 
     /**
+     * 高校Id
+     */
+    private String universityId;
+
+    /**
+     * 专业Id
+     */
+    private String majorId;
+
+    /**
      * 高校名称
      */
     private String universityName;
@@ -32,20 +42,31 @@ public class EntryScore {
     /**
      * 年份
      */
-    private String years;
+    private Integer years;
 
     /**
      * 最低分
      */
-    private String minScore;
+    private double minScore;
 
     /**
      * 平均分
      */
-    private String avgScore;
+    private double avgScore;
 
     /**
      * 最高分
      */
-    private String maxScore;
+    private double maxScore;
+
+    public EntryScore(String universityId, String majorId, String majorName, String majorCategory, Integer years, double minScore, double avgScore, double maxScore) {
+        this.universityId = universityId;
+        this.majorId = majorId;
+        this.majorName = majorName;
+        this.majorCategory = majorCategory;
+        this.years = years;
+        this.minScore = minScore;
+        this.avgScore = avgScore;
+        this.maxScore = maxScore;
+    }
 }

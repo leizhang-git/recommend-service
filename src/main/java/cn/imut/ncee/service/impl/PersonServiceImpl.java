@@ -8,7 +8,6 @@ import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.utils.MD5Utils;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +46,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person login(String personId, String personPassword) {
+    public List<Person> login(String personId, String personPassword) {
         String password = personDao.login(personId);
         if(password != null) {
             String md5 = MD5Utils.convertMD5(password);
@@ -65,13 +64,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> selectAllPerson(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        return personDao.selectAllPerson();
+    public List<Person> selectAllPerson(String id) {
+        if(id == null || id.length() == 0) {
+            return personDao.selectAllPerson();
+        }else {
+            return personDao.selectByIdPerson(id);
+        }
     }
 
     @Override
-    public Person selectByIdPerson(String personId) {
+    public List<Person> selectByIdPerson(String personId) {
         return personDao.selectByIdPerson(personId);
     }
 

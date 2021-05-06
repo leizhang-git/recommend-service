@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author zhanglei
@@ -29,7 +28,7 @@ public interface PersonService {
      * @param personPassword 用户密码
      * @return 是否成功登陆
      */
-    Person login(String personId, String personPassword);
+    List<Person> login(String personId, String personPassword);
 
     /**
      * 修改用户信息
@@ -42,14 +41,14 @@ public interface PersonService {
      * 查询所有用户信息
      * @return 所有用户信息
      */
-    List<Person> selectAllPerson(Integer pageNum, Integer pageSize);
+    List<Person> selectAllPerson(String id);
 
     /**
      * 根据用户Id查询用户信息
      * @param personId 用户Id
      * @return 用户信息
      */
-    Person selectByIdPerson(String personId);
+    List<Person> selectByIdPerson(String personId);
 
     /**
      * 根据Id删除用户

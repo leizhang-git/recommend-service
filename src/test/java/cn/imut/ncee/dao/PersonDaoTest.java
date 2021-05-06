@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author zhanglei
  * @Date 2021/2/23 16:01
@@ -62,7 +60,7 @@ public class PersonDaoTest {
 
     @Test
     public void selectByIdPerson() {
-        Person person = personDao.selectByIdPerson("0074157175b311ebb53a52540099a41f");
+        List<Person> person = personDao.selectByIdPerson("0074157175b311ebb53a52540099a41f");
         System.out.println(person.toString());
     }
 }

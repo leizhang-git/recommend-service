@@ -89,6 +89,7 @@ public class StatisticsScoreController {
         return Results.dataOf(entryScores);
     }
 
+
     /**
      * 只查询某一年的分数线
      * @param uId 高校Id
@@ -100,5 +101,27 @@ public class StatisticsScoreController {
     public Results<?> queryOne(String uId, String mId, String years) {
         StatisticsScoreInfo statisticsScoreInfo = statisticsScoreService.selectOneScore(uId, mId, years);
         return Results.dataOf(statisticsScoreInfo);
+    }
+
+    /**
+     * 根据高校Id，专业Id删除高校-专业
+     * @param infos uId，mId
+     * @return 是否成功删除
+     */
+    @DeleteMapping("/deleteUM")
+    public Results<?> queryOne(@RequestBody Map<String,String> infos) {
+        boolean isSuccess = statisticsScoreService.deleteByUidAndMid(infos.get("universityId"), infos.get("majorId"));
+        return Results.dataOf(isSuccess);
+    }
+
+    /**
+     * 增加/修改 分数线vo展示
+     * @param entryScore vo展示
+     * @return
+     */
+    @PostMapping("/insertAndUpdate")
+    public Results<?> insertAndUpdate(@RequestBody EntryScore entryScore) {
+        boolean isSuccess = statisticsScoreService.insertAndUpdate(entryScore);
+        return Results.dataOf(isSuccess);
     }
 }

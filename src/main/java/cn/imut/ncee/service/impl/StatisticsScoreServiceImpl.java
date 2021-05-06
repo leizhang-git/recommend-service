@@ -1,6 +1,8 @@
 package cn.imut.ncee.service.impl;
 
+import cn.imut.ncee.dao.MajorDao;
 import cn.imut.ncee.dao.StatisticsScoreDao;
+import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
@@ -18,6 +20,9 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
 
     @Autowired
     private StatisticsScoreDao statisticsScoreDao;
+
+    @Autowired
+    private MajorDao majorDao;
 
     @Override
     public boolean insertStatisticsScore(StatisticsScoreInfo statisticsScoreInfo) {
@@ -55,5 +60,29 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
             return statisticsScoreDao.selectAllScore(uid);
         }
         return statisticsScoreDao.selectAllScoreByMajor(uid, majorName);
+    }
+
+    @Override
+    public boolean deleteByUidAndMid(String uId, String mId) {
+        return statisticsScoreDao.deleteByUidAndMid(uId, mId);
+    }
+
+    @Override
+    public boolean insertAndUpdate(EntryScore entryScore) {
+
+        //修改
+        boolean isSuccess;
+        if(entryScore.getMajorId() != null || entryScore.getMajorId().length() != 0) {
+            isSuccess = statisticsScoreDao.updateByUMId(entryScore);
+        }else {
+            int code = 63;
+            MajorInfo majorInfo = new MajorInfo(entryScore.getMajorName(), String.valueOf(code), entryScore.getMajorCategory(), 35);
+            majorDao.insertMajorInfo(majorInfo);
+            String majorId = majorDao.selectByName(entryScore.getMajorName());
+            entryScore.setMajorId(majorId);
+            //增加
+            isSuccess = statisticsScoreDao.addByUMId(entryScore);
+        }
+        return isSuccess;
     }
 }

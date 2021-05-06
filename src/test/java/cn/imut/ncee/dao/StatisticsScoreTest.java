@@ -50,4 +50,13 @@ public class StatisticsScoreTest {
         }
 //        }
     }
+
+    @Test
+    public void insert() {
+        StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo("111", "111", 123, 444, 444, 444);
+        StatisticsScoreInfo statisticsScoreInf1 = new StatisticsScoreInfo("111", "111", 1231, 4441, 4441, 1444);
+
+        statisticsScoreDao.insertStatisticsScore(statisticsScoreInfo);
+        statisticsScoreDao.insertStatisticsScore(statisticsScoreInf1);
+    }
 }

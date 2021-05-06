@@ -35,9 +35,23 @@ public class StatisticsScoreDaoTest {
 
     @Test
     public void selectAllScoreByMajor() {
-        List<EntryScore> infos = statisticsScoreDao.selectAllScoreByMajor("1ac93019a28d11eb814d00e04c7c8cb3", "工程");
+        List<EntryScore> infos = statisticsScoreDao.selectAllScoreByMajor("111", "111");
         for (EntryScore info : infos) {
             System.out.println(info.toString());
         }
+    }
+
+    @Test
+    public void selectByUMid() {
+        List<StatisticsScoreInfo> statisticsScoreInfos = statisticsScoreDao.selectScore("111", "111");
+        for (StatisticsScoreInfo info : statisticsScoreInfos) {
+            System.out.println(info.toString());
+        }
+    }
+
+    @Test
+    public void deleteById() {
+        boolean isSuccess = statisticsScoreDao.deleteByUidAndMid("111", "111");
+        System.out.println(isSuccess);
     }
 }
