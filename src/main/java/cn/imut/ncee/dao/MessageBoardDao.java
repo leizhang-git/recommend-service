@@ -33,6 +33,14 @@ public interface MessageBoardDao {
     List<MessageBoard> queryAll();
 
     /**
+     * 根据名称查询
+     * @param uName 姓名
+     * @return
+     */
+    @Select("select `u_id`,`u_name`,`u_time`,`u_date` from `message_board` where `u_name` = #{uName}")
+    List<MessageBoard> queryByName(@Param("uName") String uName);
+
+    /**
      * 删除该留言信息
      * @param uId 用户Id
      * @return 是否成功删除

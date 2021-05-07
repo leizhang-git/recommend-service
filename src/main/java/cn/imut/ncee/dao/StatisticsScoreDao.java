@@ -96,6 +96,6 @@ public interface StatisticsScoreDao {
      * @param entryScore vo展示分数线
      * @return 是否成功添加
      */
-    @Insert("insert into `statistics_score` values (#{entryScore.universityId}, #{entryScore.majorId}, #{entryScore.years}, #{entryScore.avgScore}, #{entryScore.minScore}, #{entryScore.maxScore}")
+    @Insert("insert into `statistics_score` values (#{entryScore.universityId}, #{entryScore.majorId}, #{entryScore.years}, #{entryScore.avgScore}, #{entryScore.minScore}, #{entryScore.maxScore}, #{entryScore.ranking})")
     boolean addByUMId(@Param("entryScore") EntryScore entryScore);
 }

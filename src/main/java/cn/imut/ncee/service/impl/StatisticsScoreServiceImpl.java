@@ -71,17 +71,18 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
     public boolean insertAndUpdate(EntryScore entryScore) {
 
         //修改
-        boolean isSuccess;
-        if(entryScore.getMajorId() != null || entryScore.getMajorId().length() != 0) {
-            isSuccess = statisticsScoreDao.updateByUMId(entryScore);
-        }else {
+        boolean isSuccess = false;
+        if(entryScore.getMajorId() == null) {
             int code = 63;
             MajorInfo majorInfo = new MajorInfo(entryScore.getMajorName(), String.valueOf(code), entryScore.getMajorCategory(), 35);
             majorDao.insertMajorInfo(majorInfo);
             String majorId = majorDao.selectByName(entryScore.getMajorName());
             entryScore.setMajorId(majorId);
             //增加
-            isSuccess = statisticsScoreDao.addByUMId(entryScore);
+            return statisticsScoreDao.addByUMId(entryScore);
+        }
+        if(entryScore.getMajorId() != null || entryScore.getMajorId().length() != 0) {
+            isSuccess = statisticsScoreDao.updateByUMId(entryScore);
         }
         return isSuccess;
     }

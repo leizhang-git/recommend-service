@@ -59,11 +59,22 @@ public class EntryScore {
      */
     private double maxScore;
 
+    private Integer ranking;
+
     public EntryScore(String universityId, String majorId, String majorName, String majorCategory, Integer years, double minScore, double avgScore, double maxScore) {
         this.universityId = universityId;
         this.majorId = majorId;
         this.majorName = majorName;
         this.majorCategory = majorCategory;
+        this.years = years;
+        this.minScore = minScore;
+        this.avgScore = avgScore;
+        this.maxScore = maxScore;
+    }
+
+    public EntryScore(String universityId, String majorId, Integer years, double minScore, double avgScore, double maxScore) {
+        this.universityId = universityId;
+        this.majorId = majorId;
         this.years = years;
         this.minScore = minScore;
         this.avgScore = avgScore;

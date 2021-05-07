@@ -12,7 +12,7 @@ public interface MessageBoardService {
 
     boolean addMessage(MessageBoard messageBoard);
 
-    List<MessageBoard> queryAll(Integer pageNum, Integer pageSize);
+    List<MessageBoard> queryAll(String uName);
 
     boolean deleteById(String universityId);
 }

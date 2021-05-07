@@ -54,4 +54,18 @@ public class StatisticsScoreDaoTest {
         boolean isSuccess = statisticsScoreDao.deleteByUidAndMid("111", "111");
         System.out.println(isSuccess);
     }
+
+    @Test
+    public void addById() {
+        EntryScore entryScore = new EntryScore();
+        entryScore.setUniversityId("c6f9e106a28b11eb814d00e04c7c8cb3");
+        entryScore.setMajorId("5e79066bae4811eba04300e04c7c8cb3");
+        entryScore.setYears(2020);
+        entryScore.setMaxScore(22);
+        entryScore.setAvgScore(11);
+        entryScore.setMinScore(1);
+        entryScore.setRanking(0);
+        boolean isSuccess = statisticsScoreDao.addByUMId(entryScore);
+        System.out.println(isSuccess);
+    }
 }

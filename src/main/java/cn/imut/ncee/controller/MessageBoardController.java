@@ -23,14 +23,12 @@ public class MessageBoardController {
 
     /**
      * 分页展示留言板信息
-     * @param pageNum 页码
-     * @param pageSize 每页显示数量
+     * @param infos id
      * @return 用户留言内容
      */
-    @GetMapping("/queryMessage")
-    public Results<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                               @RequestParam(defaultValue = "60",required = false) int pageSize) {
-        List<MessageBoard> messageBoards = messageBoardService.queryAll(pageNum, pageSize);
+    @PostMapping("/queryMessage")
+    public Results<?> queryAll(@RequestBody Map<String,String> infos) {
+        List<MessageBoard> messageBoards = messageBoardService.queryAll(infos.get("uName"));
         return Results.dataOf(messageBoards);
     }
 

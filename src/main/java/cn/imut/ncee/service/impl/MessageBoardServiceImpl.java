@@ -3,7 +3,6 @@ package cn.imut.ncee.service.impl;
 import cn.imut.ncee.dao.MessageBoardDao;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,16 +27,26 @@ public class MessageBoardServiceImpl implements MessageBoardService {
     }
 
     @Override
-    public List<MessageBoard> queryAll(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<MessageBoard> messageBoards = messageBoardDao.queryAll();
-        for (MessageBoard messageBoard : messageBoards) {
-            String uTime = messageBoard.getUTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String nowTime = sdf.format(new Date(Long.parseLong(uTime)));
-            messageBoard.setUTime(nowTime);
+    public List<MessageBoard> queryAll(String uName) {
+        if(uName == null || uName.length() == 0) {
+            List<MessageBoard> messageBoards = messageBoardDao.queryAll();
+            for (MessageBoard messageBoard : messageBoards) {
+                String uTime = messageBoard.getUTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String nowTime = sdf.format(new Date(Long.parseLong(uTime)));
+                messageBoard.setUTime(nowTime);
+            }
+            return messageBoards;
+        }else {
+            List<MessageBoard> messageBoards = messageBoardDao.queryByName(uName);
+            for (MessageBoard messageBoard : messageBoards) {
+                String uTime = messageBoard.getUTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String nowTime = sdf.format(new Date(Long.parseLong(uTime)));
+                messageBoard.setUTime(nowTime);
+            }
+            return messageBoards;
         }
-        return messageBoards;
     }
 
     @Override
