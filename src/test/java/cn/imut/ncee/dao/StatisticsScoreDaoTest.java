@@ -1,6 +1,7 @@
 package cn.imut.ncee.dao;
 
 import cn.imut.ncee.entity.vo.EntryScore;
+import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,5 +68,13 @@ public class StatisticsScoreDaoTest {
         entryScore.setRanking(0);
         boolean isSuccess = statisticsScoreDao.addByUMId(entryScore);
         System.out.println(isSuccess);
+    }
+
+    @Test
+    public void selectByMajor() {
+        List<MajorScore> majorScores = statisticsScoreDao.selectByMajor("5e79066bae4811eba04300e04c7c8cb3", "2017");
+        for (MajorScore majorScore : majorScores) {
+            System.out.println(majorScore.toString());
+        }
     }
 }

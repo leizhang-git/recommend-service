@@ -74,4 +74,11 @@ public interface PersonDao {
      * @return 该账号是否存在
      */
     String selectId(@Param("id") String id);
+
+    /**
+     * 修改密码
+     * @param newP 新密码
+     * @return 是否成功修改
+     */
+    boolean update(@Param("newP") String newP, @Param("id") String id);
 }

@@ -4,11 +4,13 @@ import cn.imut.ncee.dao.MajorDao;
 import cn.imut.ncee.dao.StatisticsScoreDao;
 import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.entity.vo.EntryScore;
+import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -85,5 +87,19 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
             isSuccess = statisticsScoreDao.updateByUMId(entryScore);
         }
         return isSuccess;
+    }
+
+    @Override
+    public List<MajorScore> selectByMajor(String majorName, String years) {
+        if(majorName.length() != 0 && years.length() != 0) {
+            String majorId = majorDao.selectByName(majorName);
+            return statisticsScoreDao.selectByMajor(majorId, years);
+        }else if(years.length() == 0) {
+            String majorId = majorDao.selectByName(majorName);
+            return statisticsScoreDao.selectByMajor1(majorId);
+        }else {
+            List<MajorScore> majorScores = new ArrayList<>();
+            return majorScores;
+        }
     }
 }

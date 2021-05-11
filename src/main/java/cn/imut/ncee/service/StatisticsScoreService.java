@@ -1,6 +1,7 @@
 package cn.imut.ncee.service;
 
 import cn.imut.ncee.entity.vo.EntryScore;
+import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -80,4 +81,12 @@ public interface StatisticsScoreService {
      * @return 是否成功添加/修改
      */
     boolean insertAndUpdate(EntryScore entryScore);
+
+    /**
+     * 通过专业，年份，查询历年录取信息
+     * @param majorName 专业名称
+     * @param years 年份
+     * @return 录取信息
+     */
+    List<MajorScore> selectByMajor(String majorName, String years);
 }

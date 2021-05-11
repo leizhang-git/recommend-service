@@ -69,4 +69,13 @@ public interface PersonService {
      * @param messageBoard 留言板
      */
     boolean addMessage(MessageBoard messageBoard);
+
+
+    /**
+     * 修改密码
+     * @param oldP 旧密码
+     * @param newP 新密码
+     * @return 是否成功修改
+     */
+    boolean update(String oldP, String newP, String id);
 }

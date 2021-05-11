@@ -91,4 +91,17 @@ public class PersonServiceImpl implements PersonService {
     public boolean addMessage(MessageBoard messageBoard) {
         return messageBoardDao.addMessage(messageBoard);
     }
+
+    @Override
+    public boolean update(String oldP, String newP, String id) {
+        String password = personDao.login(id);
+        String newPass = MD5Utils.convertMD5(password);
+        String oldPass = MD5Utils.stringMD5(oldP);
+        if(newPass.equals(oldPass)) {
+            String md5 = MD5Utils.stringMD5(newP);
+            String pass = MD5Utils.convertMD5(md5);
+            return personDao.update(pass, id);
+        }
+        return false;
+    }
 }

@@ -2,6 +2,7 @@ package cn.imut.ncee.service;
 
 import cn.imut.ncee.entity.vo.MessageBoard;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -14,5 +15,5 @@ public interface MessageBoardService {
 
     List<MessageBoard> queryAll(String uName);
 
-    boolean deleteById(String universityId);
+    boolean deleteById(String uId, String uTime) throws ParseException;
 }

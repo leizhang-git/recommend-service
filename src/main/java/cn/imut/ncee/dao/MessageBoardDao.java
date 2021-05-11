@@ -45,6 +45,14 @@ public interface MessageBoardDao {
      * @param uId 用户Id
      * @return 是否成功删除
      */
-    @Delete("delete from `message_board` where `u_id` = #{uId}")
-    boolean deleteById(@Param("uId") String uId);
+    @Delete("delete from `message_board` where `u_id` = #{uId} and `u_time` = #{uTime}")
+    boolean deleteById(@Param("uId") String uId, @Param("uTime") String uTime);
+
+    /**
+     * 根据用户Id查询用户时间戳
+     * @param uId 用户Id
+     * @return 时间戳
+     */
+    @Select("select `u_time` from `message_board` where `u_id` = #{uId}")
+    List<String> selectById(@Param("uId") String uId);
 }

@@ -1,6 +1,7 @@
 package cn.imut.ncee.dao;
 
 import cn.imut.ncee.entity.vo.EntryScore;
+import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -98,4 +99,30 @@ public interface StatisticsScoreDao {
      */
     @Insert("insert into `statistics_score` values (#{entryScore.universityId}, #{entryScore.majorId}, #{entryScore.years}, #{entryScore.avgScore}, #{entryScore.minScore}, #{entryScore.maxScore}, #{entryScore.ranking})")
     boolean addByUMId(@Param("entryScore") EntryScore entryScore);
+
+    @Select("select\n" +
+            "        university_info.university_name, major_info.major_name, statistics_score.years, statistics_score.avg_score, statistics_score.min_score, statistics_score.max_score\n" +
+            "from\n" +
+            "        statistics_score, university_info, major_info\n" +
+            "where\n" +
+            "        statistics_score.major_id = #{majorId}\n" +
+            "and\n" +
+            "        statistics_score.years = #{years}\n" +
+            "and\n" +
+            "        statistics_score.university_id = university_info.university_id\n" +
+            "and\n" +
+            "        statistics_score.major_id = major_info.major_id;")
+    List<MajorScore> selectByMajor(@Param("majorId") String majorId, @Param("years") String years);
+
+    @Select("select\n" +
+            "        university_info.university_name, major_info.major_name, statistics_score.years, statistics_score.avg_score, statistics_score.min_score, statistics_score.max_score\n" +
+            "from\n" +
+            "        statistics_score, university_info, major_info\n" +
+            "where\n" +
+            "        statistics_score.major_id = #{majorId}\n" +
+            "and\n" +
+            "        statistics_score.university_id = university_info.university_id\n" +
+            "and\n" +
+            "        statistics_score.major_id = major_info.major_id;")
+    List<MajorScore> selectByMajor1(@Param("majorId") String majorId);
 }

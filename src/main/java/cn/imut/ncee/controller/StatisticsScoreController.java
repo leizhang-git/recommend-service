@@ -1,6 +1,7 @@
 package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.vo.EntryScore;
+import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import cn.imut.ncee.utils.Results;
@@ -123,5 +124,16 @@ public class StatisticsScoreController {
     public Results<?> insertAndUpdate(@RequestBody EntryScore entryScore) {
         boolean isSuccess = statisticsScoreService.insertAndUpdate(entryScore);
         return Results.dataOf(isSuccess);
+    }
+
+    /**
+     * 根据专业名称和年份查询信息
+     * @param infos 专业名称，年份
+     * @return 录取信息
+     */
+    @PostMapping("/queryByMajor")
+    public Results<?> insertAndUpdate(@RequestBody Map<String,String> infos) {
+        List<MajorScore> majorScores = statisticsScoreService.selectByMajor(infos.get("majorName"), infos.get("years"));
+        return Results.dataOf(majorScores);
     }
 }

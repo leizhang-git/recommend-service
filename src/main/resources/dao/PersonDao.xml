@@ -41,6 +41,11 @@
         update person set `score` = #{score} where id = #{id}
     </update>
 
+    <!-- 修改密码-->
+    <update id="update">
+        update person set `password` = #{newP} where id = #{id}
+    </update>
+
     <delete id="deletePerson">
         delete from `person` where id = #{id};
     </delete>

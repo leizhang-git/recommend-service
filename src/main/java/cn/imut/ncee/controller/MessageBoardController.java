@@ -6,6 +6,7 @@ import cn.imut.ncee.utils.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -33,13 +34,13 @@ public class MessageBoardController {
     }
 
     /**
-     * 根据高校Id删除高校
+     * 根据用户Id，留言时间删除留言内容
      * @param infos 用户Id
      * @return 是否成功删除
      */
     @DeleteMapping("/deleteById")
-    public Results<?> deleteById(@RequestBody Map<String,String> infos) {
-        boolean isSuccess = messageBoardService.deleteById(infos.get("uId"));
+    public Results<?> deleteById(@RequestBody Map<String,String> infos) throws ParseException {
+        boolean isSuccess = messageBoardService.deleteById(infos.get("uId"), infos.get("uTime"));
         return Results.dataOf(isSuccess);
     }
 

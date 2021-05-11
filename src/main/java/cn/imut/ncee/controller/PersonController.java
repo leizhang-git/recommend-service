@@ -35,6 +35,17 @@ public class PersonController {
     }
 
     /**
+     * 修改密码
+     * @param loginInfo 账号（邮箱）,密码
+     * @return 是否登陆成功
+     */
+    @PostMapping("/update")
+    public Results<Boolean> updatePWD(@RequestBody Map<String,String> loginInfo) {
+        boolean isSuccess = personService.update(loginInfo.get("oldP"), loginInfo.get("newP"), loginInfo.get("id"));
+        return Results.dataOf(isSuccess);
+    }
+
+    /**
      * 注册
      * @param person id、姓名、密码
      * @return 是否成功注册

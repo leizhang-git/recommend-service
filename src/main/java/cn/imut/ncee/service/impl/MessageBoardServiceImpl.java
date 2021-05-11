@@ -6,6 +6,7 @@ import cn.imut.ncee.service.MessageBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +51,24 @@ public class MessageBoardServiceImpl implements MessageBoardService {
     }
 
     @Override
-    public boolean deleteById(String uId) {
-        return messageBoardDao.deleteById(uId);
+    public boolean deleteById(String uId, String uTime) throws ParseException {
+        //时间戳转换为时间
+        //时间戳
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parse = simpleDateFormat.parse(uTime);
+        long ts = parse.getTime();
+        String s = String.valueOf(ts);
+        //传入的时间戳（秒）
+        String mUTime = s.substring(0, s.length() - 4);
+        List<String> times = messageBoardDao.selectById(uId);
+        for (String time : times) {
+            //因为时间转换时间戳最后三位涉及到毫秒级别，无法很好的解析，故截断后四位进行对比即可
+            //数据库中的时间戳（秒）
+            String mTime = time.substring(0, time.length() - 4);
+            if(mTime.equals(mUTime)) {
+                return messageBoardDao.deleteById(uId, time);
+            }
+        }
+        return false;
     }
 }
