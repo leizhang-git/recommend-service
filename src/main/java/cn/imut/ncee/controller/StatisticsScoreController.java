@@ -136,4 +136,15 @@ public class StatisticsScoreController {
         List<MajorScore> majorScores = statisticsScoreService.selectByMajor(infos.get("majorName"), infos.get("years"));
         return Results.dataOf(majorScores);
     }
+
+    /**
+     * 根据专业名称和年份查询信息
+     * @param infos 专业名称，年份
+     * @return 录取信息
+     */
+    @PostMapping("/echarts")
+    public Results<?> echartsShow(@RequestBody Map<String,String> infos) {
+        List<StatisticsScoreInfo> statisticsScoreInfos = statisticsScoreService.selectAll(infos.get("universityId"), infos.get("majorId"));
+        return Results.dataOf(statisticsScoreInfos);
+    }
 }

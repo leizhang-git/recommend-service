@@ -91,15 +91,35 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
 
     @Override
     public List<MajorScore> selectByMajor(String majorName, String years) {
-        if(majorName.length() != 0 && years.length() != 0) {
-            String majorId = majorDao.selectByName(majorName);
-            return statisticsScoreDao.selectByMajor(majorId, years);
-        }else if(years.length() == 0) {
+        //即输入专业名称同时输入年份
+        if(years == null && majorName != null && majorName.length() != 0) {
             String majorId = majorDao.selectByName(majorName);
             return statisticsScoreDao.selectByMajor1(majorId);
-        }else {
-            List<MajorScore> majorScores = new ArrayList<>();
-            return majorScores;
         }
+        if(majorName.length() == 0) {
+            List<MajorScore> list = new ArrayList<>();
+            return list;
+        }
+        if (majorName.length() != 0 && years.length() != 0) {
+            String majorId = majorDao.selectByName(majorName);
+            return statisticsScoreDao.selectByMajor(majorId, years);
+        } else if(majorName.length() != 0 && years.length() == 0) {
+            String majorId = majorDao.selectByName(majorName);
+            if(majorId != null) {
+                return statisticsScoreDao.selectByMajor1(majorId);
+            }else {
+                return null;
+            }
+        } else if(years == null && majorName != null) {
+            String majorId = majorDao.selectByName(majorName);
+            return statisticsScoreDao.selectByMajor1(majorId);
+        } else {
+            List<MajorScore> list = new ArrayList<>();
+            return list;
+        }
+    }
+
+    public List<StatisticsScoreInfo> selectAll(String universityId, String majorId) {
+        return statisticsScoreDao.selectAll(universityId, majorId);
     }
 }

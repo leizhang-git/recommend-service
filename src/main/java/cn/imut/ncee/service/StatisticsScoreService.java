@@ -89,4 +89,12 @@ public interface StatisticsScoreService {
      * @return 录取信息
      */
     List<MajorScore> selectByMajor(String majorName, String years);
+
+    /**
+     * 通过高校Id，专业Id查询近五年的录取情况，以供可视化界面展示
+     * @param universityId 高校Id
+     * @param majorId 专业Id
+     * @return 近五年录取情况
+     */
+    List<StatisticsScoreInfo> selectAll(String universityId, String majorId);
 }

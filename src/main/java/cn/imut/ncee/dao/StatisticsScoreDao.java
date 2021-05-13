@@ -125,4 +125,7 @@ public interface StatisticsScoreDao {
             "and\n" +
             "        statistics_score.major_id = major_info.major_id;")
     List<MajorScore> selectByMajor1(@Param("majorId") String majorId);
+
+    @Select("select * from `statistics_score` where `university_id` = #{universityId} and `major_id` = #{majorId} order by `statistics_score`.`years`")
+    List<StatisticsScoreInfo> selectAll(@Param("universityId") String universityId, @Param("majorId") String majorId);
 }

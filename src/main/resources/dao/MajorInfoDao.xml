@@ -101,7 +101,7 @@
 
     <!-- 根据MajorName 获取Id-->
     <select id="selectByName" resultType="java.lang.String">
-        select `major_id` from major_info where `major_name` = #{majorName};
+        select `major_id` from major_info where `major_name` like concat('%',#{majorName},'%');
     </select>
 
 
