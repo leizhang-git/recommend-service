@@ -133,8 +133,12 @@ public class StatisticsScoreController {
      */
     @PostMapping("/queryByMajor")
     public Results<?> insertAndUpdate(@RequestBody Map<String,String> infos) {
-        List<MajorScore> majorScores = statisticsScoreService.selectByMajor(infos.get("majorName"), infos.get("years"));
-        return Results.dataOf(majorScores);
+        if(infos.size() == 0) {
+            return Results.dataOf("");
+        }else {
+            List<MajorScore> majorScores = statisticsScoreService.selectByMajor(infos.get("majorName"), infos.get("years"));
+            return Results.dataOf(majorScores);
+        }
     }
 
     /**

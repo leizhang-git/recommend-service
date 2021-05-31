@@ -28,11 +28,13 @@ public class RecommendAlgorithm {
      * @return 高校-专业
      */
     public Object majorRecommend(AlgorithmIndex information) {
-        //高校：专业1，专业2，专业3...
+        //返回结果：
+        //格式：    高校：专业1，专业2，专业3...
         Map<String, List<String>> recommendList = new HashMap<>();
         String subject = information.getSubject();
-        //用户输入指标
+        //用户输入指标（若用户）
         int subjectInt = -1;
+        //若用户不传入科目，则自动默认用户不分文理（-1）（目前由于前端优化，已经解决此问题）
         if(subject.length() != 0) {
             subjectInt = Integer.parseInt(subject);
         }
@@ -40,22 +42,21 @@ public class RecommendAlgorithm {
         String score = information.getScore();
         String majorCategory = information.getMajorCategory();
         String numberJudge = "/\\d+/g";
-        System.out.println(numberJudge);
-        System.out.println(score);
         String scoreJudge = "^(750(\\.[0]+)?|7[0-4][0-9](\\.\\d+)?|[1-6][0-9][0-9](\\.\\d+)?|[1-9][0-9](\\.\\d+)?|[0-9](\\.\\d+)?)$";
         //根据科目获取所有专业id
         String subjectSql;
+        //用户即没有输入科目同时没有输入专业类别
         if(subjectInt == -1 && majorCategory.length() == 0) {
             subjectSql = "select `major_id` from major_info;";
-        }else if(subjectInt == -1) {
+        }else if(subjectInt == -1) {    //用户没有输入科目，但是输入了专业类别
             subjectSql = "select `major_id` from major_info where major_category = '"+majorCategory+"';";
-        }else if(majorCategory.length() == 0 && (subjectInt == 0 || subjectInt == 1)){
+        }else if(majorCategory.length() == 0 && (subjectInt == 0 || subjectInt == 1)){      //用户没有输入类别，但是输入了科目
             subjectSql = "select `major_id` from major_info where subject = "+subjectInt+";";
-        }else {
+        }else {     //用户科目与专业类别均输入
             subjectSql = "select `major_id` from major_info where subject = "+subjectInt+" and major_category = '"+majorCategory+"';";
         }
 
-        //根据科目查询出的所有专业信息
+        //查询出
         List<Map<String, Object>> idList = jdbcTemplate.queryForList(subjectSql);
         if(idList.size() != 0) {
             for (Map<String, Object> stringObjectMap : idList) {

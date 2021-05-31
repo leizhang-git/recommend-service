@@ -17,7 +17,6 @@ public interface PersonDao {
 
     /**
      * 用户注册
-     *
      * @param person 用户信息
      * @return 是否成功注册
      */

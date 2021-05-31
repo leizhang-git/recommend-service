@@ -29,8 +29,18 @@ public class MessageBoardController {
      */
     @PostMapping("/queryMessage")
     public Results<?> queryAll(@RequestBody Map<String,String> infos) {
-        List<MessageBoard> messageBoards = messageBoardService.queryAll(infos.get("uName"));
-        return Results.dataOf(messageBoards);
+        if(infos.get("beginTime") != null && infos.get("outTime") != null) {
+            if(infos.get("uName") != null) {
+                List<MessageBoard> messageBoards = messageBoardService.queryAll1(infos.get("uName"), Long.parseLong(infos.get("beginTime")), Long.parseLong(infos.get("outTime")));
+                return Results.dataOf(messageBoards);
+            }else {
+                List<MessageBoard> messageBoards = messageBoardService.queryAll2(Long.parseLong(infos.get("beginTime")), Long.parseLong(infos.get("outTime")));
+                return Results.dataOf(messageBoards);
+            }
+        }else {
+            List<MessageBoard> messageBoards = messageBoardService.queryAll(infos.get("uName"));
+            return Results.dataOf(messageBoards);
+        }
     }
 
     /**

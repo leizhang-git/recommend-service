@@ -51,6 +51,30 @@ public class MessageBoardServiceImpl implements MessageBoardService {
     }
 
     @Override
+    public List<MessageBoard> queryAll1(String uName, long beginTime, long outTime) {
+        List<MessageBoard> messageBoards = messageBoardDao.queryByName1(uName, beginTime, outTime);
+        for (MessageBoard messageBoard : messageBoards) {
+            String uTime = messageBoard.getUTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String nowTime = sdf.format(new Date(Long.parseLong(uTime)));
+            messageBoard.setUTime(nowTime);
+        }
+        return messageBoards;
+    }
+
+    @Override
+    public List<MessageBoard> queryAll2(long beginTime, long outTime) {
+        List<MessageBoard> messageBoards = messageBoardDao.queryAll2(beginTime, outTime);
+        for (MessageBoard messageBoard : messageBoards) {
+            String uTime = messageBoard.getUTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String nowTime = sdf.format(new Date(Long.parseLong(uTime)));
+            messageBoard.setUTime(nowTime);
+        }
+        return messageBoards;
+    }
+
+    @Override
     public boolean deleteById(String uId, String uTime) throws ParseException {
         //时间戳转换为时间
         //时间戳

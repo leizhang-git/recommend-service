@@ -32,9 +32,9 @@ public class StatisticsScoreTest {
         List<String> allUniversityId = universityDao.selectAllId();
         List<String> allMajorId = majorDao.selectAllId();
 //        for (String universityId : allUniversityId) {
-        for (int i = 2016; i <= 2019; i++) {
+        for (int i = 2016; i <= 2020; i++) {
             for (String majorId : allMajorId) {
-                double avgScore = Math.random() * (50) + 670;       //（max - min） + min  范围 min ~ max
+                double avgScore = Math.random() * (40) + 620;       //（max - min） + min  范围 min ~ max
                 double diffValue = Math.random() * (10) + 4;
                 double diffValue1 = Math.random() * (10) + 3;
                 DecimalFormat decimalFormat = new DecimalFormat(".#");
@@ -44,7 +44,7 @@ public class StatisticsScoreTest {
                 double score = Double.parseDouble(st);
                 double v = Double.parseDouble(st1);
                 double v1 = Double.parseDouble(st2);
-                StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo("1ac93019a28d11eb814d00e04c7c8cb3", majorId, i, score, score - v, score + v1);
+                StatisticsScoreInfo statisticsScoreInfo = new StatisticsScoreInfo("c23a7ebac20811eb82a600e04c7c8cb3", majorId, i, score, score - v, score + v1);
                 statisticsScoreDao.insertStatisticsScore(statisticsScoreInfo);
             }
         }

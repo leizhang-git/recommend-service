@@ -22,7 +22,7 @@ public class UniversityDaoTest {
 
     @Test
     public void insertUniversity() {
-        UniversityInfo universityInfo = new UniversityInfo("野鸡大学", "test","test", "北京市");
+        UniversityInfo universityInfo = new UniversityInfo("包头师范学院", "NH","包头师范学院坐落于内蒙古自治区包头市，是集全日制研究生教育、本科、专科教育、高等职业技术教育、继续教育为一身，融职前培养与职后培训为一体的普通高等师范院校。", "内蒙古自治区");
         boolean isSuccess = universityDao.insertUniversity(universityInfo);
         System.out.println(isSuccess);
     }

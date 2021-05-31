@@ -32,6 +32,9 @@ public interface MessageBoardDao {
     @Select("select `u_id`,`u_name`,`u_time`,`u_date` from `message_board`")
     List<MessageBoard> queryAll();
 
+    @Select("select `u_id`,`u_name`,`u_time`,`u_date` from `message_board` where `u_time` between #{beginTime} and #{outTime}")
+    List<MessageBoard> queryAll2(@Param("beginTime") long beginTime, @Param("outTime") long outTime);
+
     /**
      * 根据名称查询
      * @param uName 姓名
@@ -40,6 +43,8 @@ public interface MessageBoardDao {
     @Select("select `u_id`,`u_name`,`u_time`,`u_date` from `message_board` where `u_name` = #{uName}")
     List<MessageBoard> queryByName(@Param("uName") String uName);
 
+    @Select("select `u_id`,`u_name`,`u_time`,`u_date` from `message_board` where `u_name` = #{uName} and `u_time` between #{beginTime} and #{outTime}")
+    List<MessageBoard> queryByName1(@Param("uName") String uName, @Param("beginTime") long beginTime, @Param("outTime") long outTime);
     /**
      * 删除该留言信息
      * @param uId 用户Id

@@ -19,6 +19,9 @@
             <if test="universityName != null">
                 university_name,
             </if>
+            <if test="universityCode != null">
+                university_Code,
+            </if>
             <if test="universityDesc != null">
                 university_desc,
             </if>
@@ -32,6 +35,9 @@
             </if>
             <if test="universityName != null">
                 #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityCode != null">
+                #{universityCode,jdbcType=VARCHAR},
             </if>
             <if test="universityDesc != null">
                 #{universityDesc,jdbcType=LONGVARCHAR},

@@ -15,5 +15,9 @@ public interface MessageBoardService {
 
     List<MessageBoard> queryAll(String uName);
 
+    List<MessageBoard> queryAll1(String uName, long beginTime, long outTime);
+
+    List<MessageBoard> queryAll2(long beginTime, long outTime);
+
     boolean deleteById(String uId, String uTime) throws ParseException;
 }
