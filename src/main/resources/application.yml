@@ -1,0 +1,26 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.42.89.18:3306/volunteer_Administration?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8&serverTimezone=UTC&serverTimezone=GMT%2B8
+    username: root
+    password: 1870535196
+server:
+  port: 8083
+
+mybatis:
+  configuration:
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+  type-aliases-package: cn.imut.ncee.dao
+  mapper-locations: classpath:dao/*Dao.xml
+
+# Pagehelper分页配置
+pagehelper:
+  helper-dialect: mysql
+  #reasonable：当设置为true时，pageNum <= 0时，显示第1页，pageNum 超过 pageSize时，显示最后一页
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
