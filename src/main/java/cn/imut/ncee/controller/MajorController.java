@@ -6,6 +6,7 @@ import cn.imut.ncee.util.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 @RequestMapping("/api/v1/major")
 public class MajorController {
 
-    @Autowired
+    @Resource
     private MajorService majorService;
 
 

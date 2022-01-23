@@ -1,11 +1,13 @@
 package cn.imut.ncee.controller;
 
+import cn.hutool.core.util.StrUtil;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
 import cn.imut.ncee.util.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,7 @@ import java.util.Map;
 @RequestMapping("/api/v1/message")
 public class MessageBoardController {
 
-    @Autowired
+    @Resource
     private MessageBoardService messageBoardService;
 
     /**
@@ -29,8 +31,8 @@ public class MessageBoardController {
      */
     @PostMapping("/queryMessage")
     public Results<?> queryAll(@RequestBody Map<String,String> infos) {
-        if(infos.get("beginTime") != null && infos.get("outTime") != null) {
-            if(infos.get("uName") != null) {
+        if(StrUtil.isNotEmpty(infos.get("beginTime"))  && StrUtil.isNotEmpty(infos.get("outTime"))) {
+            if(StrUtil.isNotEmpty(infos.get("uName"))) {
                 List<MessageBoard> messageBoards = messageBoardService.queryAll1(infos.get("uName"), Long.parseLong(infos.get("beginTime")), Long.parseLong(infos.get("outTime")));
                 return Results.dataOf(messageBoards);
             }else {

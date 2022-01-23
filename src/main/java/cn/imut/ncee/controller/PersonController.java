@@ -29,7 +29,7 @@ public class PersonController {
      * @return 是否登陆成功
      */
     @PostMapping("/login")
-    public Results<Boolean> login(@RequestBody Map<String,String> loginInfo) {
+    public Results<?> login(@RequestBody Map<String,String> loginInfo) {
         List<Person> person = personService.login(loginInfo.get("id"), loginInfo.get("password"));
         return Results.dataOf(person.get(0));
     }
@@ -40,7 +40,7 @@ public class PersonController {
      * @return 是否登陆成功
      */
     @PostMapping("/update")
-    public Results<Boolean> updatePWD(@RequestBody Map<String,String> loginInfo) {
+    public Results<?> updatePWD(@RequestBody Map<String,String> loginInfo) {
         boolean isSuccess = personService.update(loginInfo.get("oldP"), loginInfo.get("newP"), loginInfo.get("id"));
         return Results.dataOf(isSuccess);
     }
@@ -51,7 +51,7 @@ public class PersonController {
      * @return 是否成功注册
      */
     @PostMapping("/register")
-    public Results<Boolean> register(@RequestBody Person person) {
+    public Results<?> register(@RequestBody Person person) {
         boolean isSuccess = personService.register(person);
         return Results.dataOf(isSuccess);
     }

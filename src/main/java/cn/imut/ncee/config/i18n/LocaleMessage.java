@@ -1,6 +1,5 @@
 package cn.imut.ncee.config.i18n;
 
-import cn.imut.ncee.util.SpringContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component

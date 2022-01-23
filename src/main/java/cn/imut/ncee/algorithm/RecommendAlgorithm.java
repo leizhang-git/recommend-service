@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Map;
 @Component
 public class RecommendAlgorithm {
 
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     /**
