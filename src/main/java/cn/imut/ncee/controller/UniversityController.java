@@ -2,7 +2,7 @@ package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.pojo.UniversityInfo;
 import cn.imut.ncee.service.UniversityService;
-import cn.imut.ncee.utils.Results;
+import cn.imut.ncee.util.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

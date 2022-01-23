@@ -1,4 +1,4 @@
-package cn.imut.ncee.utils;
+package cn.imut.ncee.util;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

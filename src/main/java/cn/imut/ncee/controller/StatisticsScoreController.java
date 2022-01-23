@@ -4,7 +4,7 @@ import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
-import cn.imut.ncee.utils.Results;
+import cn.imut.ncee.util.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

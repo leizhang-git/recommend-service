@@ -1,7 +1,6 @@
-package cn.imut.ncee.utils;
+package cn.imut.ncee.util;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * MD5编码工具类

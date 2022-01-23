@@ -7,7 +7,7 @@ import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
-import cn.imut.ncee.utils.MD5Utils;
+import cn.imut.ncee.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
