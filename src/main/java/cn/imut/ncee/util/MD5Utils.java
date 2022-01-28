@@ -1,5 +1,8 @@
 package cn.imut.ncee.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.security.MessageDigest;
 
 /**
@@ -8,6 +11,8 @@ import java.security.MessageDigest;
  * @Date 2021/4/19 20:33
  */
 public class MD5Utils {
+
+    private static Logger log = LoggerFactory.getLogger(MD5Utils.class);
 
     /**
      * MD5加密
@@ -19,8 +24,7 @@ public class MD5Utils {
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (Exception e) {
-            System.out.println(e.toString());
-            e.printStackTrace();
+            log.info("",e);
             return "";
         }
         char[] charArray = inStr.toCharArray();

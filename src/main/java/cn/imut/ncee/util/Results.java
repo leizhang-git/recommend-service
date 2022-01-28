@@ -16,9 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Results<T> {
 
-    public static final Results OK = new Results(true);
+    public static final Results<?> OK = new Results<>(true);
 
-    public static final Results FAIL = errorOf("操作失败");
+    public static final Results<?> FAIL = errorOf("操作失败");
     private static final String TOTAL = "total";
     private static final String PAGE_SIZE = "pageSize";
     private static final String PAGE_NUMBER = "pageNumber";
@@ -46,7 +46,7 @@ public class Results<T> {
     /**
      * 分页信息
      */
-    private HashMap page;
+    private HashMap<String, Object> page;
 
     private Results(boolean success) {
         this.success = success;
@@ -65,7 +65,7 @@ public class Results<T> {
 
     private Results(T data, int pageNum, int pageSize, long total) {
         this(data);
-        this.page = new HashMap();
+        this.page = new HashMap<>();
         this.page.put(PAGE_NUMBER, pageNum);
         this.page.put(PAGE_SIZE, pageSize);
         this.page.put(TOTAL, total);
@@ -76,8 +76,8 @@ public class Results<T> {
      * @param t 结果对象数据
      * @return
      */
-    public static Results dataOf(Object t) {
-        return new Results(t);
+    public static Results<?> dataOf(Object t) {
+        return new Results<>(t);
     }
 
     /**
@@ -85,7 +85,7 @@ public class Results<T> {
      * @param page 分页对象
      * @return
      */
-    public static Results pageOf(Page<?> page) {
+    public static Results<?> pageOf(Page<?> page) {
         return pageOf(page.getContent(), page.getNumber(), page.getSize(), page.getTotalElements());
     }
 
@@ -97,8 +97,8 @@ public class Results<T> {
      * @param total 总条数
      * @return
      */
-    public static Results pageOf(List<?> data, int pageNum, int pageSize, long total) {
-        return new Results(data, pageNum, pageSize, total);
+    public static Results<?> pageOf(List<?> data, int pageNum, int pageSize, long total) {
+        return new Results<>(data, pageNum, pageSize, total);
     }
 
     /**
@@ -106,7 +106,7 @@ public class Results<T> {
      * @param msg 错误消息
      * @return
      */
-    public static Results errorOf(String msg) {
+    public static Results<?> errorOf(String msg) {
         return errorOf("500", msg);
     }
 
@@ -116,7 +116,7 @@ public class Results<T> {
      * @param msg 错误消息
      * @return
      */
-    public static Results errorOf(String errorCode, String msg) {
-        return new Results(false, errorCode, msg);
+    public static Results<?> errorOf(String errorCode, String msg) {
+        return new Results<>(false, errorCode, msg);
     }
 }

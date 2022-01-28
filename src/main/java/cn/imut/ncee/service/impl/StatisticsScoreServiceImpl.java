@@ -96,26 +96,20 @@ public class StatisticsScoreServiceImpl implements StatisticsScoreService {
             String majorId = majorDao.selectByName(majorName);
             return statisticsScoreDao.selectByMajor1(majorId);
         }
+        assert majorName != null;
         if(majorName.length() == 0) {
             List<MajorScore> list = new ArrayList<>();
             return list;
         }
-        if (majorName.length() != 0 && years.length() != 0) {
-            String majorId = majorDao.selectByName(majorName);
+        String majorId = majorDao.selectByName(majorName);
+        if (years.length() != 0) {
             return statisticsScoreDao.selectByMajor(majorId, years);
-        } else if(majorName.length() != 0 && years.length() == 0) {
-            String majorId = majorDao.selectByName(majorName);
+        } else {
             if(majorId != null) {
                 return statisticsScoreDao.selectByMajor1(majorId);
             }else {
                 return null;
             }
-        } else if(years == null && majorName != null) {
-            String majorId = majorDao.selectByName(majorName);
-            return statisticsScoreDao.selectByMajor1(majorId);
-        } else {
-            List<MajorScore> list = new ArrayList<>();
-            return list;
         }
     }
 
