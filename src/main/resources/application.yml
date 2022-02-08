@@ -6,6 +6,11 @@ spring:
     url: jdbc:mysql://101.42.89.18:3306/volunteer_Administration?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8&serverTimezone=UTC&serverTimezone=GMT%2B8
     username: root
     password: 1870535196
+  # 默认密码
+  security:
+    user:
+      name: admin
+      password: admin
 server:
   port: 8083
 
@@ -24,3 +29,8 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
 
+logging:
+  level:
+    org:
+      springframework:
+        security: info
