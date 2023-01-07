@@ -41,10 +41,7 @@ public class MessageUtils implements ApplicationContextAware {
         String locale = "";
         if(StrUtil.isEmpty(locale)) {
             return new Locale(Locale.SIMPLIFIED_CHINESE.getLanguage(), Locale.SIMPLIFIED_CHINESE.getCountry());
-        } else if(locale.contains("_")) {
-            String[] split = locale.split("_");
-            return new Locale(split[0], split[1]);
-        }else {
+        } else {
             return new Locale(locale, locale);
         }
     }
