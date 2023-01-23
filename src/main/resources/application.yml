@@ -3,9 +3,9 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://124.223.166.13:3306/volunteer_Administration?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8&serverTimezone=UTC&serverTimezone=GMT%2B8
-    username: root
-    password: 1870535196
+    url: ENC(8MrBC3CT0x8MJa+PUQQbvwyo+xK3glydbcIopHKLwVWsrGzdByA53hQmtrHtGLfG6jc0pTPZpYCdJvr26GnNvkGsEmgLgwlfdNuDJ7q7VM9ZmF2BupH/o3q6BCCr8Lobekys/14Qrd7qs5OrnibUPCCn4F+unsn+5lWoJiNFdSGRz2X+q+tLruWUZZ+UPiQ68llEiCq7DiwBuU5619FjwUsYmzjFjDlmtDPq+Ymx2FefZPswLadC9YPZqrvqZq0N)
+    username: ENC(Ze6FRaaX2+TbJ6p01l1h2kDJD6sdZIjyIEVmOoy6AhI5q5AufdAPUoPmfSZH1ZX1)
+    password: ENC(CA4GYOz552fzde29SLdKCQ2h7eyieghExFEmWm1oTf8FTQJm1QTnUWitLVJFq2R7)
   # 默认密码
   security:
     user:
@@ -13,7 +13,6 @@ spring:
       password: admin
 server:
   port: 8083
-
 mybatis:
   configuration:
     # 开启驼峰命名
@@ -34,3 +33,8 @@ logging:
     org:
       springframework:
         security: info
+jasypt:
+  encryptor:
+    #盐值
+    password: AreYouOK
+    algorithm: PBEWITHHMACSHA512ANDAES_256
