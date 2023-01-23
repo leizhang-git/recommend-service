@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <mybatis.version>3.0.1</mybatis.version>
+        <mybatis.version>2.1.3</mybatis.version>
         <github.pagehelper.version>1.4.6</github.pagehelper.version>
         <fastjson.version>2.0.23</fastjson.version>
         <hutool.version>5.8.11</hutool.version>
