@@ -14,13 +14,13 @@ import java.util.List;
 
 @MapperScan("cn.imut.ncee.dao")
 @SpringBootApplication()
-public class VolunteerAdministrationDemoApplication {
+public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(VolunteerAdministrationDemoApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     private final Environment environment;
 
-    public VolunteerAdministrationDemoApplication(Environment environment) {
+    public Application(Environment environment) {
         this.environment = environment;
     }
 
@@ -32,7 +32,7 @@ public class VolunteerAdministrationDemoApplication {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = SpringApplication.run(VolunteerAdministrationDemoApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
         int beanCount = ctx.getBeanDefinitionCount();
         log.info("\n========================================= bean 数量为 ：{}", beanCount);
         Environment env = ctx.getEnvironment();
