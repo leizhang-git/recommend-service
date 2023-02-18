@@ -10,9 +10,9 @@ import java.security.MessageDigest;
  * @Author zhanglei
  * @Date 2021/4/19 20:33
  */
-public class MD5Utils {
+public class MD5Util {
 
-    private static Logger log = LoggerFactory.getLogger(MD5Utils.class);
+    private static Logger log = LoggerFactory.getLogger(MD5Util.class);
 
     /**
      * MD5加密

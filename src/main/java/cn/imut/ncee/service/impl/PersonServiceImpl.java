@@ -7,7 +7,7 @@ import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
-import cn.imut.ncee.util.MD5Utils;
+import cn.imut.ncee.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +34,8 @@ public class PersonServiceImpl implements PersonService {
         if(person.getId().length() != 0 && person.getName().length() != 0 && person.getPassword().length() != 0) {
             String s = personDao.selectId(person.getId());
             if(s == null) {
-                String md5Password = MD5Utils.stringMD5(person.getPassword());
-                String password = MD5Utils.convertMD5(md5Password);
+                String md5Password = MD5Util.stringMD5(person.getPassword());
+                String password = MD5Util.convertMD5(md5Password);
                 person.setPassword(password);
                 return personDao.register(person);
             }else {
@@ -49,8 +49,8 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> login(String personId, String personPassword) {
         String password = personDao.login(personId);
         if(password != null) {
-            String md5 = MD5Utils.convertMD5(password);
-            if(md5.equals(MD5Utils.stringMD5(personPassword))) {
+            String md5 = MD5Util.convertMD5(password);
+            if(md5.equals(MD5Util.stringMD5(personPassword))) {
                 return personDao.selectByIdPerson(personId);
             }
             return null;
@@ -95,11 +95,11 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public boolean update(String oldP, String newP, String id) {
         String password = personDao.login(id);
-        String newPass = MD5Utils.convertMD5(password);
-        String oldPass = MD5Utils.stringMD5(oldP);
+        String newPass = MD5Util.convertMD5(password);
+        String oldPass = MD5Util.stringMD5(oldP);
         if(newPass.equals(oldPass)) {
-            String md5 = MD5Utils.stringMD5(newP);
-            String pass = MD5Utils.convertMD5(md5);
+            String md5 = MD5Util.stringMD5(newP);
+            String pass = MD5Util.convertMD5(md5);
             return personDao.update(pass, id);
         }
         return false;
