@@ -7,8 +7,7 @@ import lombok.*;
  * @Author zhanglei
  * @Date 2021/1/27 17:11
  */
-@Getter
-@Setter
+@Data
 public class Person {
 
     /**
@@ -35,6 +34,11 @@ public class Person {
      * 用户角色
      */
     private String role;
+
+    /**
+     * 组织
+     */
+    private String org;
 
 
     public Person() {
