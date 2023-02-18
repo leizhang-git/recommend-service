@@ -24,6 +24,27 @@ spring:
       path: /
   messages:
     basename: lang/MESSAGE
+  kafka:
+    producer:
+      retries: 0
+      batch-size: 16348
+      bootstrap-servers: xxx.xx.xx.xx:xx
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+    consumer:
+      group-id: test-consumer-group
+      bootstrap-servers: xxx.xx.xx.xx:xx
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      heartbeat-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+kafka:
+  producer:
+    topic: testTopic
+  consumer:
+    topic: xxx
 server:
   port: 8083
   servlet:
