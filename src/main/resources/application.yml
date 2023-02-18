@@ -40,6 +40,12 @@ spring:
       heartbeat-interval: 100
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  redis:
+    host: 124.223.166.13
+    port: 6379
+    password: ENC(kMPMUVszI1pOZG3cE66Pag839AZz5E/D7blYmuGMOKI0CAKSLhpMF/E00p5Hq3iA)
+build:
+  platform: JWT
 kafka:
   producer:
     topic: testTopic
