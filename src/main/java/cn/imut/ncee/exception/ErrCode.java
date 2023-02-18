@@ -9,7 +9,22 @@ public enum ErrCode {
     /**
      * zookeeper创建节点失败
      */
-    SYS_ZOOK_CREATE_ERROR("SYS-00001", "sys.zook.create.error");
+    SYS_ZOOK_CREATE_ERROR("SYS-00001", "sys.zook.create.error"),
+
+    /**
+     * zookeeper设置节点数据失败
+     */
+    SYS_ZOOK_SET_NODE_ERROR("SYS-00002", "sys.zook.set.node.error"),
+
+    /**
+     * 公共接口报错
+     */
+    SYS_COMMON_INTERFACE_ERROR("SYS-00003", "sys.common.interface.error"),
+
+    /**
+     * 刪除节点失败
+     */
+    SYS_ZOOK_DELETE_ERROR("SYS-00004", "sys.zook.delete.error");
 
     /**
      * 异常编码

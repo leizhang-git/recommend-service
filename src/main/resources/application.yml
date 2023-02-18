@@ -74,7 +74,23 @@ threadpool:
   keep_alive_seconds: 60
   #线程池名称
   default_name: t-pool
-
+zookeeper:
+  # 是否开启
+  enabled: true
+  # 服务器地址
+  server: xxx
+  # 命名空间
+  nameSpace: test
+  # 权限加密
+  digest: xxx=xxx
+  # 会话超时时间
+  sessionTimeoutMs: 3000
+  # 连接超时时间
+  connectionTimeoutMs: 60000
+  # 最大重试次数
+  maxRetries: 2
+  # 初始休眠时间
+  baseSleepTimeMs: 1000
 system:
   session:
       whiteList:
