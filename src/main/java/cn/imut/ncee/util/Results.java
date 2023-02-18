@@ -31,7 +31,7 @@ public class Results<T> {
     /**
      * 异常编码
      */
-    private String errorCode;
+    private String errCode;
 
     /**
      * 错误原因
@@ -54,7 +54,7 @@ public class Results<T> {
 
     private Results(boolean success, String errorCode, String msg) {
         this(success);
-        this.errorCode = errorCode;
+        this.errCode = errorCode;
         this.msg = msg;
     }
 
