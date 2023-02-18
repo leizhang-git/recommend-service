@@ -1,5 +1,6 @@
 spring:
   main:
+    #开启覆盖名称相同bean
     allow-bean-definition-overriding: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,8 +19,23 @@ spring:
       enabled: true
       max-file-size: 100MB
       max-request-size: 100MB
+  mvc:
+    servlet:
+      path: /
+  messages:
+    basename: lang/MESSAGE
 server:
   port: 8083
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  compression:
+    # 开启压缩
+    enabled: true
+    # 开启压缩数据的最小长度
+    min-response-size: 2048
+    mime-types: text/html, text/xml, text/plain, text/css, application/javascript, application/json
 mybatis:
   configuration:
     # 开启驼峰命名
@@ -58,3 +74,8 @@ threadpool:
   keep_alive_seconds: 60
   #线程池名称
   default_name: t-pool
+
+system:
+  session:
+      whiteList:
+      greyList:
