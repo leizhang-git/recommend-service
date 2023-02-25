@@ -26,7 +26,7 @@ public class SettingUtil {
     private static PlatformEnum[] auths = new PlatformEnum[]{PlatformEnum.JWT};
 
     static {
-        Resource app = new ClassPathResource("application.yaml");
+        Resource app = new ClassPathResource("application.yml");
         YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
         yamlPropertiesFactoryBean.setResources(app);
         properties = yamlPropertiesFactoryBean.getObject();
