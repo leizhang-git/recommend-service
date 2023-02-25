@@ -51,11 +51,11 @@ spring:
       #listner负责ack，每调用一次，就立即commit
       ack-mode: manual_immediate
       missing-topics-fatal: false
-    bootstrap-servers: 119.96.113.206:9092
+    bootstrap-servers: ENC(nqrONb3CGE/pZxVKKqe4X6Q0V6z2oa/WRM6MsL6Atjde93RWEpK4ikDjVygc4SyUE8KHhtpLAxPVu96iXpdU8w==)
   redis:
-    host: 119.96.113.206
+    host: ENC(RFoIAwLtVD0PH/rrHEWUXsti2zlEssTWFHHg4SsECk1Ui2HnZGablEnKt/uvqdEe)
     port: 6379
-    password: 666666666
+    password: ENC(hD5WXIFWfRwmYecGb05DVURCpT6t4AzlB+fomBxkQVOkPbBZ4Q2sOqye5ERK7Ezs)
 build:
   platform: JWT
 kafka:
@@ -117,7 +117,7 @@ zookeeper:
   # 是否开启
   enabled: true
   # 服务器地址
-  server: 119.96.113.206
+  server: ENC(do0pjBHzV6EG86HeyCq77QZrQspkLFPqbiDo1hVwGoYYuDCt8y9m/YhlGVRFI6Gj)
   # 命名空间
   nameSpace: test
   # 权限加密
