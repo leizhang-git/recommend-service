@@ -4,14 +4,9 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ENC(8MrBC3CT0x8MJa+PUQQbvwyo+xK3glydbcIopHKLwVWsrGzdByA53hQmtrHtGLfG6jc0pTPZpYCdJvr26GnNvkGsEmgLgwlfdNuDJ7q7VM9ZmF2BupH/o3q6BCCr8Lobekys/14Qrd7qs5OrnibUPCCn4F+unsn+5lWoJiNFdSGRz2X+q+tLruWUZZ+UPiQ68llEiCq7DiwBuU5619FjwUsYmzjFjDlmtDPq+Ymx2FefZPswLadC9YPZqrvqZq0N)
-    username: ENC(Ze6FRaaX2+TbJ6p01l1h2kDJD6sdZIjyIEVmOoy6AhI5q5AufdAPUoPmfSZH1ZX1)
-    password: ENC(CA4GYOz552fzde29SLdKCQ2h7eyieghExFEmWm1oTf8FTQJm1QTnUWitLVJFq2R7)
-  # 默认密码
-  security:
-    user:
-      name: admin
-      password: admin
+    url: ENC(wrtJNLaH9x8vFhIlCUHaY4NfhE/yL4QXJlLkzwIeZ4/L0opLRumQd8JubiEOA8BdvoTi5c1tqh2F1frDPu940llF74ODLETu09x9lJUXMdQUo4SsY9vbubsX1cdloifaUkkk4hqn6MUoF0GsFggI3YjB2yqEbfjrUjPclcotj4TFAyRwzGX98RQjxMguTRndAoZ4Rn7WEuzGyDu7zGOiNkfUp67K2LpYBz/YYfRB+vmlivLzZF0pUlytRjgIzWXh)
+    username: ENC(j4Vn9PmJ4/yHzAw2jrrOyG9dDC0gnI/OR1h+a5THUWbsRoTFnQlrL4rS7Z3qKkYj)
+    password: ENC(4Hox9tSLgl5wOQed+jzVkoJMtqPvFGx4UgUYp1xGZ92qi5WWGGIofDLC30ImgVb6)
   application:
     name: volunteer_administration
   servlet:
@@ -22,6 +17,8 @@ spring:
   mvc:
     servlet:
       path: /
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   messages:
     basename: lang/MESSAGE
   kafka:
@@ -51,11 +48,11 @@ spring:
       #listner负责ack，每调用一次，就立即commit
       ack-mode: manual_immediate
       missing-topics-fatal: false
-    bootstrap-servers: ENC(nqrONb3CGE/pZxVKKqe4X6Q0V6z2oa/WRM6MsL6Atjde93RWEpK4ikDjVygc4SyUE8KHhtpLAxPVu96iXpdU8w==)
+    bootstrap-servers: ENC(KtjL91XGLWTPuoRJfdlV7157uUrfNNXfrQRlBTJ1RE2BDb7YtwqacTFMcguvmcl7KR18IiGwoDIuJ3v53SF11w==)
   redis:
-    host: ENC(RFoIAwLtVD0PH/rrHEWUXsti2zlEssTWFHHg4SsECk1Ui2HnZGablEnKt/uvqdEe)
+    host: ENC(BaVTmxetWQCPcjU+jIzkbbzwV+jPMreI6AwukFnlHfZ3MrZc1pUoNvUTa42rB2q3)
     port: 6379
-    password: ENC(hD5WXIFWfRwmYecGb05DVURCpT6t4AzlB+fomBxkQVOkPbBZ4Q2sOqye5ERK7Ezs)
+    password: ENC(b2c2vGgIz8wsagkjF8ZeAdmiGbG+TQ3BPx7OsCwmfZaxjEdxswtFpB5hggyzws2b)
 build:
   platform: JWT
 kafka:
@@ -117,7 +114,7 @@ zookeeper:
   # 是否开启
   enabled: true
   # 服务器地址
-  server: ENC(do0pjBHzV6EG86HeyCq77QZrQspkLFPqbiDo1hVwGoYYuDCt8y9m/YhlGVRFI6Gj)
+  server: ENC(p1pb8eMIp5iFO4YVE7ut+fFpHMFGyp/9qtuZ2qf4juoqZqcIao5jVc0f3ECiJyhU)
   # 命名空间
   nameSpace: test
   # 权限加密
@@ -134,3 +131,13 @@ system:
   session:
       whiteList:
       greyList:
+application:
+  jwt:
+    # 过期时间，30天
+    expireTime: 25920000
+    whiteUrls:
+      - /jwt/
+      - /version
+      - /api/v1/person/login
+os:
+  enableCORS: true
