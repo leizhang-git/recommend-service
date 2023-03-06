@@ -24,7 +24,17 @@ public enum ErrCode {
     /**
      * 刪除节点失败
      */
-    SYS_ZOOK_DELETE_ERROR("SYS-00004", "sys.zook.delete.error");
+    SYS_ZOOK_DELETE_ERROR("SYS-00004", "sys.zook.delete.error"),
+
+    /**
+     * key为null
+     */
+    SYS_JWT_NULL_ERROR("SYS-00005", "sys.jwt.null.error"),
+
+    /**
+     * jwtToken超时,请重新获取
+     */
+    SYS_JWT_KEY_TIMEOUT_ERROR("SYS-00006", "sys.jwt.key.timeout.error");
 
     /**
      * 异常编码

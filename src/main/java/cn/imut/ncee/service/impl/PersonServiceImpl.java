@@ -3,11 +3,15 @@ package cn.imut.ncee.service.impl;
 import cn.imut.ncee.algorithm.RecommendAlgorithm;
 import cn.imut.ncee.dao.MessageBoardDao;
 import cn.imut.ncee.dao.PersonDao;
+import cn.imut.ncee.domain.enums.JWTEnum;
 import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.util.MD5Util;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +24,16 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private PersonDao personDao;
 
     @Autowired
     private MessageBoardDao messageBoardDao;
+
+    @Autowired
+    private JWTServiceImpl jwtService;
 
     @Autowired
     private RecommendAlgorithm recommendAlgorithm;
@@ -48,9 +57,11 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> login(String personId, String personPassword) {
         String password = personDao.login(personId);
-        if(password != null) {
+        if(StringUtils.isNotBlank(password)) {
             String md5 = MD5Util.convertMD5(password);
-            if(md5.equals(MD5Util.stringMD5(personPassword))) {
+            if(StringUtils.isNotBlank(md5) && md5.equals(MD5Util.stringMD5(personPassword))) {
+                String token = jwtService.createToken(JWTEnum.AK.getValue());
+                log.info("token is {}", token);
                 return personDao.selectByIdPerson(personId);
             }
             return null;

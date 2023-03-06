@@ -1,7 +1,6 @@
 package cn.imut.ncee.algorithm;
 
 import cn.imut.ncee.entity.pojo.AlgorithmIndex;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 

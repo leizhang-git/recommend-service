@@ -1,10 +1,12 @@
 package cn.imut.ncee;
 
+import cn.imut.ncee.config.ApplicationProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
@@ -14,6 +16,7 @@ import java.util.List;
 
 @MapperScan("cn.imut.ncee.dao")
 @SpringBootApplication()
+@EnableConfigurationProperties({ApplicationProperties.class})
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);

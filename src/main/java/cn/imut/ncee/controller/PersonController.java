@@ -1,5 +1,6 @@
 package cn.imut.ncee.controller;
 
+import cn.imut.ncee.dto.LoginDTO;
 import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
@@ -25,12 +26,12 @@ public class PersonController {
 
     /**
      * 登陆
-     * @param loginInfo 账号（邮箱）,密码
+     * @param loginDTO 账号（邮箱）,密码
      * @return 是否登陆成功
      */
     @PostMapping("/login")
-    public Results<?> login(@RequestBody Map<String,String> loginInfo) {
-        List<Person> person = personService.login(loginInfo.get("id"), loginInfo.get("password"));
+    public Results<?> login(@RequestBody LoginDTO loginDTO) {
+        List<Person> person = personService.login(loginDTO.getAccount(), loginDTO.getPwd());
         return Results.dataOf(person.get(0));
     }
 
