@@ -29,7 +29,8 @@ public class AESUtil {
     private static final String CIPHER_CBC_PADDING = "AES/CBC/PKCS5Padding";
 
     //偏移量(CBC中使用，增强加密算法强度)
-    private static final String IV_SEED = "996996996996";
+    private static final String IV_SEED = "996996996996996Q";
+
 
     /**
      * 加密

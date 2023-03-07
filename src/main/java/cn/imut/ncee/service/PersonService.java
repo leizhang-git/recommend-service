@@ -6,6 +6,7 @@ import cn.imut.ncee.entity.vo.MessageBoard;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public interface PersonService {
      * @param personPassword 用户密码
      * @return 是否成功登陆
      */
-    List<Person> login(String personId, String personPassword);
+    List<Person> login(String personId, String personPassword, HttpServletResponse response);
 
     /**
      * 修改用户信息

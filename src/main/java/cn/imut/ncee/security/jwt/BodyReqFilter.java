@@ -51,7 +51,9 @@ public class BodyReqFilter implements Filter {
                 requestBody = StreamUtils.copyToByteArray(request.getInputStream());
             }
             requestBodyStr = null;   //强制刷新为null
-            log.info("requestBodyStr已经设置完毕. requestBodyStr is {}", requestBodyStr);
+            log.info("requestBodyStr已经设置完毕. requestBodyStr is {}", (Object) null);
+        }else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 

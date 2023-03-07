@@ -3,11 +3,13 @@ package cn.imut.ncee.service.impl;
 import cn.imut.ncee.algorithm.RecommendAlgorithm;
 import cn.imut.ncee.dao.MessageBoardDao;
 import cn.imut.ncee.dao.PersonDao;
-import cn.imut.ncee.domain.enums.JWTEnum;
 import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.exception.ErrCode;
+import cn.imut.ncee.exception.SystemException;
 import cn.imut.ncee.service.PersonService;
+import cn.imut.ncee.util.AESUtil;
 import cn.imut.ncee.util.MD5Util;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -42,10 +45,9 @@ public class PersonServiceImpl implements PersonService {
     public boolean register(Person person) {
         if(person.getId().length() != 0 && person.getName().length() != 0 && person.getPassword().length() != 0) {
             String s = personDao.selectId(person.getId());
-            if(s == null) {
-                String md5Password = MD5Util.stringMD5(person.getPassword());
-                String password = MD5Util.convertMD5(md5Password);
-                person.setPassword(password);
+            if(StringUtils.isBlank(s) && StringUtils.isNotBlank(person.getPassword())) {
+                String pwd = AESUtil.encrypt(person.getPassword());
+                person.setPassword(pwd);
                 return personDao.register(person);
             }else {
                 return false;
@@ -55,16 +57,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> login(String personId, String personPassword) {
+    public List<Person> login(String personId, String personPassword, HttpServletResponse response) {
         String password = personDao.login(personId);
         if(StringUtils.isNotBlank(password)) {
-            String md5 = MD5Util.convertMD5(password);
-            if(StringUtils.isNotBlank(md5) && md5.equals(MD5Util.stringMD5(personPassword))) {
-                String token = jwtService.createToken(JWTEnum.AK.getValue());
-                log.info("token is {}", token);
-                return personDao.selectByIdPerson(personId);
+            if(!password.equals(personPassword)) {
+                throw new SystemException(ErrCode.SYS_PASSWORD_ERROR);
             }
-            return null;
+            String token = jwtService.createToken(personId, "", "");
+            log.info("token is {}", token);
+            response.setHeader("v-token", token);
+            return personDao.selectByIdPerson(personId);
         }
         return null;
     }

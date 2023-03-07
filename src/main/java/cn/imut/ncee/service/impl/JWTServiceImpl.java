@@ -1,34 +1,31 @@
 package cn.imut.ncee.service.impl;
 
-import cn.hutool.core.codec.Base32;
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.io.unit.DataUnit;
-import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.jwt.JWT;
+import cn.hutool.jwt.signers.JWTSigner;
+import cn.hutool.jwt.signers.JWTSignerUtil;
 import cn.imut.ncee.config.ApplicationProperties;
+import cn.imut.ncee.domain.enums.JWTEnum;
 import cn.imut.ncee.entity.pojo.JWTTokenEntity;
-import cn.imut.ncee.exception.ErrCode;
+import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.exception.StrException;
-import cn.imut.ncee.exception.SystemException;
 import cn.imut.ncee.repository.JWTRepository;
 import cn.imut.ncee.service.JWTService;
-import com.ctc.wstx.util.DataUtil;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import sun.misc.BASE64Decoder;
 
-import java.io.IOException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Auth zhanglei
@@ -37,6 +34,16 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class JWTServiceImpl implements JWTService {
 
+    private static final Logger log = LoggerFactory.getLogger(JWTServiceImpl.class);
+
+    static final String AUTH_TOKEN_KEY = "administration-defined-key";
+
+    static final JWTSigner jwtSigner = JWTSignerUtil.hs256(JWTEnum.AK.getValue().getBytes());
+
+    public static final String key = "vdKey";
+
+    public static final String secret = "996996996996996";
+
     private static HashMap<String, String> keyMap = new HashMap<>();
 
     @Autowired
@@ -44,6 +51,9 @@ public class JWTServiceImpl implements JWTService {
 
     @Autowired
     private ApplicationProperties applicationProperties;
+
+    @Autowired
+    private PersonServiceImpl personService;
 
     @Override
     public JWTTokenEntity getJwtTokenByOrgId(String orgId) {
@@ -76,28 +86,16 @@ public class JWTServiceImpl implements JWTService {
     }
 
     @Override
-    public String createKey(String org, String ts, String ak, String sign) {
-        HashMap<String, String> signMap = new HashMap<>();
-        signMap.put("ts", ts);
-        signMap.put("ak", ak);
-        String SK = getSecret(ak);
-        return null;
-    }
-
-    @Override
-    public String createToken(String ak) {
-        Map<String, String> payload = new HashMap<>();
-
-        return null;
-    }
-
-    @Override
     public String createToken(String login, String orgId, String ts) {
         if(StringUtils.isBlank(login)) {
             throw new StrException("id为空！");
         }
-       
-        return null;
+        Map<String, String> payload = new HashMap<>();
+        payload.put("login", login);
+        payload.put("orgId", StringUtils.isBlank(orgId) ? "defaultOrg" : orgId);
+        Person person = personService.selectByIdPerson(login).get(0);
+        payload.put("user", JSONObject.toJSONString(person));
+        return createToken(payload);
     }
 
     @Override
@@ -106,22 +104,23 @@ public class JWTServiceImpl implements JWTService {
     }
 
 
-    private PublicKey getPublicKey(String key) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
-        byte[] keyBytes;
-        keyBytes = (new BASE64Decoder()).decodeBuffer(key);
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        return keyFactory.generatePublic(keySpec);
-    }
-
-    public static String getSecret(String ak){
-        String encodeStr = Base32.encode(ak);
-        if(StringUtils.isNotEmpty(encodeStr)){
-            String encodeAk = encodeStr.replaceAll("=","");
-            String s = keyMap.get(encodeAk);
-            return Base32.decodeStr(s);
-        }
-        return null;
+    /**
+     * 生成jwt Token
+     * @param payload 信息
+     * @return token
+     */
+    public static String createToken(Map<String, String> payload) {
+        Date date = new Date();
+        log.info("date is {}", date.getTime());
+        String authToken = SecureUtil.md5(SecureUtil.sha256(key + "_" + DateUtil.formatDateTime(date) + "_" + secret));
+        //增加自定义签名
+        payload.put(AUTH_TOKEN_KEY, authToken);
+        //创建jwt签名
+        return JWT.create()
+                .addPayloads(payload)
+                .setIssuedAt(date)
+                .setExpiresAt(DateUtil.endOfDay(date))
+                .sign(jwtSigner);
     }
 
 }

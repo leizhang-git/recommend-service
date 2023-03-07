@@ -9,6 +9,8 @@ import cn.imut.ncee.util.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +32,8 @@ public class PersonController {
      * @return 是否登陆成功
      */
     @PostMapping("/login")
-    public Results<?> login(@RequestBody LoginDTO loginDTO) {
-        List<Person> person = personService.login(loginDTO.getAccount(), loginDTO.getPwd());
+    public Results<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request, HttpServletResponse response) {
+        List<Person> person = personService.login(loginDTO.getAccount(), loginDTO.getPwd(), response);
         return Results.dataOf(person.get(0));
     }
 

@@ -34,7 +34,12 @@ public enum ErrCode {
     /**
      * jwtToken超时,请重新获取
      */
-    SYS_JWT_KEY_TIMEOUT_ERROR("SYS-00006", "sys.jwt.key.timeout.error");
+    SYS_JWT_KEY_TIMEOUT_ERROR("SYS-00006", "sys.jwt.key.timeout.error"),
+
+    /**
+     * 密码错误
+     */
+    SYS_PASSWORD_ERROR("SYS-00007", "sys.password.error");
 
     /**
      * 异常编码

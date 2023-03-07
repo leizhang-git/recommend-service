@@ -27,9 +27,6 @@ public interface JWTService {
      */
     boolean validateTokenExpire(Instant createTime);
 
-    String createKey(String org, String ts, String ak, String sign);
-
-    String createToken(String ak);
 
     String createToken(String login, String orgId, String ts);
 

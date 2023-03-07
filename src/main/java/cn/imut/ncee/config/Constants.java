@@ -10,5 +10,5 @@ public class Constants {
 
     public static final String TOKEN = "token";
 
-    public static final String AES_KEY="494633c3-9370-b871-e625-b4310456c611";
+    public static final String AES_KEY="as234dh677k9afio";
 }

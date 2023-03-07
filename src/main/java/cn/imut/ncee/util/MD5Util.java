@@ -59,7 +59,7 @@ public class MD5Util {
 
     //主测试类
     public static void main(String[] args) {
-        String password = "1";
+        String password = "admin";
         System.out.println("原始：" + password);
         System.out.println("MD5后：" + stringMD5(password));
         System.out.println("加密的：" + convertMD5(stringMD5(password)));
