@@ -3,7 +3,10 @@ package cn.imut.ncee.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.json.JSONUtil;
 import cn.hutool.jwt.JWT;
+import cn.hutool.jwt.JWTPayload;
+import cn.hutool.jwt.RegisteredPayload;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import cn.imut.ncee.config.ApplicationProperties;
@@ -100,7 +103,40 @@ public class JWTServiceImpl implements JWTService {
 
     @Override
     public Authentication getAuthentication(String token, String pk) {
+        jwtParse(token);
         return null;
+    }
+
+    @Override
+    public Map<String, Object> jwtParse(String token) {
+        JWT jwtToken = JWT.of(token);
+        jwtToken.setSigner(jwtSigner);
+
+        //1.验证hash256签名
+        boolean hs256Bool = jwtToken.verify();
+        if(!hs256Bool) {
+            throw new StrException("hash256签名验证失败.");
+        }
+
+        //2.验证签名时间
+        boolean validate = jwtToken.validate(120L);
+        if(!validate) {
+            throw new StrException("时间负载校验失败.");
+        }
+
+        //3.获取二重token认证校验
+        JWTPayload jwtPayload = jwtToken.getPayload();
+        Date date = jwtPayload.getClaimsJson().getDate(RegisteredPayload.ISSUED_AT);
+        String source = String.valueOf(jwtPayload.getClaim(AUTH_TOKEN_KEY));
+        String authToken = SecureUtil.md5(SecureUtil.sha256(key + "_" + DateUtil.formatDateTime(date) + "_" + secret));
+        if(StringUtils.isBlank(authToken) || !source.equals(authToken)) {
+            throw new StrException("二重身份认证校验失败.");
+        }
+
+        //4.将负载参数转换为map
+        cn.hutool.json.JSONObject claimsJson = jwtPayload.getClaimsJson();
+        claimsJson.remove(AUTH_TOKEN_KEY);
+        return (Map<String, Object>) JSONUtil.toBean(claimsJson, Map.class);
     }
 
 

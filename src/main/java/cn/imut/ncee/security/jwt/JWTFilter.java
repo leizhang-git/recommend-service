@@ -1,22 +1,22 @@
 package cn.imut.ncee.security.jwt;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import cn.imut.ncee.entity.pojo.JWTTokenEntity;
-import cn.imut.ncee.exception.ErrCode;
-import cn.imut.ncee.exception.SystemException;
+import cn.hutool.json.JSONUtil;
+import cn.imut.ncee.context.IContextInfoProxy;
+import cn.imut.ncee.dto.UserDTO;
 import cn.imut.ncee.service.JWTService;
+import cn.imut.ncee.service.impl.JWTServiceImpl;
+import cn.imut.ncee.util.SpringContextHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Map;
 
 
 public class JWTFilter implements Filter {
@@ -37,25 +37,28 @@ public class JWTFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        JWTServiceImpl jwtService = SpringContextHolder.getBean(JWTServiceImpl.class);
         servletRequest.setCharacterEncoding("utf-8");
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-        String jwtToken = decideOSToken(httpRequest);
-        String osOrg = decideOSOrg(httpRequest);
-        if(StringUtils.isBlank(jwtToken)) {
-            resultErrMessage(httpResponse);
+        try {
+            String jwtToken = decideOSToken(httpRequest);
+            String osOrg = decideOSOrg(httpRequest);
+            if(StringUtils.isBlank(jwtToken)) {
+                resultErrMessage(httpResponse);
+            }
+            Map<String, Object> map = jwtService.jwtParse(jwtToken);
+            String login = (String) map.get("login");
+            String orgId = (String) map.get("orgId");
+            UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
+            IContextInfoProxy.getInstance().setCI("token", jwtToken);
+            IContextInfoProxy.getInstance().setCI("login", login);
+            IContextInfoProxy.getInstance().setCI("orgId", orgId);
+            IContextInfoProxy.getInstance().setCI("user", user.toString());
+            log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
+        }finally {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
-        JWTTokenEntity jwtTokenEntity = jwtService.getJwtTokenByOrgId(osOrg);
-        if(null == jwtTokenEntity) {
-            throw new SystemException(ErrCode.SYS_ZOOK_CREATE_ERROR);
-        }
-        Date date = Date.from(jwtTokenEntity.getCreateTime().minusSeconds(28800L));
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        log.info("jwt is {}, pbKey is {}, prKey is {}, time is {}", jwtToken, jwtTokenEntity.getPbKey(), jwtTokenEntity.getPrKey(), formatter.format(date));
-        if (!jwtService.validateTokenExpire(jwtTokenEntity.getCreateTime())) {
-            throw new SystemException(ErrCode.SYS_ZOOK_CREATE_ERROR);
-        }
-        return;
     }
 
     private String decideOSToken(HttpServletRequest request) {
@@ -72,7 +75,7 @@ public class JWTFilter implements Filter {
         String headerOrg = request.getHeader(OS_ORG);
         String paramOrg = request.getParameter(OS_ORG);
         if(StringUtils.isBlank(headerOrg) && StringUtils.isBlank(paramOrg)) {
-            return null;
+            return "defaultOrg";
         }else {
             return StringUtils.isBlank(headerOrg) ? paramOrg : headerOrg;
         }

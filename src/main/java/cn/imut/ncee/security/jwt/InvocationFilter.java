@@ -1,6 +1,8 @@
 package cn.imut.ncee.security.jwt;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -15,7 +17,9 @@ public class InvocationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        filterChain.doFilter(httpRequest, httpResponse);
     }
 
     @Override

@@ -65,7 +65,7 @@ public class PersonServiceImpl implements PersonService {
             }
             String token = jwtService.createToken(personId, "", "");
             log.info("token is {}", token);
-            response.setHeader("v-token", token);
+            response.setHeader("OS-token", token);
             return personDao.selectByIdPerson(personId);
         }
         return null;

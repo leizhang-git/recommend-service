@@ -4,6 +4,7 @@ import cn.imut.ncee.entity.pojo.JWTTokenEntity;
 import org.springframework.security.core.Authentication;
 
 import java.time.Instant;
+import java.util.Map;
 
 /**
  * @Auth zhanglei
@@ -37,4 +38,6 @@ public interface JWTService {
      * @return
      */
     Authentication getAuthentication(String token, String pk);
+
+    Map<String, Object> jwtParse(String token);
 }
