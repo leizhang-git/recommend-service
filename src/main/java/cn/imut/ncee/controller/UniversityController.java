@@ -2,7 +2,7 @@ package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.pojo.UniversityInfo;
 import cn.imut.ncee.service.UniversityService;
-import cn.imut.ncee.util.Results;
+import cn.imut.ncee.util.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +28,10 @@ public class UniversityController {
      * @return 成功
      */
     @GetMapping("/queryUniversity")
-    public Results<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                                      @RequestParam(defaultValue = "60",required = false) int pageSize) {
+    public ResultVO<?> queryAll(@RequestParam(defaultValue = "0",required = false) int pageNum,
+                                @RequestParam(defaultValue = "60",required = false) int pageSize) {
         List<UniversityInfo> universityInfos = universityService.selectAllUniversity(pageNum, pageSize);
-        return Results.dataOf(universityInfos);
+        return ResultVO.getSuccess(universityInfos);
     }
 
     /**
@@ -40,9 +40,9 @@ public class UniversityController {
      * @return 是否添加成功
      */
     @PostMapping("/operationUniversity")
-    public Results<?> insertUniversity(@RequestBody UniversityInfo universityInfo) {
+    public ResultVO<?> insertUniversity(@RequestBody UniversityInfo universityInfo) {
         boolean isSuccess = universityService.operationUniversity(universityInfo);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -52,9 +52,9 @@ public class UniversityController {
      * @return 是否成功修改
      */
     @PatchMapping("/updateCode")
-    public Results<?> updateUCode(@RequestParam String uId, @RequestParam String uCode) {
+    public ResultVO<?> updateUCode(@RequestParam String uId, @RequestParam String uCode) {
         boolean isSuccess = universityService.updateUniversity(uId, uCode);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -63,9 +63,9 @@ public class UniversityController {
      * @return 高校信息
      */
     @GetMapping("/selectById")
-    public Results<?> selectById(@RequestParam String uId) {
+    public ResultVO<?> selectById(@RequestParam String uId) {
         UniversityInfo universityInfo = universityService.selectUniversityById(uId);
-        return Results.dataOf(universityInfo);
+        return ResultVO.getSuccess(universityInfo);
     }
 
     /**
@@ -74,9 +74,9 @@ public class UniversityController {
      * @return 高校信息
      */
     @PostMapping("/selectByAddress")
-    public Results<?> selectById(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> selectById(@RequestBody Map<String,String> infos) {
         List<UniversityInfo> universityInfos = universityService.selectByAddress(infos.get("universityAddress"), infos.get("universityName"));
-        return Results.dataOf(universityInfos);
+        return ResultVO.getSuccess(universityInfos);
     }
 
     /**
@@ -85,8 +85,8 @@ public class UniversityController {
      * @return 是否成功删除
      */
     @DeleteMapping("/deleteById")
-    public Results<?> deleteById(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> deleteById(@RequestBody Map<String,String> infos) {
         boolean isSuccess = universityService.deleteUniversityById(infos.get("uId"));
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 }

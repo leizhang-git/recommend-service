@@ -5,7 +5,7 @@ import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
-import cn.imut.ncee.util.Results;
+import cn.imut.ncee.util.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +32,9 @@ public class PersonController {
      * @return 是否登陆成功
      */
     @PostMapping("/login")
-    public Results<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request, HttpServletResponse response) {
+    public ResultVO<?> login(@RequestBody LoginDTO loginDTO, HttpServletRequest request, HttpServletResponse response) {
         List<Person> person = personService.login(loginDTO.getAccount(), loginDTO.getPwd(), response);
-        return Results.dataOf(person.get(0));
+        return ResultVO.getSuccess(person.get(0));
     }
 
     /**
@@ -43,9 +43,9 @@ public class PersonController {
      * @return 是否登陆成功
      */
     @PostMapping("/update")
-    public Results<?> updatePWD(@RequestBody Map<String,String> loginInfo) {
+    public ResultVO<?> updatePWD(@RequestBody Map<String,String> loginInfo) {
         boolean isSuccess = personService.update(loginInfo.get("oldP"), loginInfo.get("newP"), loginInfo.get("id"));
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -54,9 +54,9 @@ public class PersonController {
      * @return 是否成功注册
      */
     @PostMapping("/register")
-    public Results<?> register(@RequestBody Person person) {
+    public ResultVO<?> register(@RequestBody Person person) {
         boolean isSuccess = personService.register(person);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -65,9 +65,9 @@ public class PersonController {
      * @return 用户信息
      */
     @PostMapping("/queryAllPerson")
-    public Results<?> queryAll(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> queryAll(@RequestBody Map<String,String> infos) {
         List<Person> person = personService.selectAllPerson(infos.get("id"));
-        return Results.dataOf(person);
+        return ResultVO.getSuccess(person);
     }
 
     /**
@@ -77,9 +77,9 @@ public class PersonController {
      * @return 是否修改成功
      */
     @PatchMapping("/updatePerson")
-    public Results<?> queryAll(@RequestBody Person person, @RequestParam("id") String id) {
+    public ResultVO<?> queryAll(@RequestBody Person person, @RequestParam("id") String id) {
         boolean isSuccess = personService.updatePerson(person, id);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -88,9 +88,9 @@ public class PersonController {
      * @return 用户信息
      */
     @GetMapping("/queryPerson")
-    public Results<?> queryById(String id) {
+    public ResultVO<?> queryById(String id) {
         List<Person> person = personService.selectByIdPerson(id);
-        return Results.dataOf(person);
+        return ResultVO.getSuccess(person);
     }
 
     /**
@@ -99,9 +99,9 @@ public class PersonController {
      * @return 是否成功删除
      */
     @GetMapping("/deletePerson")
-    public Results<?> deleteById(String id) {
+    public ResultVO<?> deleteById(String id) {
         boolean isSuccess = personService.deletePerson(id);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -110,9 +110,9 @@ public class PersonController {
      * @return 返回推荐的列表
      */
     @PostMapping("/voluntaryService")
-    public Results<?> voluntaryService(@RequestBody AlgorithmIndex algorithmIndex) {
+    public ResultVO<?> voluntaryService(@RequestBody AlgorithmIndex algorithmIndex) {
         Object voluntary = personService.voluntary(algorithmIndex);
-        return Results.dataOf(voluntary);
+        return ResultVO.getSuccess(voluntary);
     }
 
     /**
@@ -121,8 +121,8 @@ public class PersonController {
      * @return 是否留言成功
      */
     @PostMapping("/message")
-    public Results<?> messageBoard(@RequestBody MessageBoard messageBoard) {
+    public ResultVO<?> messageBoard(@RequestBody MessageBoard messageBoard) {
         boolean isSuccess = personService.addMessage(messageBoard);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 }

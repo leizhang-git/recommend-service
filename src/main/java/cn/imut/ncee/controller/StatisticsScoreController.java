@@ -4,7 +4,7 @@ import cn.imut.ncee.entity.vo.EntryScore;
 import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
-import cn.imut.ncee.util.Results;
+import cn.imut.ncee.util.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +29,9 @@ public class StatisticsScoreController {
      * @return 是否添加成功
      */
     @PostMapping("/insert")
-    public Results<?> insertInfo(StatisticsScoreInfo statisticsScoreInfo) {
+    public ResultVO<?> insertInfo(StatisticsScoreInfo statisticsScoreInfo) {
         boolean isSuccess = statisticsScoreService.insertStatisticsScore(statisticsScoreInfo);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -40,9 +40,9 @@ public class StatisticsScoreController {
      * @return 该高校所有专业（专业名称）
      */
     @GetMapping("/queryByUId")
-    public Results<?> queryById(String uId) {
+    public ResultVO<?> queryById(String uId) {
         List<String> majors = statisticsScoreService.selectById(uId);
-        return Results.dataOf(majors);
+        return ResultVO.getSuccess(majors);
     }
 
     /**
@@ -50,9 +50,9 @@ public class StatisticsScoreController {
      * @return 高校-专业
      */
     @GetMapping("/queryAll")
-    public Results<?> queryAll() {
+    public ResultVO<?> queryAll() {
         List<StatisticsScoreInfo> statisticsScoreInfos = statisticsScoreService.selectStatisticsScore();
-        return Results.dataOf(statisticsScoreInfos);
+        return ResultVO.getSuccess(statisticsScoreInfos);
     }
 
 
@@ -63,9 +63,9 @@ public class StatisticsScoreController {
      * @return 分数线
      */
     @GetMapping("/queryScore")
-    public Results<?> queryAll(String uId, String mId) {
+    public ResultVO<?> queryAll(String uId, String mId) {
         List<StatisticsScoreInfo> scores = statisticsScoreService.selectScore(uId, mId);
-        return Results.dataOf(scores);
+        return ResultVO.getSuccess(scores);
     }
 
     /**
@@ -74,9 +74,9 @@ public class StatisticsScoreController {
      * @return 高校-专业-分数
      */
     @GetMapping("/score1")
-    public Results<?> queryAllScore(@RequestParam("uId") String uId) {
+    public ResultVO<?> queryAllScore(@RequestParam("uId") String uId) {
         List<EntryScore> entryScores = statisticsScoreService.selectAllScore(uId);
-        return Results.dataOf(entryScores);
+        return ResultVO.getSuccess(entryScores);
     }
 
     /**
@@ -85,9 +85,9 @@ public class StatisticsScoreController {
      * @return 高校-专业-分数
      */
     @PostMapping("/score")
-    public Results<?> queryAllScore(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> queryAllScore(@RequestBody Map<String,String> infos) {
         List<EntryScore> entryScores = statisticsScoreService.selectAllScore(infos.get("uId"), infos.get("majorName"));
-        return Results.dataOf(entryScores);
+        return ResultVO.getSuccess(entryScores);
     }
 
 
@@ -99,9 +99,9 @@ public class StatisticsScoreController {
      * @return 分数线
      */
     @GetMapping("/queryOne")
-    public Results<?> queryOne(String uId, String mId, String years) {
+    public ResultVO<?> queryOne(String uId, String mId, String years) {
         StatisticsScoreInfo statisticsScoreInfo = statisticsScoreService.selectOneScore(uId, mId, years);
-        return Results.dataOf(statisticsScoreInfo);
+        return ResultVO.getSuccess(statisticsScoreInfo);
     }
 
     /**
@@ -110,9 +110,9 @@ public class StatisticsScoreController {
      * @return 是否成功删除
      */
     @DeleteMapping("/deleteUM")
-    public Results<?> queryOne(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> queryOne(@RequestBody Map<String,String> infos) {
         boolean isSuccess = statisticsScoreService.deleteByUidAndMid(infos.get("universityId"), infos.get("majorId"));
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -121,9 +121,9 @@ public class StatisticsScoreController {
      * @return
      */
     @PostMapping("/insertAndUpdate")
-    public Results<?> insertAndUpdate(@RequestBody EntryScore entryScore) {
+    public ResultVO<?> insertAndUpdate(@RequestBody EntryScore entryScore) {
         boolean isSuccess = statisticsScoreService.insertAndUpdate(entryScore);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -132,12 +132,12 @@ public class StatisticsScoreController {
      * @return 录取信息
      */
     @PostMapping("/queryByMajor")
-    public Results<?> insertAndUpdate(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> insertAndUpdate(@RequestBody Map<String,String> infos) {
         if(infos.size() == 0) {
-            return Results.dataOf("");
+            return ResultVO.getSuccess("");
         }else {
             List<MajorScore> majorScores = statisticsScoreService.selectByMajor(infos.get("majorName"), infos.get("years"));
-            return Results.dataOf(majorScores);
+            return ResultVO.getSuccess(majorScores);
         }
     }
 
@@ -147,8 +147,8 @@ public class StatisticsScoreController {
      * @return 录取信息
      */
     @PostMapping("/echarts")
-    public Results<?> echartsShow(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> echartsShow(@RequestBody Map<String,String> infos) {
         List<StatisticsScoreInfo> statisticsScoreInfos = statisticsScoreService.selectAll(infos.get("universityId"), infos.get("majorId"));
-        return Results.dataOf(statisticsScoreInfos);
+        return ResultVO.getSuccess(statisticsScoreInfos);
     }
 }

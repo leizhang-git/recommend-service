@@ -3,8 +3,7 @@ package cn.imut.ncee.controller;
 import cn.hutool.core.util.StrUtil;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
-import cn.imut.ncee.util.Results;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.imut.ncee.util.ResultVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,18 +29,18 @@ public class MessageBoardController {
      * @return 用户留言内容
      */
     @PostMapping("/queryMessage")
-    public Results<?> queryAll(@RequestBody Map<String,String> infos) {
+    public ResultVO<?> queryAll(@RequestBody Map<String,String> infos) {
         if(StrUtil.isNotEmpty(infos.get("beginTime"))  && StrUtil.isNotEmpty(infos.get("outTime"))) {
             if(StrUtil.isNotEmpty(infos.get("uName"))) {
                 List<MessageBoard> messageBoards = messageBoardService.queryAll1(infos.get("uName"), Long.parseLong(infos.get("beginTime")), Long.parseLong(infos.get("outTime")));
-                return Results.dataOf(messageBoards);
+                return ResultVO.getSuccess(messageBoards);
             }else {
                 List<MessageBoard> messageBoards = messageBoardService.queryAll2(Long.parseLong(infos.get("beginTime")), Long.parseLong(infos.get("outTime")));
-                return Results.dataOf(messageBoards);
+                return ResultVO.getSuccess(messageBoards);
             }
         }else {
             List<MessageBoard> messageBoards = messageBoardService.queryAll(infos.get("uName"));
-            return Results.dataOf(messageBoards);
+            return ResultVO.getSuccess(messageBoards);
         }
     }
 
@@ -51,9 +50,9 @@ public class MessageBoardController {
      * @return 是否成功删除
      */
     @DeleteMapping("/deleteById")
-    public Results<?> deleteById(@RequestBody Map<String,String> infos) throws ParseException {
+    public ResultVO<?> deleteById(@RequestBody Map<String,String> infos) throws ParseException {
         boolean isSuccess = messageBoardService.deleteById(infos.get("uId"), infos.get("uTime"));
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -62,8 +61,8 @@ public class MessageBoardController {
      * @return 是否成功添加留言
      */
     @PostMapping("/addMessage")
-    public Results<?> addMessage(@RequestBody MessageBoard messageBoard) {
+    public ResultVO<?> addMessage(@RequestBody MessageBoard messageBoard) {
         boolean isSuccess = messageBoardService.addMessage(messageBoard);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 }

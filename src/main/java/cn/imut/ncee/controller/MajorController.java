@@ -2,8 +2,7 @@ package cn.imut.ncee.controller;
 
 import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.service.MajorService;
-import cn.imut.ncee.util.Results;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.imut.ncee.util.ResultVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,9 +29,9 @@ public class MajorController {
      * @return 成功
      */
     @PostMapping("/addMajor")
-    public Results<?> insertMajorInfo(@RequestBody MajorInfo majorInfo) {
+    public ResultVO<?> insertMajorInfo(@RequestBody MajorInfo majorInfo) {
         boolean isSuccess = majorService.insertMajorInfo(majorInfo);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -42,9 +41,9 @@ public class MajorController {
      * @return 是否更新成功
      */
     @PatchMapping("/updateMajor")
-    public Results<?> updateMajorInfo(@RequestBody MajorInfo majorInfo, String majorId) {
+    public ResultVO<?> updateMajorInfo(@RequestBody MajorInfo majorInfo, String majorId) {
         boolean isSuccess = majorService.updateMajorInfo(majorInfo, majorId);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
     /**
@@ -53,9 +52,9 @@ public class MajorController {
      * @return 专业Id
      */
     @GetMapping("/queryByCode")
-    public Results<?> selectIdFromCode(String majorCode) {
+    public ResultVO<?> selectIdFromCode(String majorCode) {
         String majorId = majorService.selectIdByCode(majorCode);
-        return Results.dataOf(majorId);
+        return ResultVO.getSuccess(majorId);
     }
 
     /**
@@ -65,10 +64,10 @@ public class MajorController {
      * @return 智能辅助系统中全部专业信息
      */
     @GetMapping("/selectAll")
-    public Results<?> selectAllMajorInfo(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                                         @RequestParam(defaultValue = "5",required = false) int pageSize) {
+    public ResultVO<?> selectAllMajorInfo(@RequestParam(defaultValue = "0",required = false) int pageNum,
+                                          @RequestParam(defaultValue = "5",required = false) int pageSize) {
         Map<String,Object> majorInfos = majorService.selectAllMajorInfo(pageNum, pageSize);
-        return Results.dataOf(majorInfos);
+        return ResultVO.getSuccess(majorInfos);
     }
 
     /**
@@ -77,9 +76,9 @@ public class MajorController {
      * @return 专业信息
      */
     @GetMapping("/selectById")
-    public Results<?> selectMajorInfoById(String majorId) {
+    public ResultVO<?> selectMajorInfoById(String majorId) {
         MajorInfo majorInfo = majorService.selectByIdMajorInfo(majorId);
-        return Results.dataOf(majorInfo);
+        return ResultVO.getSuccess(majorInfo);
     }
 
     /**
@@ -88,9 +87,9 @@ public class MajorController {
      * @return 0理科/1文科/-1文/理
      */
     @GetMapping("/selectSubject")
-    public Results<?> selectSubject(String majorId) {
+    public ResultVO<?> selectSubject(String majorId) {
         Integer subject = majorService.selectSubject(majorId);
-        return Results.dataOf(subject);
+        return ResultVO.getSuccess(subject);
     }
 
     /**
@@ -100,10 +99,10 @@ public class MajorController {
      * @return 专业全部Id
      */
     @GetMapping("/selectAllId")
-    public Results<?> selectAllId(@RequestParam(defaultValue = "0",required = false) int pageNum,
-                                  @RequestParam(defaultValue = "5",required = false) int pageSize) {
+    public ResultVO<?> selectAllId(@RequestParam(defaultValue = "0",required = false) int pageNum,
+                                   @RequestParam(defaultValue = "5",required = false) int pageSize) {
         List<String> ids = majorService.selectAllId(pageNum, pageSize);
-        return Results.dataOf(ids);
+        return ResultVO.getSuccess(ids);
     }
 
     /**
@@ -112,9 +111,9 @@ public class MajorController {
      * @return 是否成功删除
      */
     @GetMapping("/deleteById")
-    public Results<?> deleteById(String majorId) {
+    public ResultVO<?> deleteById(String majorId) {
         boolean isSuccess = majorService.deleteById(majorId);
-        return Results.dataOf(isSuccess);
+        return ResultVO.getSuccess(isSuccess);
     }
 
 

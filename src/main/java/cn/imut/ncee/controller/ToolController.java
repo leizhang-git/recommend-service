@@ -2,7 +2,7 @@ package cn.imut.ncee.controller;
 
 
 import cn.imut.ncee.service.LangService;
-import cn.imut.ncee.util.Results;
+import cn.imut.ncee.util.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,13 +27,13 @@ public class ToolController {
     private LangService langService;
 
     @GetMapping("/synLang")
-    public Results<?> queryAll() {
+    public ResultVO<?> queryAll() {
         try {
             langService.syncLang();
         }catch (Exception e) {
             log.error("synLang is error.", e);
             throw e;
         }
-        return Results.dataOf(true);
+        return ResultVO.getSuccess(true);
     }
 }
