@@ -56,9 +56,12 @@ public class JWTFilter implements Filter {
             IContextInfoProxy.getInstance().setCI("orgId", orgId);
             IContextInfoProxy.getInstance().setCI("user", user.toString());
             log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
-        }finally {
-            filterChain.doFilter(servletRequest, servletResponse);
+        }catch (Exception e){
+            log.error("jwt token 解析失败.", e);
+            resultErrMessage(httpResponse);
+            return;
         }
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     private String decideOSToken(HttpServletRequest request) {

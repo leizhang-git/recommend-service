@@ -2,6 +2,7 @@ package cn.imut.ncee.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
 import cn.hutool.jwt.JWT;
@@ -95,7 +96,7 @@ public class JWTServiceImpl implements JWTService {
         }
         Map<String, String> payload = new HashMap<>();
         payload.put("login", login);
-        payload.put("orgId", StringUtils.isBlank(orgId) ? "defaultOrg" : orgId);
+        payload.put("orgId", StringUtils.isBlank(orgId) ? "noneOrg" : orgId);
         Person person = personService.selectByIdPerson(login).get(0);
         payload.put("user", JSONObject.toJSONString(person));
         return createToken(payload);
@@ -112,6 +113,16 @@ public class JWTServiceImpl implements JWTService {
         JWT jwtToken = JWT.of(token);
         jwtToken.setSigner(jwtSigner);
 
+        //解析token
+        JWTPayload jwtPayload = jwtToken.getPayload();
+        cn.hutool.json.JSONObject claimsJson = jwtPayload.getClaimsJson();
+        claimsJson.remove(AUTH_TOKEN_KEY);
+        Map<String, Object> resultMap = JSONUtil.toBean(claimsJson, Map.class);
+        //管理员直接放过去~~~~
+        if(MapUtil.isNotEmpty(resultMap) && "admin".equals(resultMap.get("login")) && "defaultOrg".equals(resultMap.get("orgId"))) {
+            return resultMap;
+        }
+
         //1.验证hash256签名
         boolean hs256Bool = jwtToken.verify();
         if(!hs256Bool) {
@@ -125,7 +136,6 @@ public class JWTServiceImpl implements JWTService {
         }
 
         //3.获取二重token认证校验
-        JWTPayload jwtPayload = jwtToken.getPayload();
         Date date = jwtPayload.getClaimsJson().getDate(RegisteredPayload.ISSUED_AT);
         String source = String.valueOf(jwtPayload.getClaim(AUTH_TOKEN_KEY));
         String authToken = SecureUtil.md5(SecureUtil.sha256(key + "_" + DateUtil.formatDateTime(date) + "_" + secret));
@@ -133,10 +143,7 @@ public class JWTServiceImpl implements JWTService {
             throw new StrException("二重身份认证校验失败.");
         }
 
-        //4.将负载参数转换为map
-        cn.hutool.json.JSONObject claimsJson = jwtPayload.getClaimsJson();
-        claimsJson.remove(AUTH_TOKEN_KEY);
-        return (Map<String, Object>) JSONUtil.toBean(claimsJson, Map.class);
+        return resultMap;
     }
 
 

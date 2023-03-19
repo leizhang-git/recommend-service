@@ -1,6 +1,8 @@
 package cn.imut.ncee;
 
 import cn.imut.ncee.config.ApplicationProperties;
+import cn.imut.ncee.service.JWTService;
+import cn.imut.ncee.util.SpringContextHolder;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,5 +50,15 @@ public class Application {
         log.info("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         log.info("\n\n\t=========== 项目启动成功！url:[http://127.0.0.1:" + port + "]==========\n\n");
         log.info("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        getDefaultToken();
+    }
+
+    /**
+     * 用作测试使用~
+     */
+    public static void getDefaultToken() {
+        JWTService jwtService = SpringContextHolder.getBean(JWTService.class);
+        String token = jwtService.createToken("admin", "defaultOrg", "");
+        log.info("~~~~~~~~~~~~~~~~~token is {}", token);
     }
 }

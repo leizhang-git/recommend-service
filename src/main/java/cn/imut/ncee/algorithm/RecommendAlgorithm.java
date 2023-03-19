@@ -1,6 +1,7 @@
 package cn.imut.ncee.algorithm;
 
 import cn.imut.ncee.entity.pojo.AlgorithmIndex;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +36,7 @@ public class RecommendAlgorithm {
         //用户输入指标（若用户）
         int subjectInt = -1;
         //若用户不传入科目，则自动默认用户不分文理（-1）（目前由于前端优化，已经解决此问题）
-        if(subject.length() != 0) {
+        if(StringUtils.isNotBlank(subject)) {
             subjectInt = Integer.parseInt(subject);
         }
         String address = information.getAddress();
