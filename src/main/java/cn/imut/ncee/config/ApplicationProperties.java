@@ -16,6 +16,8 @@ import java.util.List;
 )
 public class ApplicationProperties {
 
+    //=====================================================================================================
+
     private final Jwt jwt = new Jwt();
 
     public Jwt getJwt() {
@@ -45,5 +47,45 @@ public class ApplicationProperties {
             this.expireTime = expireTime;
         }
 
+    }
+
+    //=====================================================================================================
+
+    private final BaiduProp baiduProp = new BaiduProp();
+
+    public static class BaiduProp {
+
+        private String apiHosts;
+
+        private String appId;
+
+        private String securityKey;
+
+        public BaiduProp() {
+        }
+
+        public String getApiHosts() {
+            return apiHosts;
+        }
+
+        public void setApiHosts(String apiHosts) {
+            this.apiHosts = apiHosts;
+        }
+
+        public String getAppId() {
+            return appId;
+        }
+
+        public void setAppId(String appId) {
+            this.appId = appId;
+        }
+
+        public String getSecurityKey() {
+            return securityKey;
+        }
+
+        public void setSecurityKey(String securityKey) {
+            this.securityKey = securityKey;
+        }
     }
 }

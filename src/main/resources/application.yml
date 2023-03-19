@@ -139,5 +139,9 @@ application:
       - /jwt/
       - /version
       - /api/v1/person/login
+  baiduProp:
+    apiHosts: ENC(1ZAqpXL0j4NIji3cA8aGnZPVbnEJeWlosz/OuEj276ZaaF5RAZpbLgnrCMStjqr8kTb6Om6bnuK0ZP4iS4916tmUhGNVbcsW+aIn/mIXUuRG6LAFPqUFXizZWIERdKlW)
+    appId: ENC(POiyO/DtnXgGAitkz0zZsw2LAirkkHMFvFmcAMnaCtGmCJ69zKOuC/v+gRfXFUl89cQmknaIHG5SMvhW0Nidig==)
+    securityKey: ENC(7MfXiwKtdcv34E22ZQo986aD1dO2wF7HDyC9cKvTZJ82nFxI7qQ4dCrdkg1/goJYJ1eZTW7VoRP7FCDkHagDlw==)
 os:
   enableCORS: true

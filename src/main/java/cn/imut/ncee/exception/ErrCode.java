@@ -39,7 +39,12 @@ public enum ErrCode {
     /**
      * 密码错误
      */
-    SYS_PASSWORD_ERROR("SYS-00007", "sys.password.error");
+    SYS_PASSWORD_ERROR("SYS-00007", "sys.password.error"),
+
+    /**
+     * 数据同步失败
+     */
+    SYS_SYNC_ERROR("sys-00008", "sys.sync.error");
 
     /**
      * 异常编码
