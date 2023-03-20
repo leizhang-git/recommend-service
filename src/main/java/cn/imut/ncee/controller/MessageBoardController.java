@@ -4,6 +4,8 @@ import cn.hutool.core.util.StrUtil;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
 import cn.imut.ncee.util.ResultVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +21,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/message")
 public class MessageBoardController {
+
+    private static Logger log = LoggerFactory.getLogger(MessageBoardController.class);
 
     @Resource
     private MessageBoardService messageBoardService;

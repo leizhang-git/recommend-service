@@ -1,6 +1,8 @@
 package cn.imut.ncee.config;
 
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.List;
         ignoreUnknownFields = false
 )
 public class ApplicationProperties {
+
+    private static Logger log = LoggerFactory.getLogger(ApplicationProperties.class);
 
     //=====================================================================================================
 

@@ -3,6 +3,8 @@ package cn.imut.ncee.controller;
 import cn.imut.ncee.entity.pojo.MajorInfo;
 import cn.imut.ncee.service.MajorService;
 import cn.imut.ncee.util.ResultVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,6 +20,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/major")
 public class MajorController {
+
+    private static Logger log = LoggerFactory.getLogger(MajorController.class);
 
     @Resource
     private MajorService majorService;

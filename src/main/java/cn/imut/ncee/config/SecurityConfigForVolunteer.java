@@ -2,6 +2,8 @@ package cn.imut.ncee.config;
 
 import cn.imut.ncee.config.condition.ConditionSysPlatformContext;
 import cn.imut.ncee.domain.enums.PlatformEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @ConditionSysPlatformContext({PlatformEnum.JWT})
 @EnableConfigurationProperties({MultipartProperties.class})
 public class SecurityConfigForVolunteer extends WebSecurityConfigurerAdapter {
+
+    private static Logger log = LoggerFactory.getLogger(SecurityConfigForVolunteer.class);
 
     private final MultipartProperties multipartProperties;
 

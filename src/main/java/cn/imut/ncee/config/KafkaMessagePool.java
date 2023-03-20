@@ -1,6 +1,8 @@
 package cn.imut.ncee.config;
 
 import cn.imut.ncee.domain.KafkaMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Component
 @Configuration
 public class KafkaMessagePool {
+
+    private static Logger log = LoggerFactory.getLogger(KafkaMessagePool.class);
 
     private Queue<KafkaMessage> messageQueue;
 

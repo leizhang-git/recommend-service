@@ -6,6 +6,8 @@ import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.util.ResultVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/person")
 public class PersonController {
+
+    private static Logger log = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
     private PersonService personService;

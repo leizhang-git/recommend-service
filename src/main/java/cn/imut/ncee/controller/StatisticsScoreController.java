@@ -5,6 +5,8 @@ import cn.imut.ncee.entity.vo.MajorScore;
 import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import cn.imut.ncee.util.ResultVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/statis")
 public class StatisticsScoreController {
+
+    private static Logger log = LoggerFactory.getLogger(StatisticsScoreController.class);
 
     @Autowired
     private StatisticsScoreService statisticsScoreService;
