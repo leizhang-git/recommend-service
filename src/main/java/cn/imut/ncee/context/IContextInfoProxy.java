@@ -1,11 +1,7 @@
 package cn.imut.ncee.context;
 
-import cn.hutool.core.util.StrUtil;
-import cn.imut.ncee.util.JSONUtil;
-import org.springframework.util.CollectionUtils;
-
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 上下文信息
@@ -18,47 +14,34 @@ public class IContextInfoProxy {
 
     private static final ThreadLocal<InvocationInfo> threadLocal = ThreadLocal.withInitial(InvocationInfo::new);
 
-    public static String getParameter(String parameter) {
-        return threadLocal.get().params.get(parameter);
-    }
-
-    public static void setParameter(String parameter, String value) {
-        threadLocal.get().params.put(parameter, value);
-    }
 
     public static IContextInfoProxy getInstance() {
         return cip;
     }
 
-    public Map<String, Object> getCIs() {
-        String cisJSON = IContextInfoProxy.getParameter("cis");
-        Map<String, Object> cisMap = new HashMap<>();
-        if(StrUtil.isNotEmpty(cisJSON)) {
-            cisMap = JSONUtil.gsonToMaps(cisJSON);
+    public Object getContextAttribute(String key) {
+        if(null == threadLocal) {
+            return null;
         }
-        return cisMap;
+        return threadLocal.get().contextAttributes.get(key);
     }
 
-    public void setCIs(Map<String, Object> cis) {
-        if(CollectionUtils.isEmpty(cis)){
-            cis = new HashMap<>();
+    public void setContextAttribute(String key, Object value) {
+        if (null == threadLocal.get()) {
+            threadLocal.set(new InvocationInfo());
         }
-        String cisStr = JSONUtil.gsonString(cis);
-        IContextInfoProxy.setParameter("ctxs",cisStr);
+        if (null == value) {
+            threadLocal.get().contextAttributes.remove(key);
+        } else {
+            threadLocal.get().contextAttributes.put(key, value);
+        }
     }
 
-    public void setCI(String key, String value) {
-        Map<String, Object> ciMap = getCIs();
-        ciMap.put(key,value);
-        setCIs(ciMap);
-    }
-
-    public String getCI(String key) {
-        Map<String, Object> ciMap = getCIs();
-        String value = ciMap.get(key).toString();
-        if(StrUtil.isEmpty(value)) {
-            value = "";
+    public Map<String, Object> getMap() {
+        Map<String, Object> resultMap = new ConcurrentHashMap<>();
+        for (Map.Entry<Object, Object> entry : threadLocal.get().contextAttributes.entrySet()) {
+            resultMap.put((String) entry.getKey(), entry.getValue());
         }
-        return value;
+        return resultMap;
     }
 }

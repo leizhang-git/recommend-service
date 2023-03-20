@@ -51,10 +51,10 @@ public class JWTFilter implements Filter {
             String login = (String) map.get("login");
             String orgId = (String) map.get("orgId");
             UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
-            IContextInfoProxy.getInstance().setCI("token", jwtToken);
-            IContextInfoProxy.getInstance().setCI("login", login);
-            IContextInfoProxy.getInstance().setCI("orgId", orgId);
-            IContextInfoProxy.getInstance().setCI("user", user.toString());
+            IContextInfoProxy.getInstance().setContextAttribute("token", jwtToken);
+            IContextInfoProxy.getInstance().setContextAttribute("login", login);
+            IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
+            IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
             log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
         }catch (Exception e){
             log.error("jwt token 解析失败.", e);
