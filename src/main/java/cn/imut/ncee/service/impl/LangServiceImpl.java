@@ -1,6 +1,7 @@
 package cn.imut.ncee.service.impl;
 
 import cn.hutool.core.text.UnicodeUtil;
+import cn.imut.ncee.context.IContextInfoProxy;
 import cn.imut.ncee.exception.ErrCode;
 import cn.imut.ncee.exception.StrException;
 import cn.imut.ncee.exception.SystemException;
@@ -11,11 +12,15 @@ import cn.imut.ncee.util.SpringContextHolder;
 import org.apache.commons.compress.utils.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +35,9 @@ public class LangServiceImpl implements LangService {
     private static final String LANG_FILE_NAME = "MESSAGE.properties";
 
     private static final Logger log = LoggerFactory.getLogger(LangServiceImpl.class);
+
+    @Autowired
+    private ExecutorService commonThreadPoolExecutor;
 
     /**
      * 自动同步多语工具类
@@ -74,5 +82,19 @@ public class LangServiceImpl implements LangService {
         } catch (IOException e) {
             throw new SystemException(ErrCode.SYS_ZOOK_CREATE_ERROR);
         }
+    }
+
+    private Future<?> execute(Callable<?> loader){
+        return commonThreadPoolExecutor.submit(()->{
+            Object result;
+            try {
+                result = loader.call();
+            }catch (Exception e){
+                result = null;
+            }finally {
+                IContextInfoProxy.reset();
+            }
+            return result;
+        });
     }
 }
