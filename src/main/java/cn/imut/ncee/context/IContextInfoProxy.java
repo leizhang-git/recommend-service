@@ -44,4 +44,10 @@ public class IContextInfoProxy {
         }
         return resultMap;
     }
+
+    public static void reset() {
+        if(null != threadLocal.get()) {
+            threadLocal.remove();
+        }
+    }
 }
