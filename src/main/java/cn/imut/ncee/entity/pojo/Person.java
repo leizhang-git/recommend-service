@@ -21,6 +21,16 @@ public class Person {
     private String name;
 
     /**
+     * 用户手机
+     */
+    private String phone;
+
+    /**
+     * 用户邮箱
+     */
+    private String email;
+
+    /**
      * 用户成绩
      */
     private String score;
