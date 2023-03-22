@@ -7,6 +7,7 @@ import cn.imut.ncee.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.entity.pojo.Person;
 import cn.imut.ncee.entity.vo.MessageBoard;
 import cn.imut.ncee.exception.ErrCode;
+import cn.imut.ncee.exception.StrException;
 import cn.imut.ncee.exception.SystemException;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.util.AESUtil;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Author zhanglei
@@ -43,17 +45,25 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public boolean register(Person person) {
-        if(person.getId().length() != 0 && person.getName().length() != 0 && person.getPassword().length() != 0) {
-            String s = personDao.selectId(person.getId());
-            if(StringUtils.isBlank(s) && StringUtils.isNotBlank(person.getPassword())) {
-                String pwd = AESUtil.encrypt(person.getPassword());
-                person.setPassword(pwd);
-                return personDao.register(person);
-            }else {
-                return false;
-            }
+        if(null == person) {
+            throw new StrException("用户为null.");
         }
-        return false;
+        //兼容下前端没有传id的情况
+        if(StringUtils.isBlank(person.getId())) {
+            person.setId(UUID.randomUUID().toString());
+        }
+        if(StringUtils.isBlank(person.getName())) {
+            throw new StrException("用户名为空~注册失败.");
+        }
+        if(StringUtils.isBlank(person.getPassword())) {
+            throw new StrException("密码为空~注册失败.");
+        }
+
+        String s = personDao.selectId(person.getId());
+        if(StringUtils.isNotBlank(s)) {
+            throw new StrException("当前用户已经存在,请勿重复注册");
+        }
+        return personDao.register(person);
     }
 
     @Override
