@@ -1,6 +1,6 @@
 package cn.imut.ncee.controller;
 
-import cn.imut.ncee.entity.pojo.UniversityInfo;
+import cn.imut.ncee.domain.entity.pojo.UniversityInfo;
 import cn.imut.ncee.service.UniversityService;
 import cn.imut.ncee.util.ResultVO;
 import org.slf4j.Logger;

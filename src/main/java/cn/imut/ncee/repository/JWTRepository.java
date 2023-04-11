@@ -1,6 +1,6 @@
 package cn.imut.ncee.repository;
 
-import cn.imut.ncee.entity.pojo.JWTTokenEntity;
+import cn.imut.ncee.domain.entity.pojo.JWTTokenEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

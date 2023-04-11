@@ -1,9 +1,9 @@
 package cn.imut.ncee.controller;
 
 import cn.imut.ncee.dto.LoginDTO;
-import cn.imut.ncee.entity.pojo.AlgorithmIndex;
-import cn.imut.ncee.entity.pojo.Person;
-import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.domain.entity.pojo.AlgorithmIndex;
+import cn.imut.ncee.domain.entity.pojo.Person;
+import cn.imut.ncee.domain.entity.vo.MessageBoard;
 import cn.imut.ncee.service.PersonService;
 import cn.imut.ncee.util.ResultVO;
 import org.slf4j.Logger;

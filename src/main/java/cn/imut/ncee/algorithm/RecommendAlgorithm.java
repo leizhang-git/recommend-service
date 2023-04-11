@@ -1,7 +1,7 @@
 package cn.imut.ncee.algorithm;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.imut.ncee.entity.pojo.AlgorithmIndex;
+import cn.imut.ncee.domain.entity.pojo.AlgorithmIndex;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

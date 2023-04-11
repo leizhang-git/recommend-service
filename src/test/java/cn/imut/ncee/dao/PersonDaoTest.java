@@ -1,6 +1,6 @@
 package cn.imut.ncee.dao;
 
-import cn.imut.ncee.entity.pojo.Person;
+import cn.imut.ncee.domain.entity.pojo.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

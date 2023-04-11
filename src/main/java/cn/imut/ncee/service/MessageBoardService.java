@@ -1,6 +1,6 @@
 package cn.imut.ncee.service;
 
-import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.domain.entity.vo.MessageBoard;
 
 import java.text.ParseException;
 import java.util.List;

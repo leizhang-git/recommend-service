@@ -1,7 +1,7 @@
 package cn.imut.ncee.service.impl;
 
 import cn.imut.ncee.dao.MessageBoardDao;
-import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.domain.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.imut.ncee.dao.MajorDao">
 
-    <resultMap id="majorMap" type="cn.imut.ncee.entity.pojo.MajorInfo">
+    <resultMap id="majorMap" type="cn.imut.ncee.domain.entity.pojo.MajorInfo">
         <id property="majorId" column="major_id"/>
         <result property="majorName" column="major_name"/>
         <result property="majorCode" column="major_code"/>
@@ -13,7 +13,7 @@
     </resultMap>
 
     <!-- 添加专业信息-->
-    <insert id="insertMajorInfo" parameterType="cn.imut.ncee.entity.pojo.MajorInfo">
+    <insert id="insertMajorInfo" parameterType="cn.imut.ncee.domain.entity.pojo.MajorInfo">
         <!-- UUID-->
         <selectKey keyProperty="majorId" resultType="java.lang.String" order="BEFORE">
             select replace(uuid(), '-', '') as major_id
@@ -57,7 +57,7 @@
     </insert>
 
     <!-- 修改专业信息，根据Id-->
-    <update id="updateMajorInfo" parameterType="cn.imut.ncee.entity.pojo.MajorInfo">
+    <update id="updateMajorInfo" parameterType="cn.imut.ncee.domain.entity.pojo.MajorInfo">
         update
             `major_info`
         set
@@ -75,12 +75,12 @@
     </delete>
 
     <!-- 查询所有专业信息-->
-    <select id="selectAllMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo" resultMap="majorMap">
+    <select id="selectAllMajorInfo" resultType="cn.imut.ncee.domain.entity.pojo.MajorInfo" resultMap="majorMap">
         select * from major_info
     </select>
 
     <!-- 根据Id查询专业信息-->
-    <select id="selectByIdMajorInfo" resultType="cn.imut.ncee.entity.pojo.MajorInfo">
+    <select id="selectByIdMajorInfo" resultType="cn.imut.ncee.domain.entity.pojo.MajorInfo">
         select * from  major_info where major_id = #{majorId}
     </select>
 

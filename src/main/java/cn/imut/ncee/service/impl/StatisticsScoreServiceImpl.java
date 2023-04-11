@@ -2,10 +2,10 @@ package cn.imut.ncee.service.impl;
 
 import cn.imut.ncee.dao.MajorDao;
 import cn.imut.ncee.dao.StatisticsScoreDao;
-import cn.imut.ncee.entity.pojo.MajorInfo;
-import cn.imut.ncee.entity.vo.EntryScore;
-import cn.imut.ncee.entity.vo.MajorScore;
-import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
+import cn.imut.ncee.domain.entity.pojo.MajorInfo;
+import cn.imut.ncee.domain.entity.vo.EntryScore;
+import cn.imut.ncee.domain.entity.vo.MajorScore;
+import cn.imut.ncee.domain.entity.vo.StatisticsScoreInfo;
 import cn.imut.ncee.service.StatisticsScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

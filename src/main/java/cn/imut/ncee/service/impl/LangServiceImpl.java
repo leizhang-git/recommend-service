@@ -12,14 +12,14 @@ import cn.imut.ncee.util.SpringContextHolder;
 import org.apache.commons.compress.utils.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
@@ -36,8 +36,8 @@ public class LangServiceImpl implements LangService {
 
     private static final Logger log = LoggerFactory.getLogger(LangServiceImpl.class);
 
-    @Autowired
-    private ExecutorService commonThreadPoolExecutor;
+    @Resource
+    private ThreadPoolTaskExecutor commonThreadPoolExecutor;
 
     /**
      * 自动同步多语工具类

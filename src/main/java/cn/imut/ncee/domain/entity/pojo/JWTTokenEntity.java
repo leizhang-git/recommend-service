@@ -1,4 +1,4 @@
-package cn.imut.ncee.entity.pojo;
+package cn.imut.ncee.domain.entity.pojo;
 
 import org.hibernate.annotations.GenericGenerator;
 

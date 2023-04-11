@@ -1,4 +1,4 @@
-package cn.imut.ncee.entity.vo;
+package cn.imut.ncee.domain.entity.vo;
 
 import lombok.Getter;
 import lombok.Setter;

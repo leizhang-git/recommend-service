@@ -1,7 +1,6 @@
 package cn.imut.ncee.service;
 
-import cn.imut.ncee.entity.pojo.MajorInfo;
-import org.springframework.data.relational.core.sql.In;
+import cn.imut.ncee.domain.entity.pojo.MajorInfo;
 
 import java.util.List;
 import java.util.Map;

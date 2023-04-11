@@ -1,6 +1,6 @@
 package cn.imut.ncee.dao;
 
-import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.domain.entity.vo.MessageBoard;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;

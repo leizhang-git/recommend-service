@@ -1,8 +1,8 @@
 package cn.imut.ncee.dao;
 
-import cn.imut.ncee.entity.vo.EntryScore;
-import cn.imut.ncee.entity.vo.MajorScore;
-import cn.imut.ncee.entity.vo.StatisticsScoreInfo;
+import cn.imut.ncee.domain.entity.vo.EntryScore;
+import cn.imut.ncee.domain.entity.vo.MajorScore;
+import cn.imut.ncee.domain.entity.vo.StatisticsScoreInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

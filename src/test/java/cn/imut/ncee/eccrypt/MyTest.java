@@ -1,6 +1,5 @@
 package cn.imut.ncee.eccrypt;
 
-import cn.imut.ncee.entity.pojo.MajorInfo;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;

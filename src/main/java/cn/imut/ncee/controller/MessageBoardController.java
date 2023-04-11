@@ -1,7 +1,7 @@
 package cn.imut.ncee.controller;
 
 import cn.hutool.core.util.StrUtil;
-import cn.imut.ncee.entity.vo.MessageBoard;
+import cn.imut.ncee.domain.entity.vo.MessageBoard;
 import cn.imut.ncee.service.MessageBoardService;
 import cn.imut.ncee.util.ResultVO;
 import org.slf4j.Logger;

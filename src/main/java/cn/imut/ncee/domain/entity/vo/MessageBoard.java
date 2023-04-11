@@ -1,4 +1,4 @@
-package cn.imut.ncee.entity.vo;
+package cn.imut.ncee.domain.entity.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

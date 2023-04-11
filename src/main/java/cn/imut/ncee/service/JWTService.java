@@ -1,6 +1,6 @@
 package cn.imut.ncee.service;
 
-import cn.imut.ncee.entity.pojo.JWTTokenEntity;
+import cn.imut.ncee.domain.entity.pojo.JWTTokenEntity;
 import org.springframework.security.core.Authentication;
 
 import java.time.Instant;

@@ -1,6 +1,6 @@
 package cn.imut.ncee.dao;
 
-import cn.imut.ncee.entity.pojo.MajorInfo;
+import cn.imut.ncee.domain.entity.pojo.MajorInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

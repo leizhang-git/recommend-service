@@ -1,7 +1,7 @@
 package cn.imut.ncee.service.impl;
 
 import cn.imut.ncee.dao.MajorDao;
-import cn.imut.ncee.entity.pojo.MajorInfo;
+import cn.imut.ncee.domain.entity.pojo.MajorInfo;
 import cn.imut.ncee.service.MajorService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
