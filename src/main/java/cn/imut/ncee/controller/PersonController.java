@@ -1,5 +1,6 @@
 package cn.imut.ncee.controller;
 
+import cn.imut.ncee.annotation.LogSign;
 import cn.imut.ncee.dto.LoginDTO;
 import cn.imut.ncee.domain.entity.pojo.AlgorithmIndex;
 import cn.imut.ncee.domain.entity.pojo.Person;
@@ -91,6 +92,7 @@ public class PersonController {
      * @param id 用户Id
      * @return 用户信息
      */
+    @LogSign(name = "根据用户Id查询用户信息")
     @GetMapping("/queryPerson")
     public ResultVO<?> queryById(String id) {
         List<Person> person = personService.selectByIdPerson(id);
