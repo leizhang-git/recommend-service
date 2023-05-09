@@ -3,13 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.imut.ncee</groupId>
+        <groupId>com.recommend</groupId>
         <artifactId>volunteer_administration</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>3.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>recommend-provider</artifactId>
     <name>recommend-provider</name>
     <description>Demo project for Spring Boot</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.recommend</groupId>
+            <artifactId>recommend-consumer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
