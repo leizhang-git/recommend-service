@@ -147,3 +147,10 @@ application:
     securityKey: ENC(7MfXiwKtdcv34E22ZQo986aD1dO2wF7HDyC9cKvTZJ82nFxI7qQ4dCrdkg1/goJYJ1eZTW7VoRP7FCDkHagDlw==)
 os:
   enableCORS: true
+#dubbo:
+#  application:
+#    name: recommend-server
+#  registry:
+#    address: ENC(Mbq00EHJWNaF0QUl4HKC9fAKpzkpXHa4BP42N2hFCfQfICfoBHc9UUVq6dvo/rl+PUu991tBesZGzWFlgKnZYQ==)
+#  scan:
+#    base-packages: com.recommend.consumer.service

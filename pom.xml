@@ -34,6 +34,8 @@
         <zookeeper.version>3.8.1</zookeeper.version>
         <flink.version>1.16.1</flink.version>
         <hadoop.version>3.3.4</hadoop.version>
+        <dubbo.version>3.2.0</dubbo.version>
+        <zkclient.version>0.1</zkclient.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
@@ -252,6 +254,35 @@
             <artifactId>validation-api</artifactId>
             <version>${validation-api.version}</version>
         </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.dubbo/dubbo &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.dubbo</groupId>-->
+<!--            <artifactId>dubbo</artifactId>-->
+<!--            <version>${dubbo.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.dubbo</groupId>-->
+<!--            <artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--            <version>${dubbo.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.sgroschupf</groupId>-->
+<!--            <artifactId>zkclient</artifactId>-->
+<!--            <version>${zkclient.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.curator</groupId>-->
+<!--            <artifactId>curator-x-discovery</artifactId>-->
+<!--            <version>${apache.curator.version}</version>-->
+<!--        </dependency>-->
+
+
     </dependencies>
 
     <build>

@@ -5,6 +5,7 @@ package com.recommend.consumer.service;
  * @Author zhanglei
  * @Date 2023/5/92128
  */
+//@Service
 public interface IHelloService {
 
     /**
