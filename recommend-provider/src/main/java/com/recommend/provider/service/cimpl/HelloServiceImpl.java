@@ -1,6 +1,9 @@
 package com.recommend.provider.service.cimpl;
 
+import com.recommend.consumer.exception.StrException;
+import com.recommend.consumer.lock.RedisLock;
 import com.recommend.consumer.service.IHelloService;
+import com.recommend.provider.util.SpringContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,14 @@ public class HelloServiceImpl implements IHelloService {
 
     @Override
     public String printf() {
-        return HELLO_WORLD;
+        RedisLock redisLock = SpringContextHolder.getBean(RedisLock.class);
+        try {
+            if(!redisLock.tryLock(HELLO_WORLD)) {
+                throw new StrException("获取Redis锁失败~");
+            }
+            return HELLO_WORLD;
+        }finally {
+            redisLock.releaseLock(HELLO_WORLD);
+        }
     }
 }
