@@ -42,6 +42,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        //此处不想放在JVM启动参数里了，故直接写在这
+        System.setProperty("Log4jContextSelector", "org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
         int beanCount = ctx.getBeanDefinitionCount();
         log.info("\n========================================= bean 数量为 ：{}", beanCount);
