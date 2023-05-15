@@ -10,7 +10,7 @@
     </parent>
     <artifactId>recommend-bootstrap</artifactId>
     <name>recommend-bootstrap</name>
-    <description>Demo project for Spring Boot</description>
+    <description>recommend-bootstrap</description>
 
     <dependencies>
         <dependency>

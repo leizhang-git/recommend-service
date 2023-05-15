@@ -10,7 +10,7 @@
     </parent>
     <artifactId>recommend-provider</artifactId>
     <name>recommend-provider</name>
-    <description>Demo project for Spring Boot</description>
+    <description>recommend-provider</description>
 
     <dependencies>
         <dependency>

@@ -13,7 +13,7 @@
     <version>3.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>volunteer_administration_demo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>This is volunteer administration project</description>
 
     <modules>
         <module>recommend-consumer</module>

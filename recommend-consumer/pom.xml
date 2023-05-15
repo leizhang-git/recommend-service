@@ -10,6 +10,6 @@
     </parent>
     <artifactId>recommend-consumer</artifactId>
     <name>recommend-consumer</name>
-    <description>Demo project for Spring Boot</description>
+    <description>ecommend-consumer</description>
 
 </project>

@@ -68,7 +68,7 @@ public class RedisLock {
      */
     public boolean tryLock(String key, Integer maxAttempts) {
         boolean isLocked = false;
-        key = KEY_PRE + key;
+        key = KEY_PRE + "_" + key;
         if(StrUtil.isEmpty(threadLocal.get())) {
             isLocked = true;
         }
