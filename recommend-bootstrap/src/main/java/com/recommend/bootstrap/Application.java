@@ -21,7 +21,7 @@ import java.util.List;
 
 @MapperScan("com.recommend.consumer.dao")
 @ComponentScan(basePackages = {"com.recommend.*"})
-@EnableJpaRepositories(basePackages = {"com.recommend.consumer.*"})
+@EnableJpaRepositories(basePackages = {"com.recommend.consumer.*", "com.recommend.bootstrap.*"})
 @SpringBootApplication()
 @EnableConfigurationProperties({ApplicationProperties.class})
 public class Application {
