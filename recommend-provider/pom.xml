@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.recommend</groupId>
-        <artifactId>volunteer_administration</artifactId>
-        <version>3.0.0-SNAPSHOT</version>
+        <artifactId>recommend-service</artifactId>
+        <version>4.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>recommend-provider</artifactId>

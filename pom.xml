@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.recommend</groupId>
-    <artifactId>volunteer_administration</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <artifactId>recommend-service</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>volunteer_administration_demo</name>
+    <name>recommend-service_demo</name>
     <description>This is volunteer administration project</description>
 
     <modules>

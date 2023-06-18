@@ -8,7 +8,7 @@ spring:
     username: ENC(j4Vn9PmJ4/yHzAw2jrrOyG9dDC0gnI/OR1h+a5THUWbsRoTFnQlrL4rS7Z3qKkYj)
     password: ENC(4Hox9tSLgl5wOQed+jzVkoJMtqPvFGx4UgUYp1xGZ92qi5WWGGIofDLC30ImgVb6)
   application:
-    name: volunteer_administration
+    name: recommend-service
   servlet:
     multipart:
       enabled: true

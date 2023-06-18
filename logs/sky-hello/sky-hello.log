@@ -1,4 +1,4 @@
-2023-05-14 02:55:53.423 | mainraceId | INFO  | 15544 | main | org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) : Starting Application using Java 1.8.0_361 on LEIZ-PC with PID 15544 (I:\code\volunteer_administration\recommend-bootstrap\target\classes started by vipp in I:\code\volunteer_administration)
+2023-05-14 02:55:53.423 | mainraceId | INFO  | 15544 | main | org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) : Starting Application using Java 1.8.0_361 on LEIZ-PC with PID 15544 (I:\code\recommend-service\recommend-bootstrap\target\classes started by vipp in I:\code\recommend-service)
 2023-05-14 02:55:53.429 | mainraceId | INFO  | 15544 | main | org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:680) : No active profile set, falling back to 1 default profile: "default"
 2023-05-14 02:55:53.976 | mainraceId | INFO  | 15544 | main | org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected(RepositoryConfigurationDelegate.java:262) : Multiple Spring Data modules found, entering strict repository configuration mode!
 2023-05-14 02:55:53.976 | mainraceId | INFO  | 15544 | main | org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:132) : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -64,7 +64,7 @@
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.version=10.0
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.name=vipp
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.home=C:\Users\vipp
-2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.dir=I:\code\volunteer_administration
+2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.dir=I:\code\recommend-service
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.free=218MB
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.max=3580MB
 2023-05-14 02:55:56.695 | mainraceId | INFO  | 15544 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.total=398MB
@@ -90,7 +90,7 @@ This generated password is for development use only. Your security configuration
 2023-05-14 02:55:58.187 | mainraceId | INFO  | 15544 | main | com.recommend.bootstrap.Application.main(Application.java:52) : 
 ========================================= port is 8083
 2023-05-14 02:55:58.188 | mainraceId | INFO  | 15544 | main | com.recommend.bootstrap.Application.main(Application.java:54) : 
-========================================= application-name is volunteer_administration
+========================================= application-name is recommend-service
 2023-05-14 02:55:58.188 | mainraceId | INFO  | 15544 | main | com.recommend.bootstrap.Application.main(Application.java:56) : 
 ========================================= context-path is null
 2023-05-14 02:55:58.188 | mainraceId | INFO  | 15544 | main | com.recommend.bootstrap.Application.main(Application.java:57) : 
@@ -114,7 +114,7 @@ This generated password is for development use only. Your security configuration
 2023-05-14 02:56:06.718 | main-EventThreadraceId | INFO  | 15544 | main-EventThread | org.apache.curator.framework.state.ConnectionStateManager.postState(ConnectionStateManager.java:252) : State change: CONNECTED
 2023-05-14 02:56:06.739 | main-EventThreadraceId | INFO  | 15544 | main-EventThread | org.apache.curator.framework.imps.EnsembleTracker.processConfigData(EnsembleTracker.java:201) : New config event received: {}
 2023-05-14 02:56:06.739 | main-EventThreadraceId | INFO  | 15544 | main-EventThread | org.apache.curator.framework.imps.EnsembleTracker.processConfigData(EnsembleTracker.java:201) : New config event received: {}
-2023-05-14 03:08:19.280 | mainraceId | INFO  | 2548 | main | org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) : Starting Application using Java 1.8.0_361 on LEIZ-PC with PID 2548 (I:\code\volunteer_administration\recommend-bootstrap\target\classes started by vipp in I:\code\volunteer_administration)
+2023-05-14 03:08:19.280 | mainraceId | INFO  | 2548 | main | org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) : Starting Application using Java 1.8.0_361 on LEIZ-PC with PID 2548 (I:\code\recommend-service\recommend-bootstrap\target\classes started by vipp in I:\code\recommend-service)
 2023-05-14 03:08:19.285 | mainraceId | INFO  | 2548 | main | org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:680) : No active profile set, falling back to 1 default profile: "default"
 2023-05-14 03:08:19.765 | mainraceId | INFO  | 2548 | main | org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected(RepositoryConfigurationDelegate.java:262) : Multiple Spring Data modules found, entering strict repository configuration mode!
 2023-05-14 03:08:19.765 | mainraceId | INFO  | 2548 | main | org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:132) : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -180,7 +180,7 @@ This generated password is for development use only. Your security configuration
 2023-05-14 03:08:22.413 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.version=10.0
 2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.name=vipp
 2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.home=C:\Users\vipp
-2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.dir=I:\code\volunteer_administration
+2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:user.dir=I:\code\recommend-service
 2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.free=166MB
 2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.max=3580MB
 2023-05-14 03:08:22.414 | mainraceId | INFO  | 2548 | main | org.apache.zookeeper.Environment.logEnv(Environment.java:98) : Client environment:os.memory.total=475MB
@@ -206,7 +206,7 @@ This generated password is for development use only. Your security configuration
 2023-05-14 03:08:24.122 | mainraceId | INFO  | 2548 | main | com.recommend.bootstrap.Application.main(Application.java:52) : 
 ========================================= port is 8083
 2023-05-14 03:08:24.122 | mainraceId | INFO  | 2548 | main | com.recommend.bootstrap.Application.main(Application.java:54) : 
-========================================= application-name is volunteer_administration
+========================================= application-name is recommend-service
 2023-05-14 03:08:24.122 | mainraceId | INFO  | 2548 | main | com.recommend.bootstrap.Application.main(Application.java:56) : 
 ========================================= context-path is null
 2023-05-14 03:08:24.122 | mainraceId | INFO  | 2548 | main | com.recommend.bootstrap.Application.main(Application.java:57) : 

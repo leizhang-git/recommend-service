@@ -1,5 +1,5 @@
-create database volunteer_Administration;
-use `volunteer_Administration`;
+create database recommend-service;
+use `recommend-service`;
 
 create table if not exists `major_info` (
     `major_id`       varchar(255) not null comment '专业Id',
