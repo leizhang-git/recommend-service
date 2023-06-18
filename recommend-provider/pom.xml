@@ -6,12 +6,11 @@
         <groupId>com.recommend</groupId>
         <artifactId>recommend-service</artifactId>
         <version>4.0.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>recommend-provider</artifactId>
     <name>recommend-provider</name>
     <description>recommend-provider</description>
-
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.recommend</groupId>

@@ -2,6 +2,8 @@ spring:
   main:
     #开启覆盖名称相同bean
     allow-bean-definition-overriding: true
+    #开启三级缓存，解决循环依赖问题
+    allow-circular-references: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ENC(wrtJNLaH9x8vFhIlCUHaY4NfhE/yL4QXJlLkzwIeZ4/L0opLRumQd8JubiEOA8BdvoTi5c1tqh2F1frDPu940llF74ODLETu09x9lJUXMdQUo4SsY9vbubsX1cdloifaUkkk4hqn6MUoF0GsFggI3YjB2yqEbfjrUjPclcotj4TFAyRwzGX98RQjxMguTRndAoZ4Rn7WEuzGyDu7zGOiNkfUp67K2LpYBz/YYfRB+vmlivLzZF0pUlytRjgIzWXh)
@@ -53,6 +55,13 @@ spring:
     host: ENC(BaVTmxetWQCPcjU+jIzkbbzwV+jPMreI6AwukFnlHfZ3MrZc1pUoNvUTa42rB2q3)
     port: 6379
     password: ENC(b2c2vGgIz8wsagkjF8ZeAdmiGbG+TQ3BPx7OsCwmfZaxjEdxswtFpB5hggyzws2b)
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ENC(0DBClHR2jB0SAmlKLFwvFmqkUnLU+XwJpXHQp4qoh3hpdinaa1motd5ILzj5c5NcKNHojoV46DhGD4TyTMI3FQ==)
+      config:
+        import-check:
+          enabled: false
 build:
   platform: JWT
 kafka:
