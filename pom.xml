@@ -13,7 +13,7 @@
     <version>4.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>recommend-service</name>
-    <description>This is volunteer administration project</description>
+    <description>This is recommend-services project</description>
 
     <modules>
         <module>recommend-consumer</module>
@@ -48,6 +48,42 @@
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/de.ruedigermoeller/fst -->
+        <dependency>
+            <groupId>de.ruedigermoeller</groupId>
+            <artifactId>fst</artifactId>
+            <version>2.57</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.22.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.esotericsoftware/kryo -->
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.thrift/libthrift -->
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.14.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.caucho/hessian -->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.65</version>
+        </dependency>
+
+
         <!-- ================Spring==================-->
 
         <!-- nacos-->
