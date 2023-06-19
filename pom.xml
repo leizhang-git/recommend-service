@@ -22,6 +22,7 @@
     </modules>
 
     <properties>
+        <cglib.version>3.3.0</cglib.version>
         <java.version>1.8</java.version>
         <nacos.version>1.4.1</nacos.version>
         <cloud-gateway.version>3.1.2</cloud-gateway.version>
@@ -374,6 +375,12 @@
 <!--            <artifactId>curator-x-discovery</artifactId>-->
 <!--            <version>${apache.curator.version}</version>-->
 <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
 
 
     </dependencies>

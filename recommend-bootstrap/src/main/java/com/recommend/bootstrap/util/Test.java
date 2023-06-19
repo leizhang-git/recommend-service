@@ -1,5 +1,7 @@
 package com.recommend.bootstrap.util;
 
+import com.recommend.bootstrap.config.LogProxy;
+
 /**
  * @Author zhanglei
  * @Date 2023/5/111937
@@ -30,5 +32,15 @@ class MyTest implements Runnable {
                 current++;
             }
         }
+    }
+}
+
+class CglibTest {
+    public static void main(String[] args) {
+        // proxy
+        PrintUtil printUtil = (PrintUtil) LogProxy.getCglibProxy(PrintUtil.class);
+
+        // call
+        String str = printUtil.printHello();
     }
 }
