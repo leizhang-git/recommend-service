@@ -52,11 +52,27 @@ public class LogProxy {
         return result;
     };
 
+    private static Callback callback3 = (MethodInterceptor) (obj, method, args, proxy) -> {
+
+        // before
+        long start = System.currentTimeMillis();
+        log.info(">>>>>>>>>>>>>>开始执行方法{}", method.getName());
+
+        // execute
+        Object result = proxy.invokeSuper(obj, args);
+
+        // after
+        long exeTime = System.currentTimeMillis() - start;
+        String ms = String.format("%s%s", exeTime, "ms");
+        log.info(">>>>>>>>>>>>>>>执行完毕，共耗时：{}", ms);
+        return result;
+    };
+
     private static CallbackFilter callbackFilter = method -> {
         if ("printHello".equals(method.getName())) {
             return 0;
         } else {
-            return 1;
+            return 2;
         }
     };
 
@@ -68,7 +84,7 @@ public class LogProxy {
         //设置父类
         enhancer.setSuperclass(clazz);
         //设置回调方法
-        enhancer.setCallbacks(new Callback[] { callback1, callback2 });
+        enhancer.setCallbacks(new Callback[] { callback1, callback2, callback3 });
         //设置回调方法过滤
         enhancer.setCallbackFilter(callbackFilter);
         //创建代理对象
