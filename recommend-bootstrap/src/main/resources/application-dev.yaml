@@ -4,6 +4,8 @@ spring:
     allow-bean-definition-overriding: true
     #开启三级缓存，解决循环依赖问题
     allow-circular-references: true
+    #mvc与gateway冲突
+    web-application-type: reactive
 build:
   platform: JWT
 threadpool:

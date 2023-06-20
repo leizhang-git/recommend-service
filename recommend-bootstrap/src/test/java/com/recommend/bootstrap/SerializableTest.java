@@ -34,6 +34,8 @@ public class SerializableTest {
 
         log.info(">>>>>>>>>>>>>>>>>开始测试序列化性能~");
         List<String> list = new ArrayList<>();
+        list.add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        list.add("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1");
         Person person = new Person();
         person.setStr1("str1");
         person.setStr3("str2");

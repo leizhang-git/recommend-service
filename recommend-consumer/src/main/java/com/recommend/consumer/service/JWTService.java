@@ -1,8 +1,5 @@
 package com.recommend.consumer.service;
 
-
-import org.springframework.security.core.Authentication;
-
 import java.time.Instant;
 import java.util.Map;
 
@@ -22,13 +19,6 @@ public interface JWTService {
 
     String createToken(String login, String orgId, String ts);
 
-    /**
-     * 根据token、公钥获取认证信息
-     * @param token
-     * @param pk
-     * @return
-     */
-    Authentication getAuthentication(String token, String pk);
 
     Map<String, Object> jwtParse(String token);
 }

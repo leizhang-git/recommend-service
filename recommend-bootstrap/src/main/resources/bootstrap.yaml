@@ -77,6 +77,30 @@ spring:
         namespace: ad6d1fcc-a258-406e-86dc-919ffdf4c180
         file-extension: yaml
       server-addr: ENC(0DBClHR2jB0SAmlKLFwvFmqkUnLU+XwJpXHQp4qoh3hpdinaa1motd5ILzj5c5NcKNHojoV46DhGD4TyTMI3FQ==)
+    gateway:
+      routes:
+        - id: recommend-service
+          predicates:
+            - Path=/api/v1/gateway/**  #匹配规则
+          uri: https://www.baidu.com   #服务目标地址
+          filters:  #过滤规则
+            - StripPrefix=1 #去掉前缀
+      enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - OPTIONS
+      discovery:
+        locator:
+          #开启以服务id去注册中心获取转发地址
+          enabled: true
 jasypt:
   encryptor:
     #盐值

@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -26,7 +27,7 @@ import java.util.List;
 @MapperScan("com.recommend.consumer.dao")
 @ComponentScan(basePackages = {"com.recommend.*"})
 @EnableJpaRepositories(basePackages = {"com.recommend.consumer.*", "com.recommend.bootstrap.*"})
-@SpringBootApplication()
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableConfigurationProperties({ApplicationProperties.class})
 @EnableDiscoveryClient
 public class Application {

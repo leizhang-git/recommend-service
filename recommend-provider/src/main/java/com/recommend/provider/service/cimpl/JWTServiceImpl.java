@@ -19,7 +19,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -70,13 +69,7 @@ public class JWTServiceImpl implements JWTService {
         payload.put("user", JSONObject.toJSONString(person));
         return createToken(payload);
     }
-
-    @Override
-    public Authentication getAuthentication(String token, String pk) {
-        jwtParse(token);
-        return null;
-    }
-
+    
     @Override
     public Map<String, Object> jwtParse(String token) {
         JWT jwtToken = JWT.of(token);
