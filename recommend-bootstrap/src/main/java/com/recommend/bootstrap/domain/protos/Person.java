@@ -16,6 +16,17 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Person() {
+    str1_ = "";
+    str2_ = "";
+    str3_ = "";
+    str4_ = "";
+    str5_ = "";
+    l1_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    l2_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    l3_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
   }
 
   @java.lang.Override
@@ -38,6 +49,422 @@ private static final long serialVersionUID = 0L;
             com.recommend.bootstrap.domain.protos.Person.class, com.recommend.bootstrap.domain.protos.Person.Builder.class);
   }
 
+  public static final int STR1_FIELD_NUMBER = 1;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object str1_ = "";
+  /**
+   * <code>string str1 = 1;</code>
+   * @return The str1.
+   */
+  @java.lang.Override
+  public java.lang.String getStr1() {
+    java.lang.Object ref = str1_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      str1_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string str1 = 1;</code>
+   * @return The bytes for str1.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStr1Bytes() {
+    java.lang.Object ref = str1_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      str1_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STR2_FIELD_NUMBER = 2;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object str2_ = "";
+  /**
+   * <code>string str2 = 2;</code>
+   * @return The str2.
+   */
+  @java.lang.Override
+  public java.lang.String getStr2() {
+    java.lang.Object ref = str2_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      str2_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string str2 = 2;</code>
+   * @return The bytes for str2.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStr2Bytes() {
+    java.lang.Object ref = str2_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      str2_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STR3_FIELD_NUMBER = 3;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object str3_ = "";
+  /**
+   * <code>string str3 = 3;</code>
+   * @return The str3.
+   */
+  @java.lang.Override
+  public java.lang.String getStr3() {
+    java.lang.Object ref = str3_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      str3_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string str3 = 3;</code>
+   * @return The bytes for str3.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStr3Bytes() {
+    java.lang.Object ref = str3_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      str3_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STR4_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object str4_ = "";
+  /**
+   * <code>string str4 = 4;</code>
+   * @return The str4.
+   */
+  @java.lang.Override
+  public java.lang.String getStr4() {
+    java.lang.Object ref = str4_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      str4_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string str4 = 4;</code>
+   * @return The bytes for str4.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStr4Bytes() {
+    java.lang.Object ref = str4_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      str4_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STR5_FIELD_NUMBER = 5;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object str5_ = "";
+  /**
+   * <code>string str5 = 5;</code>
+   * @return The str5.
+   */
+  @java.lang.Override
+  public java.lang.String getStr5() {
+    java.lang.Object ref = str5_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      str5_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string str5 = 5;</code>
+   * @return The bytes for str5.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStr5Bytes() {
+    java.lang.Object ref = str5_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      str5_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int I1_FIELD_NUMBER = 6;
+  private int i1_ = 0;
+  /**
+   * <code>int32 i1 = 6;</code>
+   * @return The i1.
+   */
+  @java.lang.Override
+  public int getI1() {
+    return i1_;
+  }
+
+  public static final int I2_FIELD_NUMBER = 7;
+  private int i2_ = 0;
+  /**
+   * <code>int32 i2 = 7;</code>
+   * @return The i2.
+   */
+  @java.lang.Override
+  public int getI2() {
+    return i2_;
+  }
+
+  public static final int I3_FIELD_NUMBER = 8;
+  private int i3_ = 0;
+  /**
+   * <code>int32 i3 = 8;</code>
+   * @return The i3.
+   */
+  @java.lang.Override
+  public int getI3() {
+    return i3_;
+  }
+
+  public static final int I4_FIELD_NUMBER = 9;
+  private int i4_ = 0;
+  /**
+   * <code>int32 i4 = 9;</code>
+   * @return The i4.
+   */
+  @java.lang.Override
+  public int getI4() {
+    return i4_;
+  }
+
+  public static final int I5_FIELD_NUMBER = 10;
+  private int i5_ = 0;
+  /**
+   * <code>int32 i5 = 10;</code>
+   * @return The i5.
+   */
+  @java.lang.Override
+  public int getI5() {
+    return i5_;
+  }
+
+  public static final int I6_FIELD_NUMBER = 11;
+  private int i6_ = 0;
+  /**
+   * <code>int32 i6 = 11;</code>
+   * @return The i6.
+   */
+  @java.lang.Override
+  public int getI6() {
+    return i6_;
+  }
+
+  public static final int I7_FIELD_NUMBER = 12;
+  private int i7_ = 0;
+  /**
+   * <code>int32 i7 = 12;</code>
+   * @return The i7.
+   */
+  @java.lang.Override
+  public int getI7() {
+    return i7_;
+  }
+
+  public static final int I8_FIELD_NUMBER = 13;
+  private int i8_ = 0;
+  /**
+   * <code>int32 i8 = 13;</code>
+   * @return The i8.
+   */
+  @java.lang.Override
+  public int getI8() {
+    return i8_;
+  }
+
+  public static final int I9_FIELD_NUMBER = 14;
+  private int i9_ = 0;
+  /**
+   * <code>int32 i9 = 14;</code>
+   * @return The i9.
+   */
+  @java.lang.Override
+  public int getI9() {
+    return i9_;
+  }
+
+  public static final int I10_FIELD_NUMBER = 15;
+  private int i10_ = 0;
+  /**
+   * <code>int32 i10 = 15;</code>
+   * @return The i10.
+   */
+  @java.lang.Override
+  public int getI10() {
+    return i10_;
+  }
+
+  public static final int L1_FIELD_NUMBER = 16;
+  @SuppressWarnings("serial")
+  private com.google.protobuf.LazyStringArrayList l1_ =
+      com.google.protobuf.LazyStringArrayList.emptyList();
+  /**
+   * <code>repeated string l1 = 16;</code>
+   * @return A list containing the l1.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getL1List() {
+    return l1_;
+  }
+  /**
+   * <code>repeated string l1 = 16;</code>
+   * @return The count of l1.
+   */
+  public int getL1Count() {
+    return l1_.size();
+  }
+  /**
+   * <code>repeated string l1 = 16;</code>
+   * @param index The index of the element to return.
+   * @return The l1 at the given index.
+   */
+  public java.lang.String getL1(int index) {
+    return l1_.get(index);
+  }
+  /**
+   * <code>repeated string l1 = 16;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the l1 at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getL1Bytes(int index) {
+    return l1_.getByteString(index);
+  }
+
+  public static final int L2_FIELD_NUMBER = 17;
+  @SuppressWarnings("serial")
+  private com.google.protobuf.LazyStringArrayList l2_ =
+      com.google.protobuf.LazyStringArrayList.emptyList();
+  /**
+   * <code>repeated string l2 = 17;</code>
+   * @return A list containing the l2.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getL2List() {
+    return l2_;
+  }
+  /**
+   * <code>repeated string l2 = 17;</code>
+   * @return The count of l2.
+   */
+  public int getL2Count() {
+    return l2_.size();
+  }
+  /**
+   * <code>repeated string l2 = 17;</code>
+   * @param index The index of the element to return.
+   * @return The l2 at the given index.
+   */
+  public java.lang.String getL2(int index) {
+    return l2_.get(index);
+  }
+  /**
+   * <code>repeated string l2 = 17;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the l2 at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getL2Bytes(int index) {
+    return l2_.getByteString(index);
+  }
+
+  public static final int L3_FIELD_NUMBER = 18;
+  @SuppressWarnings("serial")
+  private com.google.protobuf.LazyStringArrayList l3_ =
+      com.google.protobuf.LazyStringArrayList.emptyList();
+  /**
+   * <code>repeated string l3 = 18;</code>
+   * @return A list containing the l3.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getL3List() {
+    return l3_;
+  }
+  /**
+   * <code>repeated string l3 = 18;</code>
+   * @return The count of l3.
+   */
+  public int getL3Count() {
+    return l3_.size();
+  }
+  /**
+   * <code>repeated string l3 = 18;</code>
+   * @param index The index of the element to return.
+   * @return The l3 at the given index.
+   */
+  public java.lang.String getL3(int index) {
+    return l3_.get(index);
+  }
+  /**
+   * <code>repeated string l3 = 18;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the l3 at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getL3Bytes(int index) {
+    return l3_.getByteString(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -52,6 +479,60 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str1_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, str1_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str2_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, str2_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str3_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, str3_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str4_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, str4_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str5_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, str5_);
+    }
+    if (i1_ != 0) {
+      output.writeInt32(6, i1_);
+    }
+    if (i2_ != 0) {
+      output.writeInt32(7, i2_);
+    }
+    if (i3_ != 0) {
+      output.writeInt32(8, i3_);
+    }
+    if (i4_ != 0) {
+      output.writeInt32(9, i4_);
+    }
+    if (i5_ != 0) {
+      output.writeInt32(10, i5_);
+    }
+    if (i6_ != 0) {
+      output.writeInt32(11, i6_);
+    }
+    if (i7_ != 0) {
+      output.writeInt32(12, i7_);
+    }
+    if (i8_ != 0) {
+      output.writeInt32(13, i8_);
+    }
+    if (i9_ != 0) {
+      output.writeInt32(14, i9_);
+    }
+    if (i10_ != 0) {
+      output.writeInt32(15, i10_);
+    }
+    for (int i = 0; i < l1_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 16, l1_.getRaw(i));
+    }
+    for (int i = 0; i < l2_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 17, l2_.getRaw(i));
+    }
+    for (int i = 0; i < l3_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 18, l3_.getRaw(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -61,6 +542,85 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str1_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, str1_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str2_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, str2_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str3_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, str3_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str4_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, str4_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(str5_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, str5_);
+    }
+    if (i1_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, i1_);
+    }
+    if (i2_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, i2_);
+    }
+    if (i3_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, i3_);
+    }
+    if (i4_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(9, i4_);
+    }
+    if (i5_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, i5_);
+    }
+    if (i6_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(11, i6_);
+    }
+    if (i7_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(12, i7_);
+    }
+    if (i8_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(13, i8_);
+    }
+    if (i9_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(14, i9_);
+    }
+    if (i10_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(15, i10_);
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < l1_.size(); i++) {
+        dataSize += computeStringSizeNoTag(l1_.getRaw(i));
+      }
+      size += dataSize;
+      size += 2 * getL1List().size();
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < l2_.size(); i++) {
+        dataSize += computeStringSizeNoTag(l2_.getRaw(i));
+      }
+      size += dataSize;
+      size += 2 * getL2List().size();
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < l3_.size(); i++) {
+        dataSize += computeStringSizeNoTag(l3_.getRaw(i));
+      }
+      size += dataSize;
+      size += 2 * getL3List().size();
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -76,6 +636,42 @@ private static final long serialVersionUID = 0L;
     }
     com.recommend.bootstrap.domain.protos.Person other = (com.recommend.bootstrap.domain.protos.Person) obj;
 
+    if (!getStr1()
+        .equals(other.getStr1())) return false;
+    if (!getStr2()
+        .equals(other.getStr2())) return false;
+    if (!getStr3()
+        .equals(other.getStr3())) return false;
+    if (!getStr4()
+        .equals(other.getStr4())) return false;
+    if (!getStr5()
+        .equals(other.getStr5())) return false;
+    if (getI1()
+        != other.getI1()) return false;
+    if (getI2()
+        != other.getI2()) return false;
+    if (getI3()
+        != other.getI3()) return false;
+    if (getI4()
+        != other.getI4()) return false;
+    if (getI5()
+        != other.getI5()) return false;
+    if (getI6()
+        != other.getI6()) return false;
+    if (getI7()
+        != other.getI7()) return false;
+    if (getI8()
+        != other.getI8()) return false;
+    if (getI9()
+        != other.getI9()) return false;
+    if (getI10()
+        != other.getI10()) return false;
+    if (!getL1List()
+        .equals(other.getL1List())) return false;
+    if (!getL2List()
+        .equals(other.getL2List())) return false;
+    if (!getL3List()
+        .equals(other.getL3List())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -87,6 +683,48 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + STR1_FIELD_NUMBER;
+    hash = (53 * hash) + getStr1().hashCode();
+    hash = (37 * hash) + STR2_FIELD_NUMBER;
+    hash = (53 * hash) + getStr2().hashCode();
+    hash = (37 * hash) + STR3_FIELD_NUMBER;
+    hash = (53 * hash) + getStr3().hashCode();
+    hash = (37 * hash) + STR4_FIELD_NUMBER;
+    hash = (53 * hash) + getStr4().hashCode();
+    hash = (37 * hash) + STR5_FIELD_NUMBER;
+    hash = (53 * hash) + getStr5().hashCode();
+    hash = (37 * hash) + I1_FIELD_NUMBER;
+    hash = (53 * hash) + getI1();
+    hash = (37 * hash) + I2_FIELD_NUMBER;
+    hash = (53 * hash) + getI2();
+    hash = (37 * hash) + I3_FIELD_NUMBER;
+    hash = (53 * hash) + getI3();
+    hash = (37 * hash) + I4_FIELD_NUMBER;
+    hash = (53 * hash) + getI4();
+    hash = (37 * hash) + I5_FIELD_NUMBER;
+    hash = (53 * hash) + getI5();
+    hash = (37 * hash) + I6_FIELD_NUMBER;
+    hash = (53 * hash) + getI6();
+    hash = (37 * hash) + I7_FIELD_NUMBER;
+    hash = (53 * hash) + getI7();
+    hash = (37 * hash) + I8_FIELD_NUMBER;
+    hash = (53 * hash) + getI8();
+    hash = (37 * hash) + I9_FIELD_NUMBER;
+    hash = (53 * hash) + getI9();
+    hash = (37 * hash) + I10_FIELD_NUMBER;
+    hash = (53 * hash) + getI10();
+    if (getL1Count() > 0) {
+      hash = (37 * hash) + L1_FIELD_NUMBER;
+      hash = (53 * hash) + getL1List().hashCode();
+    }
+    if (getL2Count() > 0) {
+      hash = (37 * hash) + L2_FIELD_NUMBER;
+      hash = (53 * hash) + getL2List().hashCode();
+    }
+    if (getL3Count() > 0) {
+      hash = (37 * hash) + L3_FIELD_NUMBER;
+      hash = (53 * hash) + getL3List().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -217,6 +855,28 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
+      str1_ = "";
+      str2_ = "";
+      str3_ = "";
+      str4_ = "";
+      str5_ = "";
+      i1_ = 0;
+      i2_ = 0;
+      i3_ = 0;
+      i4_ = 0;
+      i5_ = 0;
+      i6_ = 0;
+      i7_ = 0;
+      i8_ = 0;
+      i9_ = 0;
+      i10_ = 0;
+      l1_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      l2_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      l3_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
       return this;
     }
 
@@ -243,8 +903,70 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.recommend.bootstrap.domain.protos.Person buildPartial() {
       com.recommend.bootstrap.domain.protos.Person result = new com.recommend.bootstrap.domain.protos.Person(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(com.recommend.bootstrap.domain.protos.Person result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.str1_ = str1_;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.str2_ = str2_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.str3_ = str3_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.str4_ = str4_;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.str5_ = str5_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.i1_ = i1_;
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        result.i2_ = i2_;
+      }
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        result.i3_ = i3_;
+      }
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        result.i4_ = i4_;
+      }
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        result.i5_ = i5_;
+      }
+      if (((from_bitField0_ & 0x00000400) != 0)) {
+        result.i6_ = i6_;
+      }
+      if (((from_bitField0_ & 0x00000800) != 0)) {
+        result.i7_ = i7_;
+      }
+      if (((from_bitField0_ & 0x00001000) != 0)) {
+        result.i8_ = i8_;
+      }
+      if (((from_bitField0_ & 0x00002000) != 0)) {
+        result.i9_ = i9_;
+      }
+      if (((from_bitField0_ & 0x00004000) != 0)) {
+        result.i10_ = i10_;
+      }
+      if (((from_bitField0_ & 0x00008000) != 0)) {
+        l1_.makeImmutable();
+        result.l1_ = l1_;
+      }
+      if (((from_bitField0_ & 0x00010000) != 0)) {
+        l2_.makeImmutable();
+        result.l2_ = l2_;
+      }
+      if (((from_bitField0_ & 0x00020000) != 0)) {
+        l3_.makeImmutable();
+        result.l3_ = l3_;
+      }
     }
 
     @java.lang.Override
@@ -291,6 +1013,91 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.recommend.bootstrap.domain.protos.Person other) {
       if (other == com.recommend.bootstrap.domain.protos.Person.getDefaultInstance()) return this;
+      if (!other.getStr1().isEmpty()) {
+        str1_ = other.str1_;
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
+      if (!other.getStr2().isEmpty()) {
+        str2_ = other.str2_;
+        bitField0_ |= 0x00000002;
+        onChanged();
+      }
+      if (!other.getStr3().isEmpty()) {
+        str3_ = other.str3_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
+      if (!other.getStr4().isEmpty()) {
+        str4_ = other.str4_;
+        bitField0_ |= 0x00000008;
+        onChanged();
+      }
+      if (!other.getStr5().isEmpty()) {
+        str5_ = other.str5_;
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
+      if (other.getI1() != 0) {
+        setI1(other.getI1());
+      }
+      if (other.getI2() != 0) {
+        setI2(other.getI2());
+      }
+      if (other.getI3() != 0) {
+        setI3(other.getI3());
+      }
+      if (other.getI4() != 0) {
+        setI4(other.getI4());
+      }
+      if (other.getI5() != 0) {
+        setI5(other.getI5());
+      }
+      if (other.getI6() != 0) {
+        setI6(other.getI6());
+      }
+      if (other.getI7() != 0) {
+        setI7(other.getI7());
+      }
+      if (other.getI8() != 0) {
+        setI8(other.getI8());
+      }
+      if (other.getI9() != 0) {
+        setI9(other.getI9());
+      }
+      if (other.getI10() != 0) {
+        setI10(other.getI10());
+      }
+      if (!other.l1_.isEmpty()) {
+        if (l1_.isEmpty()) {
+          l1_ = other.l1_;
+          bitField0_ |= 0x00008000;
+        } else {
+          ensureL1IsMutable();
+          l1_.addAll(other.l1_);
+        }
+        onChanged();
+      }
+      if (!other.l2_.isEmpty()) {
+        if (l2_.isEmpty()) {
+          l2_ = other.l2_;
+          bitField0_ |= 0x00010000;
+        } else {
+          ensureL2IsMutable();
+          l2_.addAll(other.l2_);
+        }
+        onChanged();
+      }
+      if (!other.l3_.isEmpty()) {
+        if (l3_.isEmpty()) {
+          l3_ = other.l3_;
+          bitField0_ |= 0x00020000;
+        } else {
+          ensureL3IsMutable();
+          l3_.addAll(other.l3_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -317,6 +1124,99 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              str1_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 18: {
+              str2_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
+            case 26: {
+              str3_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
+            case 34: {
+              str4_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 42: {
+              str5_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
+            case 48: {
+              i1_ = input.readInt32();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            case 56: {
+              i2_ = input.readInt32();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 56
+            case 64: {
+              i3_ = input.readInt32();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
+            case 72: {
+              i4_ = input.readInt32();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 72
+            case 80: {
+              i5_ = input.readInt32();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 80
+            case 88: {
+              i6_ = input.readInt32();
+              bitField0_ |= 0x00000400;
+              break;
+            } // case 88
+            case 96: {
+              i7_ = input.readInt32();
+              bitField0_ |= 0x00000800;
+              break;
+            } // case 96
+            case 104: {
+              i8_ = input.readInt32();
+              bitField0_ |= 0x00001000;
+              break;
+            } // case 104
+            case 112: {
+              i9_ = input.readInt32();
+              bitField0_ |= 0x00002000;
+              break;
+            } // case 112
+            case 120: {
+              i10_ = input.readInt32();
+              bitField0_ |= 0x00004000;
+              break;
+            } // case 120
+            case 130: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureL1IsMutable();
+              l1_.add(s);
+              break;
+            } // case 130
+            case 138: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureL2IsMutable();
+              l2_.add(s);
+              break;
+            } // case 138
+            case 146: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureL3IsMutable();
+              l3_.add(s);
+              break;
+            } // case 146
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -330,6 +1230,1020 @@ private static final long serialVersionUID = 0L;
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object str1_ = "";
+    /**
+     * <code>string str1 = 1;</code>
+     * @return The str1.
+     */
+    public java.lang.String getStr1() {
+      java.lang.Object ref = str1_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        str1_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string str1 = 1;</code>
+     * @return The bytes for str1.
+     */
+    public com.google.protobuf.ByteString
+        getStr1Bytes() {
+      java.lang.Object ref = str1_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        str1_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string str1 = 1;</code>
+     * @param value The str1 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr1(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      str1_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str1 = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStr1() {
+      str1_ = getDefaultInstance().getStr1();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str1 = 1;</code>
+     * @param value The bytes for str1 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr1Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      str1_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object str2_ = "";
+    /**
+     * <code>string str2 = 2;</code>
+     * @return The str2.
+     */
+    public java.lang.String getStr2() {
+      java.lang.Object ref = str2_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        str2_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string str2 = 2;</code>
+     * @return The bytes for str2.
+     */
+    public com.google.protobuf.ByteString
+        getStr2Bytes() {
+      java.lang.Object ref = str2_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        str2_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string str2 = 2;</code>
+     * @param value The str2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr2(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      str2_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str2 = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStr2() {
+      str2_ = getDefaultInstance().getStr2();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str2 = 2;</code>
+     * @param value The bytes for str2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr2Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      str2_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object str3_ = "";
+    /**
+     * <code>string str3 = 3;</code>
+     * @return The str3.
+     */
+    public java.lang.String getStr3() {
+      java.lang.Object ref = str3_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        str3_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string str3 = 3;</code>
+     * @return The bytes for str3.
+     */
+    public com.google.protobuf.ByteString
+        getStr3Bytes() {
+      java.lang.Object ref = str3_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        str3_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string str3 = 3;</code>
+     * @param value The str3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr3(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      str3_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str3 = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStr3() {
+      str3_ = getDefaultInstance().getStr3();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str3 = 3;</code>
+     * @param value The bytes for str3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr3Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      str3_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object str4_ = "";
+    /**
+     * <code>string str4 = 4;</code>
+     * @return The str4.
+     */
+    public java.lang.String getStr4() {
+      java.lang.Object ref = str4_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        str4_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string str4 = 4;</code>
+     * @return The bytes for str4.
+     */
+    public com.google.protobuf.ByteString
+        getStr4Bytes() {
+      java.lang.Object ref = str4_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        str4_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string str4 = 4;</code>
+     * @param value The str4 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr4(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      str4_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str4 = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStr4() {
+      str4_ = getDefaultInstance().getStr4();
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str4 = 4;</code>
+     * @param value The bytes for str4 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr4Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      str4_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object str5_ = "";
+    /**
+     * <code>string str5 = 5;</code>
+     * @return The str5.
+     */
+    public java.lang.String getStr5() {
+      java.lang.Object ref = str5_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        str5_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string str5 = 5;</code>
+     * @return The bytes for str5.
+     */
+    public com.google.protobuf.ByteString
+        getStr5Bytes() {
+      java.lang.Object ref = str5_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        str5_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string str5 = 5;</code>
+     * @param value The str5 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr5(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      str5_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str5 = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStr5() {
+      str5_ = getDefaultInstance().getStr5();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string str5 = 5;</code>
+     * @param value The bytes for str5 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStr5Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      str5_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+
+    private int i1_ ;
+    /**
+     * <code>int32 i1 = 6;</code>
+     * @return The i1.
+     */
+    @java.lang.Override
+    public int getI1() {
+      return i1_;
+    }
+    /**
+     * <code>int32 i1 = 6;</code>
+     * @param value The i1 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI1(int value) {
+
+      i1_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i1 = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI1() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      i1_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i2_ ;
+    /**
+     * <code>int32 i2 = 7;</code>
+     * @return The i2.
+     */
+    @java.lang.Override
+    public int getI2() {
+      return i2_;
+    }
+    /**
+     * <code>int32 i2 = 7;</code>
+     * @param value The i2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI2(int value) {
+
+      i2_ = value;
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i2 = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI2() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      i2_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i3_ ;
+    /**
+     * <code>int32 i3 = 8;</code>
+     * @return The i3.
+     */
+    @java.lang.Override
+    public int getI3() {
+      return i3_;
+    }
+    /**
+     * <code>int32 i3 = 8;</code>
+     * @param value The i3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI3(int value) {
+
+      i3_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i3 = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI3() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      i3_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i4_ ;
+    /**
+     * <code>int32 i4 = 9;</code>
+     * @return The i4.
+     */
+    @java.lang.Override
+    public int getI4() {
+      return i4_;
+    }
+    /**
+     * <code>int32 i4 = 9;</code>
+     * @param value The i4 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI4(int value) {
+
+      i4_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i4 = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI4() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      i4_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i5_ ;
+    /**
+     * <code>int32 i5 = 10;</code>
+     * @return The i5.
+     */
+    @java.lang.Override
+    public int getI5() {
+      return i5_;
+    }
+    /**
+     * <code>int32 i5 = 10;</code>
+     * @param value The i5 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI5(int value) {
+
+      i5_ = value;
+      bitField0_ |= 0x00000200;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i5 = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI5() {
+      bitField0_ = (bitField0_ & ~0x00000200);
+      i5_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i6_ ;
+    /**
+     * <code>int32 i6 = 11;</code>
+     * @return The i6.
+     */
+    @java.lang.Override
+    public int getI6() {
+      return i6_;
+    }
+    /**
+     * <code>int32 i6 = 11;</code>
+     * @param value The i6 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI6(int value) {
+
+      i6_ = value;
+      bitField0_ |= 0x00000400;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i6 = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI6() {
+      bitField0_ = (bitField0_ & ~0x00000400);
+      i6_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i7_ ;
+    /**
+     * <code>int32 i7 = 12;</code>
+     * @return The i7.
+     */
+    @java.lang.Override
+    public int getI7() {
+      return i7_;
+    }
+    /**
+     * <code>int32 i7 = 12;</code>
+     * @param value The i7 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI7(int value) {
+
+      i7_ = value;
+      bitField0_ |= 0x00000800;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i7 = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI7() {
+      bitField0_ = (bitField0_ & ~0x00000800);
+      i7_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i8_ ;
+    /**
+     * <code>int32 i8 = 13;</code>
+     * @return The i8.
+     */
+    @java.lang.Override
+    public int getI8() {
+      return i8_;
+    }
+    /**
+     * <code>int32 i8 = 13;</code>
+     * @param value The i8 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI8(int value) {
+
+      i8_ = value;
+      bitField0_ |= 0x00001000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i8 = 13;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI8() {
+      bitField0_ = (bitField0_ & ~0x00001000);
+      i8_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i9_ ;
+    /**
+     * <code>int32 i9 = 14;</code>
+     * @return The i9.
+     */
+    @java.lang.Override
+    public int getI9() {
+      return i9_;
+    }
+    /**
+     * <code>int32 i9 = 14;</code>
+     * @param value The i9 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI9(int value) {
+
+      i9_ = value;
+      bitField0_ |= 0x00002000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i9 = 14;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI9() {
+      bitField0_ = (bitField0_ & ~0x00002000);
+      i9_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int i10_ ;
+    /**
+     * <code>int32 i10 = 15;</code>
+     * @return The i10.
+     */
+    @java.lang.Override
+    public int getI10() {
+      return i10_;
+    }
+    /**
+     * <code>int32 i10 = 15;</code>
+     * @param value The i10 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setI10(int value) {
+
+      i10_ = value;
+      bitField0_ |= 0x00004000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 i10 = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearI10() {
+      bitField0_ = (bitField0_ & ~0x00004000);
+      i10_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringArrayList l1_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    private void ensureL1IsMutable() {
+      if (!l1_.isModifiable()) {
+        l1_ = new com.google.protobuf.LazyStringArrayList(l1_);
+      }
+      bitField0_ |= 0x00008000;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @return A list containing the l1.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getL1List() {
+      l1_.makeImmutable();
+      return l1_;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @return The count of l1.
+     */
+    public int getL1Count() {
+      return l1_.size();
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param index The index of the element to return.
+     * @return The l1 at the given index.
+     */
+    public java.lang.String getL1(int index) {
+      return l1_.get(index);
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the l1 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getL1Bytes(int index) {
+      return l1_.getByteString(index);
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param index The index to set the value at.
+     * @param value The l1 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setL1(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL1IsMutable();
+      l1_.set(index, value);
+      bitField0_ |= 0x00008000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param value The l1 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL1(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL1IsMutable();
+      l1_.add(value);
+      bitField0_ |= 0x00008000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param values The l1 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllL1(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureL1IsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, l1_);
+      bitField0_ |= 0x00008000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearL1() {
+      l1_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+      bitField0_ = (bitField0_ & ~0x00008000);;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l1 = 16;</code>
+     * @param value The bytes of the l1 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL1Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      ensureL1IsMutable();
+      l1_.add(value);
+      bitField0_ |= 0x00008000;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringArrayList l2_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    private void ensureL2IsMutable() {
+      if (!l2_.isModifiable()) {
+        l2_ = new com.google.protobuf.LazyStringArrayList(l2_);
+      }
+      bitField0_ |= 0x00010000;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @return A list containing the l2.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getL2List() {
+      l2_.makeImmutable();
+      return l2_;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @return The count of l2.
+     */
+    public int getL2Count() {
+      return l2_.size();
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param index The index of the element to return.
+     * @return The l2 at the given index.
+     */
+    public java.lang.String getL2(int index) {
+      return l2_.get(index);
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the l2 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getL2Bytes(int index) {
+      return l2_.getByteString(index);
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param index The index to set the value at.
+     * @param value The l2 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setL2(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL2IsMutable();
+      l2_.set(index, value);
+      bitField0_ |= 0x00010000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param value The l2 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL2(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL2IsMutable();
+      l2_.add(value);
+      bitField0_ |= 0x00010000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param values The l2 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllL2(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureL2IsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, l2_);
+      bitField0_ |= 0x00010000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearL2() {
+      l2_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+      bitField0_ = (bitField0_ & ~0x00010000);;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l2 = 17;</code>
+     * @param value The bytes of the l2 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL2Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      ensureL2IsMutable();
+      l2_.add(value);
+      bitField0_ |= 0x00010000;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringArrayList l3_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    private void ensureL3IsMutable() {
+      if (!l3_.isModifiable()) {
+        l3_ = new com.google.protobuf.LazyStringArrayList(l3_);
+      }
+      bitField0_ |= 0x00020000;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @return A list containing the l3.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getL3List() {
+      l3_.makeImmutable();
+      return l3_;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @return The count of l3.
+     */
+    public int getL3Count() {
+      return l3_.size();
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The l3 at the given index.
+     */
+    public java.lang.String getL3(int index) {
+      return l3_.get(index);
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the l3 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getL3Bytes(int index) {
+      return l3_.getByteString(index);
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param index The index to set the value at.
+     * @param value The l3 to set.
+     * @return This builder for chaining.
+     */
+    public Builder setL3(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL3IsMutable();
+      l3_.set(index, value);
+      bitField0_ |= 0x00020000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param value The l3 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL3(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureL3IsMutable();
+      l3_.add(value);
+      bitField0_ |= 0x00020000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param values The l3 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllL3(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureL3IsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, l3_);
+      bitField0_ |= 0x00020000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearL3() {
+      l3_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+      bitField0_ = (bitField0_ & ~0x00020000);;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string l3 = 18;</code>
+     * @param value The bytes of the l3 to add.
+     * @return This builder for chaining.
+     */
+    public Builder addL3Bytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      ensureL3IsMutable();
+      l3_.add(value);
+      bitField0_ |= 0x00020000;
+      onChanged();
       return this;
     }
     @java.lang.Override

@@ -10,5 +10,22 @@ option java_package = "com.recommend.bootstrap.domain.protos";
 option java_outer_classname = "PersonProtos";
 
 message Person {
-
+  string str1 = 1;
+  string str2 = 2;
+  string str3 = 3;
+  string str4 = 4;
+  string str5 = 5;
+  int32 i1 = 6;
+  int32 i2 = 7;
+  int32 i3 = 8;
+  int32 i4 = 9;
+  int32 i5 = 10;
+  int32 i6 = 11;
+  int32 i7 = 12;
+  int32 i8 = 13;
+  int32 i9 = 14;
+  int32 i10 = 15;
+  repeated string l1 = 16;
+  repeated string l2 = 17;
+  repeated string l3 = 18;
 }

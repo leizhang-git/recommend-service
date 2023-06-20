@@ -1,2 +1,20 @@
 struct Person {
+    1: string str1;
+    2: string str2;
+    3: string str3;
+    4: string str4;
+    5: string str5;
+    6: i32 i1;
+    7: i32 i2;
+    8: i32 i3;
+    9: i32 i4;
+    10: i32 i5;
+    11: i32 i6;
+    12: i32 i7;
+    13: i32 i18;
+    14: i32 i19;
+    15: i32 i10;
+    16: list<string> l1;
+    17: list<string> l2;
+    18: list<string> l3;
 }

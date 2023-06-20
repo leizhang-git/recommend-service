@@ -13,6 +13,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Describe
  * @Author zhanglei
@@ -30,11 +33,31 @@ public class SerializableTest {
     public void serializableTest() throws Exception {
 
         log.info(">>>>>>>>>>>>>>>>>开始测试序列化性能~");
+        List<String> list = new ArrayList<>();
         Person person = new Person();
+        person.setStr1("str1");
+        person.setStr3("str2");
+        person.setStr5("str5");
+        person.setI4(3);
+        person.setL1(list);
         Kryo kryo = new Kryo();
+        kryo.setRegistrationRequired(false);
         kryo.register(Person.class);
-        com.recommend.bootstrap.domain.protos.Person protoBufPerson = com.recommend.bootstrap.domain.protos.Person.newBuilder().build();
+        kryo.register(java.util.ArrayList.class);
+        com.recommend.bootstrap.domain.protos.Person protoBufPerson = com.recommend.bootstrap.domain.protos.Person
+                .newBuilder()
+                .setStr1("str1")
+                .setStr3("str2")
+                .setStr5("str5")
+                .setI4(2)
+                .addAllL1(list)
+                .build();
         com.recommend.bootstrap.domain.thrift.Person thriftPerson = new com.recommend.bootstrap.domain.thrift.Person();
+        thriftPerson.setStr1("str1");
+        thriftPerson.setStr3("str2");
+        thriftPerson.setStr5("str5");
+        thriftPerson.setI4(3);
+        thriftPerson.setL1(list);
 
         // proxy
         SerializationUtil serializationUtil = (SerializationUtil) LogProxy.getCglibProxy(SerializationUtil.class);
