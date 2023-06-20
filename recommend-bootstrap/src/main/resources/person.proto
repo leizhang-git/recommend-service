@@ -10,8 +10,5 @@ option java_package = "com.recommend.bootstrap.domain.protos";
 option java_outer_classname = "PersonProtos";
 
 message Person {
-  // =1，=2 作为序列化后的二进制编码中的字段的唯一标签，也因此，1-15 比 16 会少一个字节，所以尽量使用 1-15 来指定常用字段。
-  optional string name = 1;
-  optional int32 age = 2;
-  optional int32 sex = 3;
+
 }

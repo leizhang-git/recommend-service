@@ -1,6 +1,9 @@
 package com.recommend.bootstrap;
 
 
+import com.alibaba.cloud.nacos.NacosConfigManager;
+import com.alibaba.cloud.nacos.NacosConfigProperties;
+import com.alibaba.nacos.api.exception.NacosException;
 import com.recommend.consumer.config.ApplicationProperties;
 import com.recommend.consumer.service.JWTService;
 import com.recommend.provider.util.SpringContextHolder;
@@ -43,7 +46,7 @@ public class Application {
         log.info("\n================ activeProfiles list is {}================", activeProfiles);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NacosException {
         //此处不想放在JVM启动参数里了，故直接写在这
         System.setProperty("Log4jContextSelector", "org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
@@ -60,6 +63,8 @@ public class Application {
         log.info("\n\n\t=========== 项目启动成功！url:[http://127.0.0.1:" + port + "]==========\n\n");
         log.info("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         getDefaultToken();
+        getNacosConfig();
+
     }
 
     /**
@@ -69,5 +74,14 @@ public class Application {
         JWTService jwtService = SpringContextHolder.getBean(JWTService.class);
         String token = jwtService.createToken("admin", "defaultOrg", "");
         log.info("~~~~~~~~~~~~~~~~~token is {}", token);
+        System.out.println();
+    }
+
+    public static void getNacosConfig() throws NacosException {
+        NacosConfigManager nacosConfigManager = SpringContextHolder.getBean(NacosConfigManager.class);
+        NacosConfigProperties nacosConfigProperties = nacosConfigManager.getNacosConfigProperties();
+        log.info(">>>>>>>>> nacos注册地址 -> {}", nacosConfigProperties.getServerAddr());
+        System.out.println(">>>>>>>>>>>> nacos yaml ：");
+        System.out.println(nacosConfigManager.getConfigService().getConfig("recommend-service-dev.yaml", "DEFAULT_GROUP", 2000));
     }
 }

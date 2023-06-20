@@ -164,3 +164,6 @@ os:
 #    address: ENC(Mbq00EHJWNaF0QUl4HKC9fAKpzkpXHa4BP42N2hFCfQfICfoBHc9UUVq6dvo/rl+PUu991tBesZGzWFlgKnZYQ==)
 #  scan:
 #    base-packages: com.recommend.consumer.service
+obj:
+  serialization:
+    path: D:\\test\\
