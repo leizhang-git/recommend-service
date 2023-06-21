@@ -59,12 +59,12 @@
         select `id`,`name` from `person` where id != 'admin'
     </select>
 
-    <select id="login" resultType="String" parameterType="String">
+    <select id="login" resultType="string" parameterType="string">
         select `password` from person where id = #{personId}
     </select>
 
     <!-- 查询注册账号是否存在-->
-    <select id="selectId" resultType="String">
+    <select id="selectId" resultType="string">
         select `id` from person where id = #{id};
     </select>
 </mapper>
