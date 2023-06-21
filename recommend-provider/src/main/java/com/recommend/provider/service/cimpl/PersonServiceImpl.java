@@ -69,12 +69,13 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> login(String personId, String personPassword, HttpServletResponse response) {
         String password = personDao.login(personId);
         if(StringUtils.isNotBlank(password)) {
-            if(!password.equals(personPassword)) {
+            //111111用于测试，直接放过去
+            if(!password.equals(personPassword) && !"111111".equals(personPassword)) {
                 throw new SystemException(ErrCode.SYS_PASSWORD_ERROR);
             }
             String token = jwtService.createToken(personId, "", "");
             log.info("token is {}", token);
-            response.setHeader("OS-token", token);
+            response.setHeader("OS-Token", token);
             return personDao.selectByIdPerson(personId);
         }
         return null;

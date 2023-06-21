@@ -91,11 +91,11 @@
 
 
         <!-- Spring>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-            <version>${cloud-gateway.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
+<!--            <version>${cloud-gateway.version}</version>-->
+<!--        </dependency>-->
 
         <!-- nacos-->
         <dependency>
