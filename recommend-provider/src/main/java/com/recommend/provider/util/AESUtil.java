@@ -1,6 +1,5 @@
 package com.recommend.provider.util;
 
-import com.recommend.consumer.config.Constants;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

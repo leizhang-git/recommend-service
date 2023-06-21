@@ -1,4 +1,4 @@
-package com.recommend.consumer.config.thread;
+package com.recommend.provider.config.thread;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package com.recommend.consumer.config;
+package com.recommend.provider.config;
 
 /**
  * @Auth zhanglei

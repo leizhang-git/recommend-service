@@ -1,4 +1,4 @@
-package com.recommend.consumer.config.thread;
+package com.recommend.provider.config.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

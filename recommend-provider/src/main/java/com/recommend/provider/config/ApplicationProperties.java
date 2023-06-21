@@ -1,4 +1,4 @@
-package com.recommend.consumer.config;
+package com.recommend.provider.config;
 
 import lombok.Data;
 import org.slf4j.Logger;

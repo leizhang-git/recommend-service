@@ -10,7 +10,6 @@ import cn.hutool.jwt.RegisteredPayload;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.recommend.consumer.config.ApplicationProperties;
 import com.recommend.consumer.domain.pojo.Person;
 import com.recommend.consumer.exception.StrException;
 import com.recommend.consumer.service.JWTService;

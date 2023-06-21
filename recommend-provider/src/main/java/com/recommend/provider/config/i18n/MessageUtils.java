@@ -1,4 +1,4 @@
-package com.recommend.consumer.config.i18n;
+package com.recommend.provider.config.i18n;
 
 import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.BeansException;
