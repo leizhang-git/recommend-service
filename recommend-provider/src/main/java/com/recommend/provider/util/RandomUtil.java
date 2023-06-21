@@ -1,4 +1,4 @@
-package com.recommend.bootstrap.util;
+package com.recommend.provider.util;
 
 import java.util.Random;
 

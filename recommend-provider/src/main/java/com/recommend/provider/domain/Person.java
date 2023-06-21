@@ -1,4 +1,4 @@
-package com.recommend.bootstrap.domain.entity;
+package com.recommend.provider.domain;
 
 import lombok.Data;
 

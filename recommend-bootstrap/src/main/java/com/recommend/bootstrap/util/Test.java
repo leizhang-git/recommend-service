@@ -167,7 +167,7 @@
 //    public static void main(String[] args) throws Exception {
 //        Stopwatch stopwatch = Stopwatch.createStarted();
 //        System.out.println(">>>>>>>>>>开始序列化");
-//        com.recommend.bootstrap.domain.protos.Person person = com.recommend.bootstrap.domain.protos.Person.newBuilder()
+//        com.recommend.provider.domain.protos.Person person = com.recommend.provider.domain.protos.Person.newBuilder()
 //                .setName("测试")
 //                .setAge(22)
 //                .setSex(0)
@@ -187,14 +187,14 @@
 //        System.out.println("反序列化完毕，全程耗时：" + (stopwatch1.elapsed(TimeUnit.MICROSECONDS) / 1000 / 1000) + "s");
 //    }
 //
-//    static void writeObject(com.recommend.bootstrap.domain.protos.Person person) throws IOException {
+//    static void writeObject(com.recommend.provider.domain.protos.Person person) throws IOException {
 //        FileOutputStream outputStream = new FileOutputStream("D:\\test\\person3.txt");
 //        person.writeTo(outputStream);
 //        outputStream.close();
 //    }
 //
 //    static void readObject() throws Exception {
-//        com.recommend.bootstrap.domain.protos.Person person = com.recommend.bootstrap.domain.protos.Person.parseFrom(new FileInputStream("D:\\test\\person3.txt"));
+//        com.recommend.provider.domain.protos.Person person = com.recommend.provider.domain.protos.Person.parseFrom(new FileInputStream("D:\\test\\person3.txt"));
 //    }
 //}
 //

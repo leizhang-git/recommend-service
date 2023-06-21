@@ -1,8 +1,8 @@
 package com.recommend.bootstrap;
 
-import com.recommend.bootstrap.util.RandomUtil;
 import com.recommend.consumer.dao.MajorDao;
 import com.recommend.consumer.domain.pojo.MajorInfo;
+import com.recommend.provider.util.RandomUtil;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;

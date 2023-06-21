@@ -2,8 +2,8 @@ package com.recommend.bootstrap;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.recommend.bootstrap.config.LogProxy;
-import com.recommend.bootstrap.domain.entity.Person;
-import com.recommend.bootstrap.util.SerializationUtil;
+import com.recommend.provider.domain.Person;
+import com.recommend.provider.util.SerializationUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -46,7 +46,7 @@ public class SerializableTest {
         kryo.setRegistrationRequired(false);
         kryo.register(Person.class);
         kryo.register(java.util.ArrayList.class);
-        com.recommend.bootstrap.domain.protos.Person protoBufPerson = com.recommend.bootstrap.domain.protos.Person
+        com.recommend.provider.domain.protos.Person protoBufPerson = com.recommend.provider.domain.protos.Person
                 .newBuilder()
                 .setStr1("str1")
                 .setStr3("str2")
@@ -54,7 +54,7 @@ public class SerializableTest {
                 .setI4(2)
                 .addAllL1(list)
                 .build();
-        com.recommend.bootstrap.domain.thrift.Person thriftPerson = new com.recommend.bootstrap.domain.thrift.Person();
+        com.recommend.provider.domain.thrift.Person thriftPerson = new com.recommend.provider.domain.thrift.Person();
         thriftPerson.setStr1("str1");
         thriftPerson.setStr3("str2");
         thriftPerson.setStr5("str5");

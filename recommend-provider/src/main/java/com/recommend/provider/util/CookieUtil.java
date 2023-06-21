@@ -4,15 +4,23 @@ import cn.hutool.core.util.StrUtil;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Cookie工具类
  * @auther zhanglei
  * @create 2023-04-30-14:43
  */
 public class CookieUtil {
 
+    /**
+     * 获取Cookie
+     * @param cookieKey
+     * @param request
+     * @return
+     */
     public static Map<String, String> getCookieMap(String cookieKey, HttpServletRequest request) {
         Map<String, String> result = new HashMap<>();
         if(StrUtil.isBlank(cookieKey)) {
@@ -32,5 +40,65 @@ public class CookieUtil {
             }
         }
         return result;
+    }
+
+    /**
+     * 获取Cookie
+     * @param request
+     * @param key
+     * @return
+     */
+    public static String get(HttpServletRequest request, String key) {
+        String ticket = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (key.equals(cookie.getName())) {
+                    ticket = cookie.getValue();
+                }
+            }
+        }
+        return ticket;
+    }
+
+    /**
+     * 设置Cookie
+     * @param response
+     * @param key
+     * @param value
+     */
+    public static void set(HttpServletResponse response, String key, String value) {
+        Cookie cookie = new Cookie(key, value);
+        set(response, cookie);
+    }
+
+    /**
+     * 设置cookie
+     * @param response
+     * @param cookie
+     */
+    public static void set(HttpServletResponse response, Cookie cookie) {
+        response.addCookie(cookie);
+    }
+
+    /**
+     * 删除Cookie
+     * @param response
+     * @param key
+     */
+    public static void remove(HttpServletResponse response, String key) {
+        Cookie cookie = new Cookie(key, "");
+        cookie.setMaxAge(0);
+        remove(response, cookie);
+    }
+
+    /**
+     * 删除Cookie
+     * @param response
+     * @param cookie
+     */
+    public static void remove(HttpServletResponse response, Cookie cookie) {
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
     }
 }
