@@ -53,6 +53,7 @@ application:
       - /hello/
       - /test/
       - /ex/
+      - /vue/
   baiduProp:
     apiHosts: ENC(1ZAqpXL0j4NIji3cA8aGnZPVbnEJeWlosz/OuEj276ZaaF5RAZpbLgnrCMStjqr8kTb6Om6bnuK0ZP4iS4916tmUhGNVbcsW+aIn/mIXUuRG6LAFPqUFXizZWIERdKlW)
     appId: ENC(POiyO/DtnXgGAitkz0zZsw2LAirkkHMFvFmcAMnaCtGmCJ69zKOuC/v+gRfXFUl89cQmknaIHG5SMvhW0Nidig==)

@@ -5,6 +5,7 @@ import com.alibaba.cloud.nacos.NacosConfigManager;
 import com.alibaba.cloud.nacos.NacosConfigProperties;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.recommend.consumer.service.JWTService;
+import com.recommend.provider.config.ApplicationProperties;
 import com.recommend.provider.util.SpringContextHolder;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;

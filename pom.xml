@@ -50,6 +50,7 @@
         <protobuf.version>3.22.3</protobuf.version>
         <thrift.version>0.14.1</thrift.version>
         <jasypt.version>3.0.3</jasypt.version>
+        <jjwt.version>0.11.5</jjwt.version>
         <poi.version>5.2.3</poi.version>
         <ip2region.version>1.7.2</ip2region.version>
         <poi.ooxml.schemas.version>4.1.2</poi.ooxml.schemas.version>
@@ -60,6 +61,24 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- 序列化框架>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. -->
         <dependency>
