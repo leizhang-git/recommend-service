@@ -24,7 +24,7 @@ import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
-@MapperScan("com.recommend.consumer.dao")
+@MapperScan({"com.recommend.consumer.dao", "com.recommend.bootstrap.vue.element.admin.dao"})
 @ComponentScan(basePackages = {"com.recommend.*"})
 @EnableJpaRepositories(basePackages = {"com.recommend.consumer.*", "com.recommend.bootstrap.*"})
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
