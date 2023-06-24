@@ -6,7 +6,7 @@ spring:
     allow-circular-references: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ENC(wrtJNLaH9x8vFhIlCUHaY4NfhE/yL4QXJlLkzwIeZ4/L0opLRumQd8JubiEOA8BdvoTi5c1tqh2F1frDPu940llF74ODLETu09x9lJUXMdQUo4SsY9vbubsX1cdloifaUkkk4hqn6MUoF0GsFggI3YjB2yqEbfjrUjPclcotj4TFAyRwzGX98RQjxMguTRndAoZ4Rn7WEuzGyDu7zGOiNkfUp67K2LpYBz/YYfRB+vmlivLzZF0pUlytRjgIzWXh)
+    url: ENC(UV8Gm0fzKJAcpyrJiVBjVzZN25U/Yb6QbbBKp8XDYXP2by1/77YUfH8wEE8JSNFZ0tmD1uv/TF+DROp5ibjr642/R8VZjPuf3cbXo5dhnNaHowLQF73K5X2yhQAo2BjcRJgHDkCUyObIaN6B1CAmBJw8Qc3NZaSmaimKv9Ee4LPuwX4x7Rupo7biWvLp6f8Ua13jUWbB7g3s7UPPxm4857mB9htO+H0J/TNtWztK274=)
     username: ENC(j4Vn9PmJ4/yHzAw2jrrOyG9dDC0gnI/OR1h+a5THUWbsRoTFnQlrL4rS7Z3qKkYj)
     password: ENC(4Hox9tSLgl5wOQed+jzVkoJMtqPvFGx4UgUYp1xGZ92qi5WWGGIofDLC30ImgVb6)
   application:
@@ -139,8 +139,8 @@ zookeeper:
   baseSleepTimeMs: 1000
 system:
   session:
-      whiteList:
-      greyList:
+    whiteList:
+    greyList:
 application:
   jwt:
     # 过期时间，30天

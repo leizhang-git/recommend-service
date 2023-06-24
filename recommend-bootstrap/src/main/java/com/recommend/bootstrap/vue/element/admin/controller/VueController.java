@@ -23,6 +23,7 @@ import java.util.Map;
  * @create: 2023-06-23 22:47
  **/
 @RequestMapping("/vue")
+@RestController
 public class VueController {
 
     @Autowired
@@ -35,7 +36,7 @@ public class VueController {
     private StudentService studentService;
 
     @PostMapping("/user/login")
-    public ResultVO<?> login(LoginDTO loginDTO) {
+    public ResultVO<?> login(@RequestBody LoginDTO loginDTO) {
         userService.login(loginDTO.getUsername(), loginDTO.getPassword());
         JWTService jwtService = SpringContextHolder.getBean(JWTService.class);
         String token = jwtService.createToken(loginDTO.getUsername(), "defaultOrg", "");
