@@ -1,6 +1,7 @@
 package com.recommend.bootstrap.security.jwt;
 
 import cn.hutool.core.collection.CollUtil;
+import com.recommend.provider.config.ApplicationProperties;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

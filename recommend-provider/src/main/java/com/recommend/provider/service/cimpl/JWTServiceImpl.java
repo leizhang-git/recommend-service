@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.recommend.consumer.domain.pojo.Person;
 import com.recommend.consumer.exception.StrException;
 import com.recommend.consumer.service.JWTService;
+import com.recommend.provider.config.ApplicationProperties;
 import com.recommend.provider.domain.enums.JWTEnum;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
