@@ -39,6 +39,7 @@ create table if not exists `university_major_info` (
 
 select * from university_major_info;
 
+
 create table if not exists `document_data` (
     id varchar(255) not null comment 'id',
     name varchar(255) comment '名称',
@@ -48,11 +49,20 @@ create table if not exists `document_data` (
     author_national varchar(255) comment '作者国籍',
     intro text comment '简介',
     dformat varchar(255) comment '格式',
-    dclass varchar(255) comment '类别'
+    dclass varchar(255) comment '类别',
+    create_by varchar(255) comment '创建人',
+    create_date datetime(6) comment '创建时间',
+    last_modified_by varchar(50) comment '最后修改人',
+  	last_modified_date datetime(6) comment '最后修改时间'
 )engine = Innodb default charset = utf8;
 
 
 create table if not exists `document_binary_data` (
     id varchar(255) not null comment 'id',
-    dbinary text not null comment 'binary'
+    dbinary text not null comment 'binary',
+    create_by varchar(255) comment '创建人',
+    create_date datetime(6) comment '创建时间',
+    last_modified_by varchar(50) comment '最后修改人',
+  	last_modified_date datetime(6) comment '最后修改时间'
 )engine = Innodb default charset = utf8;
+
