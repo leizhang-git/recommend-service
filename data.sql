@@ -38,3 +38,21 @@ create table if not exists `university_major_info` (
     )engine = InnoDB default charset = utf8;
 
 select * from university_major_info;
+
+create table if not exists `document_data` (
+    id varchar(255) not null comment 'id',
+    name varchar(255) comment '名称',
+    remote_addr varchar(255) comment '线上地址',
+   	local_addr varchar(255) comment '本地地址',
+    author varchar(255) default '无名' comment '作者',
+    author_national varchar(255) comment '作者国籍',
+    intro text comment '简介',
+    dformat varchar(255) comment '格式',
+    dclass varchar(255) comment '类别'
+)engine = Innodb default charset = utf8;
+
+
+create table if not exists `document_binary_data` (
+    id varchar(255) not null comment 'id',
+    dbinary text not null comment 'binary'
+)engine = Innodb default charset = utf8;
