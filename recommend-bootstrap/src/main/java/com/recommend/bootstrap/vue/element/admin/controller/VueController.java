@@ -1,20 +1,21 @@
 package com.recommend.bootstrap.vue.element.admin.controller;
 
-import com.recommend.bootstrap.vue.element.admin.entity.LoginDTO;
-import com.recommend.bootstrap.vue.element.admin.entity.StudentQueryDto;
-import com.recommend.bootstrap.vue.element.admin.entity.StudentSaveDto;
-import com.recommend.bootstrap.vue.element.admin.entity.UserInfoDTO;
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.json.JSONUtil;
+import com.google.common.collect.Lists;
+import com.recommend.bootstrap.vue.element.admin.entity.*;
 import com.recommend.bootstrap.vue.element.admin.service.MenuService;
 import com.recommend.bootstrap.vue.element.admin.service.StudentService;
 import com.recommend.bootstrap.vue.element.admin.service.UserService;
 import com.recommend.consumer.service.JWTService;
 import com.recommend.consumer.web.vm.ResultVO;
-import com.recommend.provider.util.SpringContextHolder;
+import com.recommend.provider.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,6 +25,7 @@ import java.util.Map;
  **/
 @RequestMapping("/vue")
 @RestController
+@CrossOrigin
 public class VueController {
 
     @Autowired
@@ -35,12 +37,30 @@ public class VueController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private JWTService jwtService;
+
     @PostMapping("/user/login")
     public ResultVO<?> login(@RequestBody LoginDTO loginDTO) {
         userService.login(loginDTO.getUsername(), loginDTO.getPassword());
-        JWTService jwtService = SpringContextHolder.getBean(JWTService.class);
         String token = jwtService.createToken(loginDTO.getUsername(), "defaultOrg", "");
         return ResultVO.getSuccess(token);
+    }
+
+    @GetMapping("/user/info")
+    public ResultVO<?> getInfo(@RequestParam("token") String token) {
+        Map<String, Object> parse = jwtService.jwtParse(token);
+        User user = new User();
+        if(CollUtil.isNotEmpty(parse)) {
+            UserDTO userDTO = JSONUtil.toBean((String) parse.get("user"), UserDTO.class);
+            List<String> roles = Lists.newArrayList();
+            roles.add("admin");
+            user.setName(userDTO.getName());
+            user.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+            user.setIntroduction("Hello,World");
+            user.setRoles(roles);
+        }
+        return ResultVO.getSuccess(user);
     }
 
     @PostMapping("/loginSession")
