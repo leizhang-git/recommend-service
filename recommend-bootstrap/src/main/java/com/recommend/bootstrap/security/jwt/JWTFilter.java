@@ -1,7 +1,7 @@
 package com.recommend.bootstrap.security.jwt;
 
 import cn.hutool.json.JSONUtil;
-import com.recommend.bootstrap.context.IContextInfoProxy;
+import com.recommend.consumer.context.IContextInfoProxy;
 import com.recommend.provider.dto.UserDTO;
 import com.recommend.provider.service.cimpl.JWTServiceImpl;
 import com.recommend.provider.util.SpringContextHolder;
@@ -52,6 +52,7 @@ public class JWTFilter implements Filter {
             IContextInfoProxy.getInstance().setContextAttribute("login", login);
             IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
             IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
+            IContextInfoProxy.getInstance().setContextAttribute("name", user.getName());
             log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
         }catch (Exception e){
             log.error("jwt token 解析失败.", e);

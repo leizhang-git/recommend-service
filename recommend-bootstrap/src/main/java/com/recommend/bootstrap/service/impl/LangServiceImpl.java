@@ -1,9 +1,9 @@
 package com.recommend.bootstrap.service.impl;
 
 import cn.hutool.core.text.UnicodeUtil;
-import com.recommend.bootstrap.context.IContextInfoProxy;
 import com.recommend.bootstrap.service.LangService;
 import com.recommend.bootstrap.util.LangUtil;
+import com.recommend.consumer.context.IContextInfoProxy;
 import com.recommend.consumer.exception.ErrCode;
 import com.recommend.consumer.exception.StrException;
 import com.recommend.consumer.exception.SystemException;

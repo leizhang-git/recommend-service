@@ -1,11 +1,7 @@
 package com.recommend.consumer.dao;
 
-import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.pojo.documentData.DocumentData;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -18,38 +14,31 @@ import java.util.List;
 public interface DocumentDataDao {
 
     @Select("select * from `document_data`")
-    public List<DocumentData> findAllDocuments();
-
-    @Select("select * from `document_data`")
-    public List<DocumentData> searchDataByName();
+    List<DocumentData> findAllDocuments();
 
     @Select("select * from `document_data` where `name` = #{name}")
-    List<DocumentDataDTO> searchDataByName(String name);
+    List<DocumentData> searchDataByName(@Param("name") String name);
 
     @Select("select * from `document_data` where `dformat` = #{dFormat}")
-    List<DocumentDataDTO> searchDataByDFormat(String dFormat);
+    List<DocumentData> searchDataByDFormat(@Param("dFormat") String dFormat);
 
     @Select("select * from `document_data` where `dclass` = #{dClass}")
-    List<DocumentDataDTO> searchDataByDClass(String dClass);
+    List<DocumentData> searchDataByDClass(@Param("dClass") String dClass);
 
     @Select("select * from `document_data` where `createBy` = #{createBy}")
-    List<DocumentDataDTO> searchDataByCreateBy(String createBy);
+    List<DocumentData> searchDataByCreateBy(@Param("createBy") String createBy);
 
     @Select("select * from `document_data` where `author_national` = #{national}")
-    List<DocumentDataDTO> searchDataByNational(String national);
+    List<DocumentData> searchDataByNational(@Param("national") String national);
 
     @Select("select * from `document_data` where `name` = #{name} and `dclass` = #{dClass}")
-    List<DocumentDataDTO> searchDataByNameAndDClass(String name, String dClass);
+    List<DocumentData> searchDataByNameAndDClass(@Param("name") String name, @Param("dClass") String dClass);
 
     @Select("select * from `document_data` where `dclass` = #{dClass} and `dformat` = #{dFormat}")
-    List<DocumentDataDTO> searchDataByDClassAndDFormat(String dClass, String dFormat);
+    List<DocumentData> searchDataByDClassAndDFormat(@Param("dClass") String dClass, @Param("dFormat") String dFormat);
 
     @Delete("delete from `document_data` where `id` = #{id}")
-    boolean deleteById(String id);
+    boolean deleteById(@Param("id") String id);
 
-    @Insert("insert into `document_data` values " +
-            "(#{documentData.id}, #{documentData.name}, #{documentData.remoteAddr}, #{documentData.localAddr}, " +
-            "#{documentData.author}, #{documentData.authorNational}, #{documentData.intro}, #{documentData.dFormat}," +
-            "#{documentDara.dClass}, #{documentData.createBy}, #{documentData.createDate}, #{documentData.lastModifiedBy}), #{documentData.lastModifiedDate}")
     boolean saveDocumentData(DocumentData documentData);
 }

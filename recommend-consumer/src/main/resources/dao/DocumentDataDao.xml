@@ -2,107 +2,93 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.recommend.consumer.dao.MajorDao">
-
-    <resultMap id="majorMap" type="com.recommend.consumer.domain.pojo.MajorInfo">
-        <id property="majorId" column="major_id"/>
-        <result property="majorName" column="major_name"/>
-        <result property="majorCode" column="major_code"/>
-        <result property="majorCategory" column="major_category"/>
-        <result property="enrollPerson" column="enroll_person"/>
-    </resultMap>
-
+<mapper namespace="com.recommend.consumer.dao.DocumentDataDao">
     <!-- 添加专业信息-->
-    <insert id="insertMajorInfo" parameterType="com.recommend.consumer.domain.pojo.MajorInfo">
-        <!-- UUID-->
-        <selectKey keyProperty="majorId" resultType="java.lang.String" order="BEFORE">
-            select replace(uuid(), '-', '') as major_id
-        </selectKey>
+    <insert id="saveDocumentData" parameterType="com.recommend.consumer.domain.pojo.documentData.DocumentData">
 
-        insert into major_info
+        insert into document_data
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="majorId != null">
-                major_id,
+            <if test="id != null">
+                id,
             </if>
-            <if test="majorName != null">
-                major_name,
+            <if test="name != null">
+                name,
             </if>
-            <if test="majorCode != null">
-                major_code,
+            <if test="remoteAddr != null">
+                remote_addr,
             </if>
-            <if test="majorCategory != null">
-                major_category,
+            <if test="localAddr != null">
+                local_addr,
             </if>
-            <if test="enrollPerson != null">
-                enroll_person,
+            <if test="author != null">
+                author,
+            </if>
+            <if test="authorNational != null">
+                author_national,
+            </if>
+            <if test="intro != null">
+                intro,
+            </if>
+            <if test="dFormat != null">
+                dformat,
+            </if>
+            <if test="dClass != null">
+                dclass,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="lastModifiedBy != null">
+                last_modified_by,
+            </if>
+            <if test="lastModifiedDate != null">
+                last_modified_date
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="majorId != null">
-                #{majorId,jdbcType=VARCHAR},
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
             </if>
-            <if test="majorName != null">
-                #{majorName,jdbcType=VARCHAR},
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
             </if>
-            <if test="majorCode != null">
-                #{majorCode,jdbcType=VARCHAR},
+            <if test="remoteAddr != null">
+                #{remoteAddr,jdbcType=VARCHAR},
             </if>
-            <if test="majorCategory != null">
-                #{majorCategory,jdbcType=VARCHAR},
+            <if test="localAddr != null">
+                #{localAddr,jdbcType=VARCHAR},
             </if>
-            <if test="enrollPerson != null">
-                #{enrollPerson,jdbcType=VARCHAR},
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="authorNational != null">
+                #{authorNational,jdbcType=VARCHAR},
+            </if>
+            <if test="intro != null">
+                #{intro,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="dFormat != null">
+                #{dFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="dClass != null">
+                #{dClass,jdbcType=VARCHAR},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifiedBy != null">
+                #{lastModifiedBy,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModifiedDate != null">
+                #{lastModifiedDate,jdbcType=TIMESTAMP}
             </if>
         </trim>
     </insert>
-
-    <!-- 修改专业信息，根据Id-->
-    <update id="updateMajorInfo" parameterType="com.recommend.consumer.domain.pojo.MajorInfo">
-        update
-            `major_info`
-        set
-            `major_name` = #{majorInfo.majorName},
-            `major_code` = #{majorInfo.majorCode},
-            `major_category` = #{majorInfo.majorCategory},
-            `enroll_person` = #{majorInfo.enrollPerson}
-        where
-            `major_id` = #{majorId};
-    </update>
-
-    <!-- 根据该专业Id删除该专业-->
-    <delete id="deleteById">
-        delete from major_info where major_id = #{majorId};
-    </delete>
-
-    <!-- 查询所有专业信息-->
-    <select id="selectAllMajorInfo" resultType="com.recommend.consumer.domain.pojo.MajorInfo" resultMap="majorMap">
-        select * from major_info
-    </select>
-
-    <!-- 根据Id查询专业信息-->
-    <select id="selectByIdMajorInfo" resultType="com.recommend.consumer.domain.pojo.MajorInfo">
-        select * from  major_info where major_id = #{majorId}
-    </select>
-
-    <!-- 根据Id查询文科还是理科-->
-    <select id="selectSubject" resultType="java.lang.Integer">
-        select `subject` from major_info where major_id = #{majorId};
-    </select>
-
-    <!-- 查询所有专业Id-->
-    <select id="selectAllId" resultType="java.lang.String">
-        select `major_id` from major_info
-    </select>
-
-    <!-- 根据MajorCode获取Id-->
-    <select id="selectIdByCode" resultType="java.lang.String">
-        select `major_id` from major_info where `major_code` = #{majorCode};
-    </select>
-
-    <!-- 根据MajorName 获取Id-->
-    <select id="selectByName" resultType="java.lang.String">
-        select `major_id` from major_info where `major_name` like concat('%',#{majorName},'%');
-    </select>
-
 
 </mapper>

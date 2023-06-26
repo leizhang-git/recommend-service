@@ -34,6 +34,13 @@ public interface DocumentDataService {
     List<DocumentDataDTO> searchDataByName(String name);
 
     /**
+     * 搜索
+     * @param input
+     * @return
+     */
+    List<DocumentDataDTO> searchAll(String input);
+
+    /**
      * 根据格式搜索资源
      * @param dFormat
      * @return
@@ -105,5 +112,12 @@ public interface DocumentDataService {
      * @param documentData
      * @return
      */
-    boolean saveDocumentData(DocumentDataDTO documentDataDTO, DocumentBinary documentData);
+    boolean saveDocumentDataAndContext(DocumentDataDTO documentDataDTO, DocumentBinary documentData);
+
+    /**
+     * 保存资源
+     * @param documentDataDTO
+     * @return
+     */
+    DocumentDataDTO saveDocumentData(DocumentDataDTO documentDataDTO);
 }

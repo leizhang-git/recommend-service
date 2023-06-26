@@ -1,4 +1,4 @@
-package com.recommend.bootstrap.context;
+package com.recommend.consumer.context;
 
 import java.util.HashMap;
 import java.util.Map;

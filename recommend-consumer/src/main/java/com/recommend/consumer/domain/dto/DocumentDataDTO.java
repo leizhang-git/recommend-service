@@ -1,5 +1,7 @@
 package com.recommend.consumer.domain.dto;
 
+import lombok.Data;
+
 import java.time.Instant;
 
 /**
@@ -7,6 +9,7 @@ import java.time.Instant;
  * @Author zhanglei
  * @Date 2023/6/25 17:09
  */
+@Data
 public class DocumentDataDTO {
 
     /**
