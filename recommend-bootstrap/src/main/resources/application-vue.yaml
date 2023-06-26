@@ -149,6 +149,7 @@ application:
       - /jwt/
       - /version
       - /api/v1/person/login
+      - /api/v1/person/register
       - /hello/
       - /test/
       - /vue/
