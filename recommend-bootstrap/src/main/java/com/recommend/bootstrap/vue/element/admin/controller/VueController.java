@@ -1,6 +1,7 @@
 package com.recommend.bootstrap.vue.element.admin.controller;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Lists;
 import com.recommend.bootstrap.vue.element.admin.entity.*;
@@ -13,6 +14,9 @@ import com.recommend.provider.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +65,18 @@ public class VueController {
             user.setRoles(roles);
         }
         return ResultVO.getSuccess(user);
+    }
+
+    @GetMapping("/user/logout")
+    public ResultVO<?> logout(HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = ServletUtil.getCookie(request, "OS-Token");
+        if (cookie != null) {
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            cookie.setValue(null);
+            response.addCookie(cookie);
+        }
+        return ResultVO.getSuccess(true);
     }
 
     @PostMapping("/loginSession")
