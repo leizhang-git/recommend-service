@@ -16,22 +16,22 @@ public interface DocumentDataDao {
     @Select("select * from `document_data`")
     List<DocumentData> findAllDocuments();
 
-    @Select("select * from `document_data` where `name` = #{name}")
+    @Select("select * from `document_data` where `name` like CONCAT('%', #{name}, '%')")
     List<DocumentData> searchDataByName(@Param("name") String name);
 
-    @Select("select * from `document_data` where `dformat` = #{dFormat}")
+    @Select("select * from `document_data` where `dformat` like CONCAT('%', #{dFormat}, '%')")
     List<DocumentData> searchDataByDFormat(@Param("dFormat") String dFormat);
 
-    @Select("select * from `document_data` where `dclass` = #{dClass}")
+    @Select("select * from `document_data` where `dclass` like CONCAT('%', #{dClass}, '%')")
     List<DocumentData> searchDataByDClass(@Param("dClass") String dClass);
 
-    @Select("select * from `document_data` where `createBy` = #{createBy}")
+    @Select("select * from `document_data` where `create_by` like CONCAT('%', #{createBy}, '%')")
     List<DocumentData> searchDataByCreateBy(@Param("createBy") String createBy);
 
-    @Select("select * from `document_data` where `author_national` = #{national}")
+    @Select("select * from `document_data` where `author_national` like CONCAT('%', #{national}, '%')")
     List<DocumentData> searchDataByNational(@Param("national") String national);
 
-    @Select("select * from `document_data` where `name` = #{name} and `dclass` = #{dClass}")
+    @Select("select * from `document_data` where `name` like CONCAT('%', #{name}, '%') and `dclass` = #{dClass}")
     List<DocumentData> searchDataByNameAndDClass(@Param("name") String name, @Param("dClass") String dClass);
 
     @Select("select * from `document_data` where `dclass` = #{dClass} and `dformat` = #{dFormat}")
