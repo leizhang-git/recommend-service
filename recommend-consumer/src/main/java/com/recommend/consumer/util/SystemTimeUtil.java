@@ -1,5 +1,6 @@
 package com.recommend.consumer.util;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,5 +21,9 @@ public class SystemTimeUtil {
 
     public static Long getTimeStamp() {
         return System.currentTimeMillis();
+    }
+
+    public static String getTime(Instant time) {
+        return NOW_TIME.format(time);
     }
 }

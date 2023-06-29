@@ -1,4 +1,5 @@
-//package com.recommend.bootstrap.util;
+package com.recommend.bootstrap.util;
+
 //
 //import com.caucho.hessian.io.Hessian2Input;
 //import com.caucho.hessian.io.Hessian2Output;

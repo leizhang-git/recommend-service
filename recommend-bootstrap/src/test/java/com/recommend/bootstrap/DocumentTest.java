@@ -89,4 +89,21 @@ public class DocumentTest {
         documentDataService.saveDocumentData(documentDataDTO4);
 
     }
+
+    @Test
+    public void test2() {
+        for (int i = 0; i < 50; i++) {
+            DocumentDataDTO documentDataDTO = new DocumentDataDTO();
+            documentDataDTO.setName("测试数据，稍后删除" + i);
+            documentDataDTO.setRemoteAddr(null);
+            documentDataDTO.setLocalAddr(null);
+            documentDataDTO.setAuthor("zhanglei");
+            documentDataDTO.setAuthorNational("中国");
+            documentDataDTO.setIntro("测试数据，稍后删除");
+            documentDataDTO.setDFormat("test");
+            documentDataDTO.setCreateBy("admin");
+            documentDataDTO.setDClass(DocumentClassEnum.TEST.getValue());
+            documentDataService.saveDocumentData(documentDataDTO);
+        }
+    }
 }

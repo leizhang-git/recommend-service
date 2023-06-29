@@ -48,6 +48,11 @@ public enum DocumentClassEnum {
     FICTION("FICTION"),
 
     /**
+     * 小说类
+     */
+    TEST("TEST"),
+
+    /**
      * 图片类
      */
     PICTURE("PICTURE");
