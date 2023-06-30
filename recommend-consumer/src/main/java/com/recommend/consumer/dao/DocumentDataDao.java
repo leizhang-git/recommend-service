@@ -37,8 +37,14 @@ public interface DocumentDataDao {
     @Select("select * from `document_data` where `dclass` = #{dClass} and `dformat` = #{dFormat}")
     List<DocumentData> searchDataByDClassAndDFormat(@Param("dClass") String dClass, @Param("dFormat") String dFormat);
 
+    @Select("select distinct `dclass` from `document_data`")
+    List<String> getAllDClass();
+
     @Delete("delete from `document_data` where `id` = #{id}")
     boolean deleteById(@Param("id") String id);
 
     boolean saveDocumentData(DocumentData documentData);
+
+    @Select("select count(*) from `document_data`")
+    Integer getCount();
 }

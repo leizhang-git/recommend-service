@@ -1,8 +1,13 @@
 package com.recommend.consumer.service;
 
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
+import com.recommend.consumer.domain.dto.DocumentSearchDTO;
 import com.recommend.consumer.domain.pojo.documentData.DocumentBinary;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,6 +32,12 @@ public interface DocumentDataService {
     List<DocumentDataDTO> getAllData(Integer pageNum, Integer pageSize);
 
     /**
+     * 获取总条数
+     * @return
+     */
+    Integer getCount();
+
+    /**
      * 根据名称搜索资源
      * @param name
      * @return
@@ -39,6 +50,27 @@ public interface DocumentDataService {
      * @return
      */
     List<DocumentDataDTO> searchAll(String input);
+
+    /**
+     * 导出Excel
+     * @param documentDataDTOs
+     * @return
+     */
+    boolean exportExcel(List<DocumentDataDTO> documentDataDTOs, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 上传资源
+     * @param file
+     * @return
+     */
+    boolean uploadDocument(MultipartFile file) throws IOException;
+
+    /**
+     * 搜索
+     * @param documentDataDTO
+     * @return
+     */
+    List<DocumentDataDTO> searchAll(DocumentSearchDTO documentDataDTO);
 
     /**
      * 根据格式搜索资源
@@ -98,6 +130,12 @@ public interface DocumentDataService {
      * @return
      */
     List<DocumentDataDTO> searchDataByIntro(String intro);
+
+    /**
+     * 获取所有类型
+     * @return
+     */
+    List<String> getAllDClass();
 
     /**
      * 根据id删除资源

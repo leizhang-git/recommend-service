@@ -1,7 +1,10 @@
 package com.recommend.consumer.util;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -10,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class SystemTimeUtil {
 
-    public static final DateTimeFormatter NOW_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static final DateTimeFormatter NOW_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
 
     public SystemTimeUtil() {
     }
@@ -24,6 +27,9 @@ public class SystemTimeUtil {
     }
 
     public static String getTime(Instant time) {
+        if(null == time) {
+            return StrUtil.EMPTY;
+        }
         return NOW_TIME.format(time);
     }
 }
