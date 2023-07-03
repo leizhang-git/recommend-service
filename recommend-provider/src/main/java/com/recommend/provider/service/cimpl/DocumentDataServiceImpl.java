@@ -189,9 +189,9 @@ public class DocumentDataServiceImpl implements DocumentDataService {
             cellHValue = valueRow.createCell(4);
             cellHValue.setCellValue(documentDataDTO.getIntro());
             cellHValue = valueRow.createCell(5);
-            cellHValue.setCellValue(documentDataDTO.getDFormat());
+            cellHValue.setCellValue(documentDataDTO.getDformat());
             cellHValue = valueRow.createCell(6);
-            cellHValue.setCellValue(documentDataDTO.getDClass());
+            cellHValue.setCellValue(documentDataDTO.getDclass());
             cellHValue = valueRow.createCell(7);
             cellHValue.setCellValue(documentDataDTO.getCreateBy());
             cellHValue = valueRow.createCell(8);
@@ -226,9 +226,15 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         if(null == documentDataDTO) {
             return result;
         }
+        if(StrUtil.isBlank(documentDataDTO.getName())
+                && StrUtil.isBlank(documentDataDTO.getDclass())
+                && StrUtil.isBlank(documentDataDTO.getDformat())
+                && StrUtil.isBlank(documentDataDTO.getAuthorNational())) {
+            return getAllData();
+        }
         List<DocumentDataDTO> nDocumentDataDTOList = searchDataByName(documentDataDTO.getName());
-        List<DocumentDataDTO> dcDocumentDataDTOList = searchDataByDClass(documentDataDTO.getDClass());
-        List<DocumentDataDTO> dfDocumentDataDTOList = searchDataByDFormat(documentDataDTO.getDFormat());
+        List<DocumentDataDTO> dcDocumentDataDTOList = searchDataByDClass(documentDataDTO.getDclass());
+        List<DocumentDataDTO> dfDocumentDataDTOList = searchDataByDFormat(documentDataDTO.getDformat());
         List<DocumentDataDTO> naDocumentDataDTOList = searchDataByNational(documentDataDTO.getAuthorNational());
         result.addAll(naDocumentDataDTOList);
         result.addAll(dcDocumentDataDTOList);
@@ -241,19 +247,19 @@ public class DocumentDataServiceImpl implements DocumentDataService {
     }
 
     @Override
-    public List<DocumentDataDTO> searchDataByDFormat(String dFormat) {
-        if(StrUtil.isBlank(dFormat)) {
+    public List<DocumentDataDTO> searchDataByDFormat(String dformat) {
+        if(StrUtil.isBlank(dformat)) {
             return CollUtil.newArrayList();
         }
-        return transitionDocumentDTO(documentDataDao.searchDataByDFormat(dFormat));
+        return transitionDocumentDTO(documentDataDao.searchDataByDFormat(dformat));
     }
 
     @Override
-    public List<DocumentDataDTO> searchDataByDClass(String dClass) {
-        if(StrUtil.isBlank(dClass)) {
+    public List<DocumentDataDTO> searchDataByDClass(String dclass) {
+        if(StrUtil.isBlank(dclass)) {
             return CollUtil.newArrayList();
         }
-        return transitionDocumentDTO(documentDataDao.searchDataByDClass(dClass));
+        return transitionDocumentDTO(documentDataDao.searchDataByDClass(dclass));
     }
 
     @Override
@@ -273,13 +279,13 @@ public class DocumentDataServiceImpl implements DocumentDataService {
     }
 
     @Override
-    public List<DocumentDataDTO> searchDataByNameAndDClass(String name, String dClass) {
-        return transitionDocumentDTO(documentDataDao.searchDataByNameAndDClass(name, dClass));
+    public List<DocumentDataDTO> searchDataByNameAndDClass(String name, String dclass) {
+        return transitionDocumentDTO(documentDataDao.searchDataByNameAndDClass(name, dclass));
     }
 
     @Override
-    public List<DocumentDataDTO> searchDataByDClassAndDFormat(String dClass, String dFormat) {
-        return transitionDocumentDTO(documentDataDao.searchDataByDClassAndDFormat(dClass, dFormat));
+    public List<DocumentDataDTO> searchDataByDClassAndDFormat(String dclass, String dformat) {
+        return transitionDocumentDTO(documentDataDao.searchDataByDClassAndDFormat(dclass, dformat));
     }
 
     @Override
@@ -314,6 +320,9 @@ public class DocumentDataServiceImpl implements DocumentDataService {
     @Transactional
     @Override
     public DocumentDataDTO saveDocumentData(DocumentDataDTO documentDataDTO) {
+        if(!StrUtil.isBlank(documentDataDTO.getId())) {
+            return updateDocumentData(documentDataDTO);
+        }
         documentDataDTO.setId(UUID.randomUUID().toString());
         documentDataDTO.setCreateBy(StrUtil.isBlank(documentDataDTO.getCreateBy()) ? ContextUtil.getName() : documentDataDTO.getCreateBy());
         documentDataDTO.setCreateDate(Instant.now());
@@ -321,6 +330,17 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         documentDataDTO.setLastModifiedDate(Instant.now());
         DocumentData documentData = transitionDocument(documentDataDTO);
         documentDataDao.saveDocumentData(documentData);
+        return documentDataDTO;
+    }
+
+    @Override
+    public DocumentDataDTO updateDocumentData(DocumentDataDTO documentDataDTO) {
+        documentDataDTO.setCreateBy(StrUtil.isBlank(documentDataDTO.getCreateBy()) ? ContextUtil.getName() : documentDataDTO.getCreateBy());
+        documentDataDTO.setCreateDate(Instant.now());
+        documentDataDTO.setLastModifiedBy(StrUtil.isBlank(documentDataDTO.getLastModifiedBy()) ? ContextUtil.getName() : documentDataDTO.getLastModifiedBy());
+        documentDataDTO.setLastModifiedDate(Instant.now());
+        DocumentData documentData = transitionDocument(documentDataDTO);
+        documentDataDao.updateDocumentData(documentData);
         return documentDataDTO;
     }
 

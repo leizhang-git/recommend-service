@@ -21,9 +21,9 @@ public class DocumentSearchDTO {
 
     private String intro;
 
-    @JsonProperty("dFormat")
-    private String dFormat;
+    @JsonProperty("dformat")
+    private String dformat;
 
-    @JsonProperty("dClass")
-    private String dClass;
+    @JsonProperty("dclass")
+    private String dclass;
 }

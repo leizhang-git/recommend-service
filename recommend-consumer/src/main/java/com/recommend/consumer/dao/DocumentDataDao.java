@@ -19,11 +19,11 @@ public interface DocumentDataDao {
     @Select("select * from `document_data` where `name` like CONCAT('%', #{name}, '%')")
     List<DocumentData> searchDataByName(@Param("name") String name);
 
-    @Select("select * from `document_data` where `dformat` like CONCAT('%', #{dFormat}, '%')")
-    List<DocumentData> searchDataByDFormat(@Param("dFormat") String dFormat);
+    @Select("select * from `document_data` where `dformat` like CONCAT('%', #{dformat}, '%')")
+    List<DocumentData> searchDataByDFormat(@Param("dformat") String dformat);
 
-    @Select("select * from `document_data` where `dclass` like CONCAT('%', #{dClass}, '%')")
-    List<DocumentData> searchDataByDClass(@Param("dClass") String dClass);
+    @Select("select * from `document_data` where `dclass` like CONCAT('%', #{dclass}, '%')")
+    List<DocumentData> searchDataByDClass(@Param("dclass") String dclass);
 
     @Select("select * from `document_data` where `create_by` like CONCAT('%', #{createBy}, '%')")
     List<DocumentData> searchDataByCreateBy(@Param("createBy") String createBy);
@@ -31,11 +31,11 @@ public interface DocumentDataDao {
     @Select("select * from `document_data` where `author_national` like CONCAT('%', #{national}, '%')")
     List<DocumentData> searchDataByNational(@Param("national") String national);
 
-    @Select("select * from `document_data` where `name` like CONCAT('%', #{name}, '%') and `dclass` = #{dClass}")
-    List<DocumentData> searchDataByNameAndDClass(@Param("name") String name, @Param("dClass") String dClass);
+    @Select("select * from `document_data` where `name` like CONCAT('%', #{name}, '%') and `dclass` = #{dclass}")
+    List<DocumentData> searchDataByNameAndDClass(@Param("name") String name, @Param("dclass") String dclass);
 
-    @Select("select * from `document_data` where `dclass` = #{dClass} and `dformat` = #{dFormat}")
-    List<DocumentData> searchDataByDClassAndDFormat(@Param("dClass") String dClass, @Param("dFormat") String dFormat);
+    @Select("select * from `document_data` where `dclass` = #{dclass} and `dformat` = #{dformat}")
+    List<DocumentData> searchDataByDClassAndDFormat(@Param("dclass") String dclass, @Param("dformat") String dformat);
 
     @Select("select distinct `dclass` from `document_data`")
     List<String> getAllDClass();
@@ -45,6 +45,11 @@ public interface DocumentDataDao {
 
     boolean saveDocumentData(DocumentData documentData);
 
+    boolean updateDocumentData(DocumentData documentData);
+
     @Select("select count(*) from `document_data`")
     Integer getCount();
+
+    @Select("select count(*) from `document_data` where `id` = #{id}")
+    Integer getCountById(@Param("id") String id);
 }

@@ -74,17 +74,17 @@ public interface DocumentDataService {
 
     /**
      * 根据格式搜索资源
-     * @param dFormat
+     * @param dformat
      * @return
      */
-    List<DocumentDataDTO> searchDataByDFormat(String dFormat);
+    List<DocumentDataDTO> searchDataByDFormat(String dformat);
 
     /**
      * 根据类别搜索资源
-     * @param dClass
+     * @param dclass
      * @return
      */
-    List<DocumentDataDTO> searchDataByDClass(String dClass);
+    List<DocumentDataDTO> searchDataByDClass(String dclass);
 
     /**
      * 根据创建者搜索资源
@@ -104,18 +104,18 @@ public interface DocumentDataService {
     /**
      * 根据名称+类别搜索资源
      * @param name
-     * @Param dClass
+     * @Param dclass
      * @return
      */
-    List<DocumentDataDTO> searchDataByNameAndDClass(String name, String dClass);
+    List<DocumentDataDTO> searchDataByNameAndDClass(String name, String dclass);
 
     /**
      * 根据类别+格式搜索资源
-     * @param dClass
-     * @param dFormat
+     * @param dclass
+     * @param dformat
      * @return
      */
-    List<DocumentDataDTO> searchDataByDClassAndDFormat(String dClass, String dFormat);
+    List<DocumentDataDTO> searchDataByDClassAndDFormat(String dclass, String dformat);
 
     /**
      * 根据资源内容搜索（有些困难）
@@ -158,4 +158,11 @@ public interface DocumentDataService {
      * @return
      */
     DocumentDataDTO saveDocumentData(DocumentDataDTO documentDataDTO);
+
+    /**
+     * 修改资源
+     * @param documentDataDTO
+     * @return
+     */
+    DocumentDataDTO updateDocumentData(DocumentDataDTO documentDataDTO);
 }

@@ -29,10 +29,10 @@
             <if test="intro != null">
                 intro,
             </if>
-            <if test="dFormat != null">
+            <if test="dformat != null">
                 dformat,
             </if>
-            <if test="dClass != null">
+            <if test="dclass != null">
                 dclass,
             </if>
             <if test="createBy != null">
@@ -70,11 +70,11 @@
             <if test="intro != null">
                 #{intro,jdbcType=LONGVARCHAR},
             </if>
-            <if test="dFormat != null">
-                #{dFormat,jdbcType=VARCHAR},
+            <if test="dformat != null">
+                #{dformat,jdbcType=VARCHAR},
             </if>
-            <if test="dClass != null">
-                #{dClass,jdbcType=VARCHAR},
+            <if test="dclass != null">
+                #{dclass,jdbcType=VARCHAR},
             </if>
             <if test="createBy != null">
                 #{createBy,jdbcType=VARCHAR},
@@ -90,5 +90,25 @@
             </if>
         </trim>
     </insert>
+
+    <update id="updateDocumentData" parameterType="com.recommend.consumer.domain.pojo.documentData.DocumentData">
+        update
+            `document_data`
+        set
+            `name` = #{name},
+            `remote_addr` = #{remoteAddr},
+            `local_addr` = #{localAddr},
+            `author` = #{author},
+            `author_national` = #{authorNational},
+            `intro` = #{intro},
+            `dformat` = #{dformat},
+            `dclass` = #{dclass},
+            `create_by` = #{createBy},
+            `create_date` = #{createDate},
+            `last_modified_by` = #{lastModifiedBy},
+            `last_modified_date` = #{lastModifiedDate}
+        where
+            `id` = #{id};
+    </update>
 
 </mapper>

@@ -31,9 +31,9 @@ public class DocumentTest {
         documentDataDTO.setAuthor("zhanglei");
         documentDataDTO.setAuthorNational("中国");
         documentDataDTO.setIntro("简单介绍一些arthas使用以及cglib&asm");
-        documentDataDTO.setDFormat("docx");
+        documentDataDTO.setDformat("docx");
         documentDataDTO.setCreateBy("admin");
-        documentDataDTO.setDClass(DocumentClassEnum.JAVA.getValue());
+        documentDataDTO.setDclass(DocumentClassEnum.JAVA.getValue());
         documentDataService.saveDocumentData(documentDataDTO);
 
         //=================================================================
@@ -44,9 +44,9 @@ public class DocumentTest {
         documentDataDTO1.setAuthor("zhanglei");
         documentDataDTO1.setAuthorNational("中国");
         documentDataDTO1.setIntro("简单介绍k8s以及命令");
-        documentDataDTO1.setDFormat("txt");
+        documentDataDTO1.setDformat("txt");
         documentDataDTO1.setCreateBy("admin");
-        documentDataDTO1.setDClass(DocumentClassEnum.CLOUD.getValue());
+        documentDataDTO1.setDclass(DocumentClassEnum.CLOUD.getValue());
         documentDataService.saveDocumentData(documentDataDTO1);
 
         //=================================================================
@@ -57,9 +57,9 @@ public class DocumentTest {
         documentDataDTO2.setAuthor("zhanglei");
         documentDataDTO2.setAuthorNational("中国");
         documentDataDTO2.setIntro("nginx配置文件");
-        documentDataDTO2.setDFormat("conf");
+        documentDataDTO2.setDformat("conf");
         documentDataDTO2.setCreateBy("admin");
-        documentDataDTO2.setDClass(DocumentClassEnum.CONF.getValue());
+        documentDataDTO2.setDclass(DocumentClassEnum.CONF.getValue());
         documentDataService.saveDocumentData(documentDataDTO2);
 
         //=================================================================
@@ -70,9 +70,9 @@ public class DocumentTest {
         documentDataDTO3.setAuthor("zhanglei");
         documentDataDTO3.setAuthorNational("中国");
         documentDataDTO3.setIntro("简单介绍序列化框架");
-        documentDataDTO3.setDFormat("docx");
+        documentDataDTO3.setDformat("docx");
         documentDataDTO3.setCreateBy("admin");
-        documentDataDTO3.setDClass(DocumentClassEnum.TOOL.getValue());
+        documentDataDTO3.setDclass(DocumentClassEnum.TOOL.getValue());
         documentDataService.saveDocumentData(documentDataDTO3);
 
         //=================================================================
@@ -83,9 +83,9 @@ public class DocumentTest {
         documentDataDTO4.setAuthor("zhanglei");
         documentDataDTO4.setAuthorNational("中国");
         documentDataDTO4.setIntro("记录自己入职以来每天都做的事情");
-        documentDataDTO4.setDFormat("txt");
+        documentDataDTO4.setDformat("txt");
         documentDataDTO4.setCreateBy("admin");
-        documentDataDTO4.setDClass(DocumentClassEnum.WORK.getValue());
+        documentDataDTO4.setDclass(DocumentClassEnum.WORK.getValue());
         documentDataService.saveDocumentData(documentDataDTO4);
 
     }
@@ -100,9 +100,9 @@ public class DocumentTest {
             documentDataDTO.setAuthor("zhanglei");
             documentDataDTO.setAuthorNational("中国");
             documentDataDTO.setIntro("测试数据，稍后删除");
-            documentDataDTO.setDFormat("test");
+            documentDataDTO.setDformat("test");
             documentDataDTO.setCreateBy("admin");
-            documentDataDTO.setDClass(DocumentClassEnum.TEST.getValue());
+            documentDataDTO.setDclass(DocumentClassEnum.TEST.getValue());
             documentDataService.saveDocumentData(documentDataDTO);
         }
     }

@@ -50,12 +50,12 @@ public class DocumentDataDTO {
     /**
      * 格式
      */
-    private String dFormat;
+    private String dformat;
 
     /**
      * 类别
      */
-    private String dClass;
+    private String dclass;
 
     /**
      * 创建者
