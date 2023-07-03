@@ -51,6 +51,7 @@ public class DocumentDataServiceImpl implements DocumentDataService {
     @Autowired
     private DocumentBinaryDao documentBinaryDao;
 
+    public static final String HEADER_ID = "ID";
     public static final String HEADER_NAME = "名称";
     public static final String header_AUTHOR = "作者";
     public static final String header_AUTHOR_NATIONAL = "作者国籍";
@@ -64,6 +65,7 @@ public class DocumentDataServiceImpl implements DocumentDataService {
     static List<String> titleNameList = new ArrayList<>();
 
     static {
+        titleNameList.add(HEADER_ID);
         titleNameList.add(HEADER_NAME);
         titleNameList.add(header_AUTHOR);
         titleNameList.add(header_AUTHOR_NATIONAL);
@@ -175,11 +177,12 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         }
 
         //赋值
-        int count = 0;
+        int count = 1;
+        int id = 0;
         for (DocumentDataDTO documentDataDTO : documentDataDTOs) {
-            Row valueRow = sheet.createRow(1);
+            Row valueRow = sheet.createRow(count);
             Cell cellHValue = valueRow.createCell(0);
-            cellHValue.setCellValue(String.valueOf(count));
+            cellHValue.setCellValue(String.valueOf(id));
             cellHValue = valueRow.createCell(1);
             cellHValue.setCellValue(documentDataDTO.getName());
             cellHValue = valueRow.createCell(2);
@@ -199,6 +202,8 @@ public class DocumentDataServiceImpl implements DocumentDataService {
             cellHValue = valueRow.createCell(9);
             cellHValue.setCellValue(SystemTimeUtil.getTime(documentDataDTO.getLastModifiedDate()));
             cellHValue.setCellStyle(unLockStyle);
+            count++;
+            id++;
         }
 
         //密码
