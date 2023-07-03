@@ -8,6 +8,8 @@ import com.recommend.consumer.dao.DocumentBinaryDao;
 import com.recommend.consumer.dao.DocumentDataDao;
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.dto.DocumentSearchDTO;
+import com.recommend.consumer.domain.dto.RouterDTO;
+import com.recommend.consumer.domain.dto.RouterMeta;
 import com.recommend.consumer.domain.pojo.documentData.DocumentBinary;
 import com.recommend.consumer.domain.pojo.documentData.DocumentData;
 import com.recommend.consumer.service.DocumentDataService;
@@ -347,6 +349,96 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         DocumentData documentData = transitionDocument(documentDataDTO);
         documentDataDao.updateDocumentData(documentData);
         return documentDataDTO;
+    }
+
+    @Override
+    public List<RouterDTO> getRouters() {
+        // 此处主要为了学习，先暂时写死了
+        // children:
+        // 用户管理
+        RouterDTO userRouterDTO = new RouterDTO();
+        userRouterDTO.setName("User");
+        userRouterDTO.setPath("user");
+        userRouterDTO.setComponent("system/user/index");
+        userRouterDTO.setHidden(false);
+        RouterMeta userMeta = new RouterMeta();
+        userMeta.setTitle("用户管理");
+        userMeta.setIcon("user");
+        userMeta.setNoCache(false);
+        userRouterDTO.setRouterMeta(userMeta);
+
+        // 角色管理
+        RouterDTO roleRouterDTO = new RouterDTO();
+        roleRouterDTO.setName("Role");
+        roleRouterDTO.setPath("role");
+        roleRouterDTO.setComponent("system/role/index");
+        roleRouterDTO.setHidden(false);
+        RouterMeta roleMeta = new RouterMeta();
+        roleMeta.setTitle("用户管理");
+        roleMeta.setIcon("user");
+        roleMeta.setNoCache(false);
+        roleRouterDTO.setRouterMeta(roleMeta);
+
+        // 菜单管理
+        RouterDTO menuRouterDTO = new RouterDTO();
+        menuRouterDTO.setName("Menu");
+        menuRouterDTO.setPath("menu");
+        menuRouterDTO.setComponent("system/menu/index");
+        RouterMeta menuMeta = new RouterMeta();
+        menuMeta.setTitle("菜单管理");
+        menuMeta.setIcon("tree-table");
+        menuMeta.setNoCache(false);
+        menuRouterDTO.setRouterMeta(menuMeta);
+
+        // 参数设置
+        RouterDTO configRouterDTO = new RouterDTO();
+        configRouterDTO.setName("Config");
+        configRouterDTO.setPath("config");
+        configRouterDTO.setHidden(false);
+        configRouterDTO.setComponent("system/config/index");
+        RouterMeta configMeta = new RouterMeta();
+        configMeta.setTitle("参数配置");
+        configMeta.setIcon("edit");
+        configMeta.setNoCache(false);
+        configRouterDTO.setRouterMeta(configMeta);
+
+        // 日志管理
+        RouterDTO logRouterDTO = new RouterDTO();
+        logRouterDTO.setName("Log");
+        logRouterDTO.setPath("log");
+        logRouterDTO.setAlwaysShow(true);
+        logRouterDTO.setHidden(false);
+        logRouterDTO.setComponent("ParentView");
+        logRouterDTO.setRedirect("noRedirect");
+        RouterMeta logMeta = new RouterMeta();
+        logMeta.setTitle("Log");
+        logMeta.setIcon("user");
+        logMeta.setNoCache(false);
+        logRouterDTO.setRouterMeta(logMeta);
+
+        List<RouterDTO> children = new ArrayList<>();
+        children.add(userRouterDTO);
+        children.add(roleRouterDTO);
+        children.add(menuRouterDTO);
+        children.add(configRouterDTO);
+        children.add(logRouterDTO);
+        // father
+        RouterDTO fatherRouter = new RouterDTO();
+        fatherRouter.setName("System");
+        fatherRouter.setPath("/system");
+        fatherRouter.setRedirect("noRedirect");
+        fatherRouter.setHidden(false);
+        fatherRouter.setComponent("Layout");
+        fatherRouter.setAlwaysShow(true);
+        RouterMeta fatherMeta = new RouterMeta();
+        fatherMeta.setTitle("系统管理");
+        fatherMeta.setIcon("system");
+        fatherMeta.setNoCache(false);
+        fatherRouter.setRouterMeta(fatherMeta);
+        fatherRouter.setChildren(children);
+        List<RouterDTO> result = new ArrayList<>();
+        result.add(fatherRouter);
+        return result;
     }
 
     public DocumentDataDTO transitionDocumentDTO(DocumentData data) {

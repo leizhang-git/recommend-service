@@ -2,6 +2,7 @@ package com.recommend.consumer.service;
 
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.dto.DocumentSearchDTO;
+import com.recommend.consumer.domain.dto.RouterDTO;
 import com.recommend.consumer.domain.pojo.documentData.DocumentBinary;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -165,4 +166,10 @@ public interface DocumentDataService {
      * @return
      */
     DocumentDataDTO updateDocumentData(DocumentDataDTO documentDataDTO);
+
+    /**
+     * 动态获取路由
+     * @return
+     */
+    List<RouterDTO> getRouters();
 }

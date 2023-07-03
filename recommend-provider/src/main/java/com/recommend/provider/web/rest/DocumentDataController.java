@@ -3,6 +3,7 @@ package com.recommend.provider.web.rest;
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.dto.DocumentResult;
 import com.recommend.consumer.domain.dto.DocumentSearchDTO;
+import com.recommend.consumer.domain.dto.RouterDTO;
 import com.recommend.consumer.service.DocumentDataService;
 import com.recommend.consumer.web.vm.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,11 @@ public class DocumentDataController {
     public ResultVO<?> uploadDocument(@RequestPart("file") MultipartFile file) throws IOException {
         boolean result = documentDataService.uploadDocument(file);
         return ResultVO.getSuccess(result);
+    }
+
+    @GetMapping("/menu/getRouters")
+    public ResultVO<?> getRouters() {
+        List<RouterDTO> routers = documentDataService.getRouters();
+        return ResultVO.getSuccess(routers);
     }
 }
