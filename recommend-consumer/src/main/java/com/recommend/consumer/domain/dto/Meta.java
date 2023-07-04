@@ -8,7 +8,7 @@ import lombok.Data;
  * @Date 2023/7/3 17:32
  */
 @Data
-public class RouterMeta {
+public class Meta {
 
     private String icon;
 

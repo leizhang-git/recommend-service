@@ -9,7 +9,7 @@ import com.recommend.consumer.dao.DocumentDataDao;
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.dto.DocumentSearchDTO;
 import com.recommend.consumer.domain.dto.RouterDTO;
-import com.recommend.consumer.domain.dto.RouterMeta;
+import com.recommend.consumer.domain.dto.Meta;
 import com.recommend.consumer.domain.pojo.documentData.DocumentBinary;
 import com.recommend.consumer.domain.pojo.documentData.DocumentData;
 import com.recommend.consumer.service.DocumentDataService;
@@ -361,11 +361,11 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         userRouterDTO.setPath("user");
         userRouterDTO.setComponent("system/user/index");
         userRouterDTO.setHidden(false);
-        RouterMeta userMeta = new RouterMeta();
+        Meta userMeta = new Meta();
         userMeta.setTitle("用户管理");
         userMeta.setIcon("user");
         userMeta.setNoCache(false);
-        userRouterDTO.setRouterMeta(userMeta);
+        userRouterDTO.setMeta(userMeta);
 
         // 角色管理
         RouterDTO roleRouterDTO = new RouterDTO();
@@ -373,22 +373,22 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         roleRouterDTO.setPath("role");
         roleRouterDTO.setComponent("system/role/index");
         roleRouterDTO.setHidden(false);
-        RouterMeta roleMeta = new RouterMeta();
-        roleMeta.setTitle("用户管理");
+        Meta roleMeta = new Meta();
+        roleMeta.setTitle("角色管理");
         roleMeta.setIcon("user");
         roleMeta.setNoCache(false);
-        roleRouterDTO.setRouterMeta(roleMeta);
+        roleRouterDTO.setMeta(roleMeta);
 
         // 菜单管理
         RouterDTO menuRouterDTO = new RouterDTO();
         menuRouterDTO.setName("Menu");
         menuRouterDTO.setPath("menu");
         menuRouterDTO.setComponent("system/menu/index");
-        RouterMeta menuMeta = new RouterMeta();
+        Meta menuMeta = new Meta();
         menuMeta.setTitle("菜单管理");
         menuMeta.setIcon("tree-table");
         menuMeta.setNoCache(false);
-        menuRouterDTO.setRouterMeta(menuMeta);
+        menuRouterDTO.setMeta(menuMeta);
 
         // 参数设置
         RouterDTO configRouterDTO = new RouterDTO();
@@ -396,11 +396,11 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         configRouterDTO.setPath("config");
         configRouterDTO.setHidden(false);
         configRouterDTO.setComponent("system/config/index");
-        RouterMeta configMeta = new RouterMeta();
+        Meta configMeta = new Meta();
         configMeta.setTitle("参数配置");
         configMeta.setIcon("edit");
         configMeta.setNoCache(false);
-        configRouterDTO.setRouterMeta(configMeta);
+        configRouterDTO.setMeta(configMeta);
 
         // 日志管理
         RouterDTO logRouterDTO = new RouterDTO();
@@ -410,11 +410,11 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         logRouterDTO.setHidden(false);
         logRouterDTO.setComponent("ParentView");
         logRouterDTO.setRedirect("noRedirect");
-        RouterMeta logMeta = new RouterMeta();
+        Meta logMeta = new Meta();
         logMeta.setTitle("Log");
         logMeta.setIcon("user");
         logMeta.setNoCache(false);
-        logRouterDTO.setRouterMeta(logMeta);
+        logRouterDTO.setMeta(logMeta);
 
         List<RouterDTO> children = new ArrayList<>();
         children.add(userRouterDTO);
@@ -430,11 +430,11 @@ public class DocumentDataServiceImpl implements DocumentDataService {
         fatherRouter.setHidden(false);
         fatherRouter.setComponent("Layout");
         fatherRouter.setAlwaysShow(true);
-        RouterMeta fatherMeta = new RouterMeta();
+        Meta fatherMeta = new Meta();
         fatherMeta.setTitle("系统管理");
         fatherMeta.setIcon("system");
         fatherMeta.setNoCache(false);
-        fatherRouter.setRouterMeta(fatherMeta);
+        fatherRouter.setMeta(fatherMeta);
         fatherRouter.setChildren(children);
         List<RouterDTO> result = new ArrayList<>();
         result.add(fatherRouter);

@@ -24,7 +24,7 @@ public class RouterDTO {
 
     private Boolean alwaysShow;
 
-    private RouterMeta routerMeta;
+    private Meta meta;
 
     private List<RouterDTO> children;
 }
