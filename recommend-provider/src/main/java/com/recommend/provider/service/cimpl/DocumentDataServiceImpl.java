@@ -8,19 +8,20 @@ import com.recommend.consumer.dao.DocumentBinaryDao;
 import com.recommend.consumer.dao.DocumentDataDao;
 import com.recommend.consumer.domain.dto.DocumentDataDTO;
 import com.recommend.consumer.domain.dto.DocumentSearchDTO;
-import com.recommend.consumer.domain.dto.RouterDTO;
 import com.recommend.consumer.domain.dto.Meta;
+import com.recommend.consumer.domain.dto.RouterDTO;
 import com.recommend.consumer.domain.pojo.documentData.DocumentBinary;
 import com.recommend.consumer.domain.pojo.documentData.DocumentData;
 import com.recommend.consumer.service.DocumentDataService;
 import com.recommend.consumer.util.ContextUtil;
 import com.recommend.consumer.util.SystemTimeUtil;
-import com.recommend.provider.domain.ByteFile;
 import com.recommend.provider.util.FileUtil;
+import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.time.Instant;
@@ -44,7 +46,8 @@ import java.util.stream.Collectors;
 @Service
 public class DocumentDataServiceImpl implements DocumentDataService {
 
-
+    @Value("${file.img.uploadPath}")
+    private String imgUploadPath;
 
 
     @Autowired
@@ -223,8 +226,15 @@ public class DocumentDataServiceImpl implements DocumentDataService {
 
     @Override
     public boolean uploadDocument(MultipartFile file) throws IOException {
-        ByteFile byteFile = FileUtil.uploadFile(file, file.getName());
-        return false;
+        byte[] fileBytes = file.getBytes();
+        String saveImg = imgUploadPath + ".jpg";
+        //创建目录
+        FileUtil.createDir(saveImg);
+        Thumbnails.of(new ByteArrayInputStream(fileBytes))
+                .size(1920, 1200)
+                .outputFormat("jpg")
+                .toFile(saveImg);
+        return true;
     }
 
     @Override

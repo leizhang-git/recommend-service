@@ -116,4 +116,19 @@ public class FileUtil {
             }
         }
     }
+
+    /**
+     * 创建目录
+     * @param destDirName
+     * @return
+     */
+    public static Boolean createDir(String destDirName) {
+        File dir = new File(destDirName);
+        //判断有没有父路径，就是判断文件整个路径是否存在
+        if (!dir.getParentFile().exists()) {
+            //不存在就全部创建
+            return dir.getParentFile().mkdirs();
+        }
+        return false;
+    }
 }

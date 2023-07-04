@@ -71,3 +71,6 @@ os:
 obj:
   serialization:
     path: D:\\test\\
+file:
+  img:
+    uploadPath: /data/text/
