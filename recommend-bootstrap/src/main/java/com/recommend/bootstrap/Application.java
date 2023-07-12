@@ -19,6 +19,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -30,6 +31,7 @@ import java.util.List;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableConfigurationProperties({ApplicationProperties.class})
 @EnableDiscoveryClient
+@EnableAsync
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
