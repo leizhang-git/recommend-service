@@ -52,6 +52,9 @@
         <thrift.version>0.14.1</thrift.version>
         <jasypt.version>3.0.3</jasypt.version>
         <jjwt.version>0.11.5</jjwt.version>
+        <swagger.version>3.0.0</swagger.version>
+        <guava.versio>32.0.1-jre</guava.versio>
+        <swagger-ui.version>1.9.6</swagger-ui.version>
         <poi.version>5.2.3</poi.version>
         <ip2region.version>1.7.2</ip2region.version>
         <poi.ooxml.schemas.version>4.1.2</poi.ooxml.schemas.version>
@@ -62,6 +65,28 @@
     </properties>
 
     <dependencies>
+
+        <!-- 引入swagger-bootstrap-ui包 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>${swagger-ui.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.versio}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
         <dependency>

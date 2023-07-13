@@ -6,6 +6,8 @@ import com.recommend.consumer.domain.dto.DocumentSearchDTO;
 import com.recommend.consumer.domain.dto.RouterDTO;
 import com.recommend.consumer.service.DocumentDataService;
 import com.recommend.consumer.web.vm.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,12 +24,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/document")
+@Api(tags = "资料管理")
 public class DocumentDataController {
 
     @Autowired
     private DocumentDataService documentDataService;
 
     @GetMapping("/getAllData")
+    @ApiOperation(value = "资料列表")
     public ResultVO<?> getAllData(@RequestParam(defaultValue = "1", required = false) int pageNum,
                                   @RequestParam(defaultValue = "20", required = false) int pageSize) {
         List<DocumentDataDTO> allData = documentDataService.getAllData(pageNum, pageSize);

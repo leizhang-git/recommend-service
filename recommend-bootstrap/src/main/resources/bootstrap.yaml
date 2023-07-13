@@ -29,6 +29,9 @@ spring:
   mvc:
     servlet:
       path: /
+    #swagger版本冲突
+    pathmatch:
+      matching-strategy: ant_path_matcher
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   messages:

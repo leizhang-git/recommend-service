@@ -61,7 +61,7 @@ public class UrlPatternFilter implements Filter {
                 if (path.startsWith(whiteUrl)) {
                     return true;
                 }else{
-                    if(path.contains(whiteUrl)){
+                    if(path.contains(whiteUrl) || whiteUrl.contains(path)){
                         return true;
                     }
                 }
