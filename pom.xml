@@ -52,6 +52,7 @@
         <thrift.version>0.14.1</thrift.version>
         <jasypt.version>3.0.3</jasypt.version>
         <jjwt.version>0.11.5</jjwt.version>
+        <hbase.version>1.2.0</hbase.version>
         <swagger.version>3.0.0</swagger.version>
         <guava.versio>32.0.1-jre</guava.versio>
         <swagger-ui.version>1.9.6</swagger-ui.version>
@@ -66,6 +67,19 @@
     </properties>
 
     <dependencies>
+
+        <!-- hbase-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
