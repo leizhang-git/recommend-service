@@ -78,3 +78,9 @@ obj:
 file:
   img:
     uploadPath: /data/text/
+
+hbase:
+  zookeeper:
+    quorum: hadoop1,hadoop2,hadoop3
+    property:
+      clientPort: 2181
