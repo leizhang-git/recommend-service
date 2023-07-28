@@ -52,7 +52,7 @@
 
 
     <select id="selectByIdPerson" resultType="com.recommend.consumer.domain.pojo.Person">
-        select `id`,`name` from person where id = #{id};
+        select `id`,`name` from `person` where `id` = #{id};
     </select>
 
     <select id="selectAllPerson" resultType="com.recommend.consumer.domain.pojo.Person">

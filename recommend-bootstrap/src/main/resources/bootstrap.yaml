@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8085
   servlet:
     session:
       cookie:
@@ -16,7 +16,7 @@ spring:
       on-profile: dev
     datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: ENC(wrtJNLaH9x8vFhIlCUHaY4NfhE/yL4QXJlLkzwIeZ4/L0opLRumQd8JubiEOA8BdvoTi5c1tqh2F1frDPu940llF74ODLETu09x9lJUXMdQUo4SsY9vbubsX1cdloifaUkkk4hqn6MUoF0GsFggI3YjB2yqEbfjrUjPclcotj4TFAyRwzGX98RQjxMguTRndAoZ4Rn7WEuzGyDu7zGOiNkfUp67K2LpYBz/YYfRB+vmlivLzZF0pUlytRjgIzWXh)
+      url: jdbc:mysql://124.223.166.13:3306/test?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8&serverTimezone=UTC&serverTimezone=GMT%2B8
       username: ENC(j4Vn9PmJ4/yHzAw2jrrOyG9dDC0gnI/OR1h+a5THUWbsRoTFnQlrL4rS7Z3qKkYj)
       password: ENC(4Hox9tSLgl5wOQed+jzVkoJMtqPvFGx4UgUYp1xGZ92qi5WWGGIofDLC30ImgVb6)
   application:

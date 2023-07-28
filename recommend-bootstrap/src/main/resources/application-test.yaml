@@ -1,0 +1,79 @@
+spring:
+  main:
+    #开启覆盖名称相同bean
+    allow-bean-definition-overriding: true
+    #开启三级缓存，解决循环依赖问题
+    allow-circular-references: true
+    #mvc与gateway冲突
+#    web-application-type: reactive
+build:
+  platform: JWT
+threadpool:
+  #是否开启线程
+  open_flag: true
+  #核心线程数
+  core_pool_size: 10
+  #最大线程数
+  max_pool_size: 200
+  #队列大小
+  queue_capacity: 400
+  #空闲线程活跃时间(s)
+  keep_alive_seconds: 60
+  #线程池名称
+  default_name: t-pool
+zookeeper:
+  # 是否开启
+  enabled: true
+  # 服务器地址
+  server: ENC(p1pb8eMIp5iFO4YVE7ut+fFpHMFGyp/9qtuZ2qf4juoqZqcIao5jVc0f3ECiJyhU)
+  # 命名空间
+  nameSpace: test
+  # 权限加密
+  digest: xxx=xxx
+  # 会话超时时间
+  sessionTimeoutMs: 3000
+  # 连接超时时间
+  connectionTimeoutMs: 60000
+  # 最大重试次数
+  maxRetries: 2
+  # 初始休眠时间
+  baseSleepTimeMs: 1000
+system:
+  session:
+    whiteList:
+    greyList:
+application:
+  jwt:
+    # 过期时间，30天
+    expireTime: 25920000
+    whiteUrls:
+      - /jwt/
+      - /version
+      - /api/v1/person/login
+      - /api/v1/person/register
+      - /hello/
+      - /test/
+      - /ex/
+      - /vue/
+      - /swagger-ui/
+      - /swagger-resources/
+      - /v3/
+  baiduProp:
+    apiHosts: ENC(1ZAqpXL0j4NIji3cA8aGnZPVbnEJeWlosz/OuEj276ZaaF5RAZpbLgnrCMStjqr8kTb6Om6bnuK0ZP4iS4916tmUhGNVbcsW+aIn/mIXUuRG6LAFPqUFXizZWIERdKlW)
+    appId: ENC(POiyO/DtnXgGAitkz0zZsw2LAirkkHMFvFmcAMnaCtGmCJ69zKOuC/v+gRfXFUl89cQmknaIHG5SMvhW0Nidig==)
+    securityKey: ENC(7MfXiwKtdcv34E22ZQo986aD1dO2wF7HDyC9cKvTZJ82nFxI7qQ4dCrdkg1/goJYJ1eZTW7VoRP7FCDkHagDlw==)
+os:
+  enableCORS: true
+#dubbo:
+#  application:
+#    name: recommend-server
+#  registry:
+#    address: ENC(Mbq00EHJWNaF0QUl4HKC9fAKpzkpXHa4BP42N2hFCfQfICfoBHc9UUVq6dvo/rl+PUu991tBesZGzWFlgKnZYQ==)
+#  scan:
+#    base-packages: com.recommend.consumer.service
+obj:
+  serialization:
+    path: D:\\test\\
+file:
+  img:
+    uploadPath: /data/text/
