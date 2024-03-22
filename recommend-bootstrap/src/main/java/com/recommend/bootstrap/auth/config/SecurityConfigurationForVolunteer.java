@@ -1,8 +1,5 @@
 package com.recommend.bootstrap.auth.config;
 
-
-import com.recommend.bootstrap.config.condition.ConditionSysPlatformContext;
-import com.recommend.bootstrap.domain.enums.PlatformEnum;
 import com.recommend.bootstrap.security.jwt.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionSysPlatformContext({PlatformEnum.JWT})
 public class SecurityConfigurationForVolunteer {
 
     private static Logger log = LoggerFactory.getLogger(SecurityConfigurationForVolunteer.class);

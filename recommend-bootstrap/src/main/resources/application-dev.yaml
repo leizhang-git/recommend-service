@@ -21,27 +21,6 @@ threadpool:
   keep_alive_seconds: 60
   #线程池名称
   default_name: t-pool
-zookeeper:
-  # 是否开启
-  enabled: true
-  # 服务器地址
-  server: ENC(p1pb8eMIp5iFO4YVE7ut+fFpHMFGyp/9qtuZ2qf4juoqZqcIao5jVc0f3ECiJyhU)
-  # 命名空间
-  nameSpace: test
-  # 权限加密
-  digest: xxx=xxx
-  # 会话超时时间
-  sessionTimeoutMs: 3000
-  # 连接超时时间
-  connectionTimeoutMs: 60000
-  # 最大重试次数
-  maxRetries: 2
-  # 初始休眠时间
-  baseSleepTimeMs: 1000
-system:
-  session:
-    whiteList:
-    greyList:
 application:
   jwt:
     # 过期时间，30天
@@ -59,28 +38,5 @@ application:
       - /swagger-resources/
       - /v3/
       - /stock/
-  baiduProp:
-    apiHosts: ENC(1ZAqpXL0j4NIji3cA8aGnZPVbnEJeWlosz/OuEj276ZaaF5RAZpbLgnrCMStjqr8kTb6Om6bnuK0ZP4iS4916tmUhGNVbcsW+aIn/mIXUuRG6LAFPqUFXizZWIERdKlW)
-    appId: ENC(POiyO/DtnXgGAitkz0zZsw2LAirkkHMFvFmcAMnaCtGmCJ69zKOuC/v+gRfXFUl89cQmknaIHG5SMvhW0Nidig==)
-    securityKey: ENC(7MfXiwKtdcv34E22ZQo986aD1dO2wF7HDyC9cKvTZJ82nFxI7qQ4dCrdkg1/goJYJ1eZTW7VoRP7FCDkHagDlw==)
 os:
   enableCORS: true
-#dubbo:
-#  application:
-#    name: recommend-server
-#  registry:
-#    address: ENC(Mbq00EHJWNaF0QUl4HKC9fAKpzkpXHa4BP42N2hFCfQfICfoBHc9UUVq6dvo/rl+PUu991tBesZGzWFlgKnZYQ==)
-#  scan:
-#    base-packages: com.recommend.consumer.service
-obj:
-  serialization:
-    path: D:\\test\\
-file:
-  img:
-    uploadPath: /data/text/
-
-#hbase:
-#  zookeeper:
-#    quorum: hadoop1,hadoop2,hadoop3
-#    property:
-#      clientPort: 2181

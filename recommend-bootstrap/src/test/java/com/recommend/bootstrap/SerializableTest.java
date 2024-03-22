@@ -1,9 +1,7 @@
 package com.recommend.bootstrap;
 
 import com.esotericsoftware.kryo.Kryo;
-import com.recommend.bootstrap.config.LogProxy;
 import com.recommend.provider.domain.Person;
-import com.recommend.provider.util.SerializationUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

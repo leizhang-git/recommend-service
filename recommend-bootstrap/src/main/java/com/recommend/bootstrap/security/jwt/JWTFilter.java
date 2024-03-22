@@ -1,10 +1,5 @@
 package com.recommend.bootstrap.security.jwt;
 
-import cn.hutool.json.JSONUtil;
-import com.recommend.consumer.context.IContextInfoProxy;
-import com.recommend.provider.dto.UserDTO;
-import com.recommend.provider.service.cimpl.JWTServiceImpl;
-import com.recommend.provider.util.SpringContextHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.Optional;
 
 
@@ -37,7 +31,7 @@ public class JWTFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-        JWTServiceImpl jwtService = SpringContextHolder.getBean(JWTServiceImpl.class);
+//        JWTServiceImpl jwtService = SpringContextHolder.getBean(JWTServiceImpl.class);
         servletRequest.setCharacterEncoding("utf-8");
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
@@ -45,16 +39,16 @@ public class JWTFilter implements Filter {
         Optional.ofNullable(decideOSToken(httpRequest))
                 .ifPresent(jwtToken -> {
                     try {
-                        Map<String, Object> map = jwtService.jwtParse(jwtToken.orElse(null));
-                        String login = (String) map.get("login");
-                        String orgId = (String) map.get("orgId");
-                        UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
-                        IContextInfoProxy.getInstance().setContextAttribute("token", jwtToken);
-                        IContextInfoProxy.getInstance().setContextAttribute("login", login);
-                        IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
-                        IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
-                        IContextInfoProxy.getInstance().setContextAttribute("name", user.getName());
-                        log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
+//                        Map<String, Object> map = jwtService.jwtParse(jwtToken.orElse(null));
+//                        String login = (String) map.get("login");
+//                        String orgId = (String) map.get("orgId");
+//                        UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
+//                        IContextInfoProxy.getInstance().setContextAttribute("token", jwtToken);
+//                        IContextInfoProxy.getInstance().setContextAttribute("login", login);
+//                        IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
+//                        IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
+//                        IContextInfoProxy.getInstance().setContextAttribute("name", user.getName());
+//                        log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
                         filterChain.doFilter(servletRequest, servletResponse);
                     } catch (Exception e) {
                         log.error("jwt token 解析失败.", e);

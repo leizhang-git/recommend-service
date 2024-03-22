@@ -1,6 +1,5 @@
 package com.recommend.bootstrap;
 
-import com.recommend.consumer.dao.MajorDao;
 import com.recommend.consumer.domain.pojo.MajorInfo;
 import com.recommend.provider.util.RandomUtil;
 import org.junit.Test;

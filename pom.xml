@@ -68,26 +68,6 @@
 
     <dependencies>
 
-        <!-- hbase-->
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
-            <version>${hbase.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
-        </dependency>
-
 
         <!-- 引入swagger-bootstrap-ui包 -->
         <dependency>
@@ -96,212 +76,18 @@
             <version>${swagger-ui.version}</version>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.versio}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
-        <dependency>
-            <groupId>net.coobird</groupId>
-            <artifactId>thumbnailator</artifactId>
-            <version>${thumbnailator.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>${jjwt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>${jjwt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
-            <version>${jjwt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- 序列化框架>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. -->
-        <dependency>
-            <groupId>de.ruedigermoeller</groupId>
-            <artifactId>fst</artifactId>
-            <version>${fst.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo</artifactId>
-            <version>${kryo.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.thrift</groupId>
-            <artifactId>libthrift</artifactId>
-            <version>${thrift.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.caucho</groupId>
-            <artifactId>hessian</artifactId>
-            <version>${hessian.version}</version>
-        </dependency>
-
-
-        <!-- Spring>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
-<!--            <version>${cloud-gateway.version}</version>-->
-<!--        </dependency>-->
-
-        <!-- nacos-->
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-client</artifactId>
-            <version>${nacos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${alibaba-cloud.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.alibaba.nacos</groupId>
-                    <artifactId>nacos-client</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${alibaba-cloud.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.alibaba.nacos</groupId>
-                    <artifactId>nacos-client</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <version>${spring-cloud-starter-bootstrap.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 全局排除spring-boot-starter-logging相关所有依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lmax</groupId>
-            <artifactId>disruptor</artifactId>
-            <version>${disruptor.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka-client.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
-        <!-- 普罗米修斯监控-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- 加密-->
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-core</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -328,50 +114,7 @@
             <version>${commons-lang3.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${github.pagehelper.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${apache.curator.version}</version>
-        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>${apache.curator.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-client -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-client</artifactId>
-            <version>${apache.curator.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
         <dependency>
@@ -379,119 +122,16 @@
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-core -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-core</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-java -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-core</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-common</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-            <version>${hadoop.version}</version>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-envers</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.dubbo/dubbo &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.dubbo</groupId>-->
-<!--            <artifactId>dubbo</artifactId>-->
-<!--            <version>${dubbo.version}</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.dubbo</groupId>-->
-<!--            <artifactId>dubbo-spring-boot-starter</artifactId>-->
-<!--            <version>${dubbo.version}</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.github.sgroschupf</groupId>-->
-<!--            <artifactId>zkclient</artifactId>-->
-<!--            <version>${zkclient.version}</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.curator</groupId>-->
-<!--            <artifactId>curator-x-discovery</artifactId>-->
-<!--            <version>${apache.curator.version}</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>${cglib.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -536,14 +176,6 @@
             <artifactId>poi-examples</artifactId>
             <version>${poi.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.lionsoul/ip2region -->
-        <dependency>
-            <groupId>org.lionsoul</groupId>
-            <artifactId>ip2region</artifactId>
-            <version>${ip2region.version}</version>
-        </dependency>
-
 
     </dependencies>
 
