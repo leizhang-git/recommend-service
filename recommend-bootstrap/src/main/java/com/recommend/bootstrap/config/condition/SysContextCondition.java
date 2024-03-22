@@ -11,6 +11,7 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @Auth zhanglei
@@ -23,12 +24,11 @@ public class SysContextCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         Map<String, Object> attributes = metadata.getAnnotationAttributes(ConditionSysPlatformContext.class.getName());
-        if(null != attributes) {
-            PlatformEnum[] value = (PlatformEnum[]) attributes.get("value");
-            HashSet<PlatformEnum> platformEnums = new HashSet<>(Arrays.asList(value));
-            PlatformEnum plat = SettingUtil.getBuildPlatform();
-            return platformEnums.contains(plat);
-        }
-        return false;
+        return Optional.ofNullable(attributes)
+                .map(attrs -> (PlatformEnum[]) attrs.get("value"))
+                .map(Arrays::asList)
+                .map(HashSet::new)
+                .map(platformEnums -> platformEnums.contains(SettingUtil.getBuildPlatform()))
+                .orElse(false);
     }
 }

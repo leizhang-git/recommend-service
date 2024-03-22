@@ -8,6 +8,7 @@ import com.recommend.provider.util.SpringContextHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class JWTFilter implements Filter {
@@ -34,52 +36,47 @@ public class JWTFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
         JWTServiceImpl jwtService = SpringContextHolder.getBean(JWTServiceImpl.class);
         servletRequest.setCharacterEncoding("utf-8");
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-        try {
-            String jwtToken = decideOSToken(httpRequest);
-            String osOrg = decideOSOrg(httpRequest);
-            if(StringUtils.isBlank(jwtToken)) {
-                resultErrMessage(httpResponse);
-            }
-            Map<String, Object> map = jwtService.jwtParse(jwtToken);
-            String login = (String) map.get("login");
-            String orgId = (String) map.get("orgId");
-            UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
-            IContextInfoProxy.getInstance().setContextAttribute("token", jwtToken);
-            IContextInfoProxy.getInstance().setContextAttribute("login", login);
-            IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
-            IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
-            IContextInfoProxy.getInstance().setContextAttribute("name", user.getName());
-            log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
-        }catch (Exception e){
-            log.error("jwt token 解析失败.", e);
-            resultErrMessage(httpResponse);
-            return;
-        }
-        filterChain.doFilter(servletRequest, servletResponse);
+
+        Optional.ofNullable(decideOSToken(httpRequest))
+                .ifPresent(jwtToken -> {
+                    try {
+                        Map<String, Object> map = jwtService.jwtParse(jwtToken.orElse(null));
+                        String login = (String) map.get("login");
+                        String orgId = (String) map.get("orgId");
+                        UserDTO user = JSONUtil.toBean((String) map.get("user"), UserDTO.class);
+                        IContextInfoProxy.getInstance().setContextAttribute("token", jwtToken);
+                        IContextInfoProxy.getInstance().setContextAttribute("login", login);
+                        IContextInfoProxy.getInstance().setContextAttribute("orgId", orgId);
+                        IContextInfoProxy.getInstance().setContextAttribute("user", user.toString());
+                        IContextInfoProxy.getInstance().setContextAttribute("name", user.getName());
+                        log.info("JWT 解析成功~~~~~ login is {}, orgId is {}", login, orgId);
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } catch (Exception e) {
+                        log.error("jwt token 解析失败.", e);
+                        try {
+                            resultErrMessage(httpResponse);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
     }
 
-    private String decideOSToken(HttpServletRequest request) {
+    private Optional<String> decideOSToken(HttpServletRequest request) {
         String headerToken = request.getHeader(OS_TOKEN);
         String paramToken = request.getParameter(OS_TOKEN);
-        if(StringUtils.isBlank(headerToken) && StringUtils.isBlank(paramToken)) {
-            return null;
-        }else {
-            return StringUtils.isBlank(headerToken) ? paramToken : headerToken;
-        }
+        return Optional.ofNullable(StringUtils.isBlank(headerToken) ? paramToken : headerToken);
     }
 
     private String decideOSOrg(HttpServletRequest request) {
         String headerOrg = request.getHeader(OS_ORG);
         String paramOrg = request.getParameter(OS_ORG);
-        if(StringUtils.isBlank(headerOrg) && StringUtils.isBlank(paramOrg)) {
-            return "defaultOrg";
-        }else {
-            return StringUtils.isBlank(headerOrg) ? paramOrg : headerOrg;
-        }
+        return StringUtils.isBlank(headerOrg) ? (StringUtils.isBlank(paramOrg) ? "defaultOrg" : paramOrg) : headerOrg;
     }
 
     private void resultErrMessage(ServletResponse response) throws IOException {

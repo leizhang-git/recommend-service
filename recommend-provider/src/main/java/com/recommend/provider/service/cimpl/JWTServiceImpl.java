@@ -2,6 +2,7 @@ package com.recommend.provider.service.cimpl;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
 import cn.hutool.jwt.JWT;
@@ -69,9 +70,12 @@ public class JWTServiceImpl implements JWTService {
         payload.put("user", JSONObject.toJSONString(person));
         return createToken(payload);
     }
-    
+
     @Override
     public Map<String, Object> jwtParse(String token) {
+        if(StrUtil.isEmpty(token)) {
+            throw new StrException("token is null.");
+        }
         JWT jwtToken = JWT.of(token);
         jwtToken.setSigner(jwtSigner);
 

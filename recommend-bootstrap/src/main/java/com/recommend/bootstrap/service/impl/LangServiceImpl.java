@@ -5,11 +5,8 @@ import com.recommend.bootstrap.service.LangService;
 import com.recommend.bootstrap.util.LangUtil;
 import com.recommend.consumer.context.IContextInfoProxy;
 import com.recommend.consumer.exception.ErrCode;
-import com.recommend.consumer.exception.StrException;
 import com.recommend.consumer.exception.SystemException;
-import com.recommend.provider.util.FileUtil;
 import com.recommend.provider.util.SpringContextHolder;
-import org.apache.commons.compress.utils.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -17,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -49,37 +49,31 @@ public class LangServiceImpl implements LangService {
     @Override
     public void syncLang() {
         LangUtil langUtil = SpringContextHolder.getBean(LangUtil.class);
-        List<String> langList = Lists.newArrayList();
         String filePath = LANG_PATH + LANG_FILE_NAME;
         try {
-            //读取文件
-            FileUtil.getFileContent(filePath, langList);
-            //解析
-            Map<String, String> langMap = langList.stream().collect(Collectors.toMap(l -> l.split("=")[0], l -> UnicodeUtil.toString(l.split("=")[1]), (e1, e2) -> e1));
-
-            List<String> zhCNList = Lists.newArrayList();
-            List<String> zhTWList = Lists.newArrayList();
-            List<String> enUSList = Lists.newArrayList();
-            //处理zh_CN
+            // 读取文件
+            List<String> langList = Files.readAllLines(Paths.get(filePath));
+            // 解析
+            Map<String, String> langMap = langList.stream()
+                    .collect(Collectors.toMap(l -> l.split("=")[0], l -> UnicodeUtil.toString(l.split("=")[1]), (e1, e2) -> e1));
+            List<String> zhCNList = new ArrayList<>();
+            List<String> zhTWList = new ArrayList<>();
+            List<String> enUSList = new ArrayList<>();
+            // 处理 zh_CN
             for (Map.Entry<String, String> stringEntry : langMap.entrySet()) {
-                //MESSAGE_zh_CN.properties
+                // MESSAGE_zh_CN.properties
                 zhCNList.add(stringEntry.getKey() + "=" + stringEntry.getValue());
-                //MESSAGE_en_US.properties
+                // MESSAGE_en_US.properties
                 enUSList.add(stringEntry.getKey() + "=" + langUtil.chineseToEng(stringEntry.getValue()));
-                //MESSAGE_zh_TW.properties
+                // MESSAGE_zh_TW.properties
                 zhTWList.add(stringEntry.getKey() + "=" + langUtil.chineseToCht(stringEntry.getValue()));
             }
-
-            //写入文件
-            try {
-                FileUtil.writeFileContext(zhCNList, LANG_PATH + "MESSAGE_zh_CN.properties");
-                FileUtil.writeFileContext(zhTWList, LANG_PATH + "MESSAGE_zh_TW.properties");
-                FileUtil.writeFileContext(enUSList, LANG_PATH + "MESSAGE_en_US.properties");
-            } catch (Exception e) {
-                log.error("写入文件失败", e);
-                throw new StrException("写入文件失败.");
-            }
+            // 写入文件
+            Files.write(Paths.get(LANG_PATH + "MESSAGE_zh_CN.properties"), zhCNList);
+            Files.write(Paths.get(LANG_PATH + "MESSAGE_zh_TW.properties"), zhTWList);
+            Files.write(Paths.get(LANG_PATH + "MESSAGE_en_US.properties"), enUSList);
         } catch (IOException e) {
+            log.error("读取或写入文件失败", e);
             throw new SystemException(ErrCode.SYS_ZOOK_CREATE_ERROR);
         }
     }
