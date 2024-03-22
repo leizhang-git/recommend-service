@@ -1,3 +1,15 @@
+server:
+  port: 8083
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  compression:
+    # 开启压缩
+    enabled: true
+    # 开启压缩数据的最小长度
+    min-response-size: 2048
+    mime-types: text/html, text/xml, text/plain, text/css, application/javascript, application/json
 spring:
   main:
     #开启覆盖名称相同bean
@@ -6,8 +18,6 @@ spring:
     allow-circular-references: true
     #mvc与gateway冲突
 #    web-application-type: reactive
-build:
-  platform: JWT
 threadpool:
   #是否开启线程
   open_flag: true
