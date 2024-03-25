@@ -1,4 +1,4 @@
-package com.recommend.bootstrap.security.jwt;
+package com.recommend.bootstrap.auth.config.security.jwt;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -20,8 +20,6 @@ public class JWTFilter implements Filter {
     private static final String OS_TOKEN = "OS-Token";
 
     private static final String OS_ORG = "org";
-
-
 
     @Override
     public void init(FilterConfig filterConfig) {

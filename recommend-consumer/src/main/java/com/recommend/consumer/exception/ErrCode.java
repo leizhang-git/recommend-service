@@ -44,7 +44,12 @@ public enum ErrCode {
     /**
      * 数据同步失败
      */
-    SYS_SYNC_ERROR("sys-00008", "sys.sync.error");
+    SYS_SYNC_ERROR("sys-00008", "sys.sync.error"),
+
+    /**
+     * 没有权限访问
+     */
+    SYS_NOT_AUTH_ERROR("sys-00009", "sys.not.auth.error");
 
     /**
      * 异常编码
